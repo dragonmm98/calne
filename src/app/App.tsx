@@ -8,8 +8,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Users from './components/users';
-import Dishes from './components/dishes';
+import { RestaurantPage } from './screens/RestaurantPage';
+import { CommunityPage } from './screens/CommunityPage';
+import { OrdersPage } from './screens/OrdersPage';
+import { MembersPage } from './screens/MemberPage';
+import { HelpPage } from './screens/HelpPage';
+import { LoginPage } from './screens/LoginPage';
+import { HomePage } from './screens/Homepage';
 
 function App() {
   return (
@@ -18,28 +23,51 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/restaurant">Restaurant</Link>
           </li>
           <li>
-            <Link to="/dishes">Dishes</Link>
+            <Link to="/community">Community</Link>
           </li>
           <li>
-            <Link to="/users">Users</Link>
+            <Link to="/orders">Orders</Link>
+          </li>
+          <li>
+            <Link to="/member-page">Member Page</Link>
+          </li>
+          <li>
+            <Link to="/help">Help</Link>
+          </li>
+          <li>
+            <Link to="/login">Login Page</Link>
+          </li>
+          <li>
+            <Link to="/">HomePage</Link>
           </li>
         </ul>
       </nav>
 
       <Switch>
-        <Route path="/dishes">
-          <Dishes />
+        <Route path="/restaurant">
+          <RestaurantPage />
         </Route>
-        <Route path="/users">
-          <Users />
+        <Route path="/community">
+          <CommunityPage />
         </Route>
-        <Route path="/">
-          <Container>
-          <Home />
-          </Container>
+        <Route path="/orders">
+          <OrdersPage />
+        </Route>
+        <Route path="/member-page">
+          <MembersPage />
+        </Route>
+        <Route path="/help">
+          <HelpPage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+           <Route path="/"> 
+          <HomePage />
+      
           
         </Route>
       </Switch>
