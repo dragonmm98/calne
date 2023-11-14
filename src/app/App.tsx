@@ -1,6 +1,7 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/App.css';
+import '../css/navbar.css';
 import { RippleBadge } from './MaterialTheme/styled';
 import {
   BrowserRouter as Router,
@@ -15,11 +16,27 @@ import { MembersPage } from './screens/MemberPage';
 import { HelpPage } from './screens/HelpPage';
 import { LoginPage } from './screens/LoginPage';
 import { HomePage } from './screens/Homepage';
+import { NavbarHome } from './components/header';
+import { NavbarRestaurant } from './components/header/restaurant';
+import { NavbarOthers } from './components/header/others';
 
 function App() {
+  const [path, setpath] = useState();
+  const main_path = window.location.pathname;
   return (
     <Router>
-    <div>
+    {main_path =="/" ? (
+      <NavbarHome setpath={setpath}/>
+    ) : main_path.includes("/restaurant") ? (
+      <NavbarRestaurant setpath={setpath}/>
+    ) : (<NavbarOthers setpath={setpath}/>
+    )}
+
+
+
+
+
+    {/* <div>
       <nav>
         <ul>
           <li>
@@ -44,7 +61,7 @@ function App() {
             <Link to="/">HomePage</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <Switch>
         <Route path="/restaurant">
@@ -71,7 +88,7 @@ function App() {
           
         </Route>
       </Switch>
-    </div>
+    {/* </div> */}
   </Router>
 );
 }
