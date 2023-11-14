@@ -3,26 +3,27 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export function NavbarHome (props:any) {
-    return (<div className="format home_navbar">
+    return (
+    <div className="format home_navbar">
         <Container>
             <Stack flexDirection={'row'} className="navbar_config" justifyContent={"space-between"}>
             <Box>
                 <img  src="/icons/papay..svg" alt="" />
             </Box>
             <Stack flexDirection={"row"} justifyContent="space-evenly" alignItems={"center"} className="navbar_links">
-                <Box className="hover-line" onClick={props.setPath}>
+                <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/"} activeClassName="underline">Bosh Sahifa</NavLink>
                 </Box>
-                <Box className="hover-line" onClick={props.setPath}>
+                <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/restaurant"} activeClassName="underline">Oshxona</NavLink>
                 </Box>
-                <Box className="hover-line" onClick={props.setPath}>
+                <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/orders"} activeClassName="underline">Orders</NavLink>
                 </Box>
-                <Box className="hover-line" onClick={props.setPath}>
+                <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/community"} activeClassName="underline">Community</NavLink>
                 </Box>
-                <Box className="hover-line" onClick={props.setPath}>
+                <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/help"} activeClassName="underline">Help</NavLink>
                 </Box>
                 <Box className="hover-line">
@@ -60,5 +61,6 @@ export function NavbarHome (props:any) {
                 
             </Stack>
         </Container>
-    </div>)
+    </div>
+    );
 }

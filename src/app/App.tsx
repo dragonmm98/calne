@@ -2,6 +2,7 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import '../css/App.css';
 import '../css/navbar.css';
+import '../css/footer.css';
 import { RippleBadge } from './MaterialTheme/styled';
 import {
   BrowserRouter as Router,
@@ -19,6 +20,8 @@ import { HomePage } from './screens/Homepage';
 import { NavbarHome } from './components/header';
 import { NavbarRestaurant } from './components/header/restaurant';
 import { NavbarOthers } from './components/header/others';
+import { Footer } from './components/footer';
+
 
 function App() {
   const [path, setpath] = useState();
@@ -30,48 +33,17 @@ function App() {
     ) : main_path.includes("/restaurant") ? (
       <NavbarRestaurant setpath={setpath}/>
     ) : (<NavbarOthers setpath={setpath}/>
-    )}
-
-
-
-
-
-    {/* <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/restaurant">Restaurant</Link>
-          </li>
-          <li>
-            <Link to="/community">Community</Link>
-          </li>
-          <li>
-            <Link to="/orders">Orders</Link>
-          </li>
-          <li>
-            <Link to="/member-page">Member Page</Link>
-          </li>
-          <li>
-            <Link to="/help">Help</Link>
-          </li>
-          <li>
-            <Link to="/login">Login Page</Link>
-          </li>
-          <li>
-            <Link to="/">HomePage</Link>
-          </li>
-        </ul>
-      </nav> */}
+    )};
 
       <Switch>
         <Route path="/restaurant">
-          <RestaurantPage />
+          <RestaurantPage/>
         </Route>
         <Route path="/community">
-          <CommunityPage />
+          <CommunityPage/>
         </Route>
         <Route path="/orders">
-          <OrdersPage />
+          <OrdersPage/>
         </Route>
         <Route path="/member-page">
           <MembersPage />
@@ -88,15 +60,9 @@ function App() {
           
         </Route>
       </Switch>
-    {/* </div> */}
+      <Footer/>
   </Router>
 );
 }
 
-
-export default App;
-
-
-function Home() {
-  return <h2>Home</h2>;
-}
+ export default App;
