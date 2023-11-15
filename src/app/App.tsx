@@ -33,7 +33,7 @@ function App() {
     ) : main_path.includes("/restaurant") ? (
       <NavbarRestaurant setpath={setpath}/>
     ) : (<NavbarOthers setpath={setpath}/>
-    )};
+    )}
 
       <Switch>
         <Route path="/restaurant">

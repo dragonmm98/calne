@@ -5,7 +5,7 @@ export function Footer() {
     return (
         <div className="footer_config">
         <Container>
-            <Stack className="main_footer_container" >
+            <Stack className="main_footer_container">
                 <Stack flexDirection={"row"} style={{height: "242px"}}>
                     <Stack className="info" flexDirection={"column"}>
                         <Box>
