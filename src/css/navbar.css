@@ -34,7 +34,7 @@
 .home_navbar a {
     text-decoration: none;
 }
-.hover-line a {
+.home_navbar .hover-line a {
     color: white;
 }
 .home_navbar .underline {
@@ -61,7 +61,7 @@
     height: 477px;
     
 }
-.define_restaurant {
+.home_navbar .define_restaurant {
  width: 484px;
  height: 143px;
  margin-top: 40px;
@@ -74,7 +74,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 75px;
 }
-.timeline_serv {
+.home_navbar .timeline_serv {
 position: relative;
 width: 466px;
 height: 28px;
@@ -87,7 +87,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 30px;
 }
-.big_img{
+ .big_img {
     position: relative;
     width: 277px;
     height: 277px;

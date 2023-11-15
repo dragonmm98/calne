@@ -12,9 +12,9 @@ export function Footer() {
                             <img src="/icons/papays-footer.svg" alt=""/>
                         </Box>
                         <Box className="main_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, quasi id et temporibus numquam inventore incidunt, adipisci fugiat obcaecati illum ipsa labore delectus aut magnam maiores architecto ipsam asperiores officiis!
+                            Lorem ipsum dolor sit amet consectetur adipisicing  illum ipsa labore delectus aut magnam maiores architecto ipsam asperiores officiis!
                         </Box>
-                        <Stack className="contact_links">
+                        <Stack className= "contact_links">
                             <Box>
                                 <img src="/icons/facebook.svg"  alt=""/>
                             </Box>
@@ -29,8 +29,29 @@ export function Footer() {
                              </Box>
                         </Stack>
                     </Stack>
-                    <Stack></Stack>
-                    <Stack>3</Stack>
+                    <Stack className="parts">
+                      <Box className="part_subject">Bo'limlar</Box>
+                      <Box className="divider"></Box>
+                      <Box className="target">Bosh Sahifa Oshxona Jamiyat Yordam</Box>
+                    </Stack>
+                    <Stack className="find_us">
+                        <Box className="find">Find Us</Box>
+                        <Box className="divider"></Box>
+                        <Stack className="details" sx={{mt: "19.36px"}}>
+                            <Box className="detail_first">L.</Box>
+                            <Box className="detail_second">Uzbekistan</Box>
+                        </Stack>
+                        <Stack className="details" sx={{mt: "42px"}}>
+                        <Box className="detail_first">P.</Box>
+                        <Box className="detail_second">+998939260101</Box>
+                        </Stack>
+                        <Stack className="details" sx={{mt: "9px"}}>
+                        <Box className="detail_first">E.</Box>
+                        <Box className="detail_second">3d.dragonmm@gmail.com</Box>
+
+
+                        </Stack>
+                    </Stack>
                 </Stack>
                 <Box className="linear"></Box>
                 <Box className="copyrights">

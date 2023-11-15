@@ -3,6 +3,6 @@ import React from "react";
 
 export function HomePage(){
     return(
-        <Container></Container>
+        <Container>Home Page</Container>
     )
 }

@@ -41,7 +41,6 @@
 .main_footer_container .parts {
     position: relative;
     display: flex;
-    
     flex-direction: column;
     width: 118px;
     height: 188px;
