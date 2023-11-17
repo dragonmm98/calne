@@ -3,7 +3,7 @@ import React from "react";
 
 export function BestDishes () {
     return (
-        <div className="top_restaurant_frame">
+        <div className="">
             <Container>Best Dishes</Container>
         </div>
     )
