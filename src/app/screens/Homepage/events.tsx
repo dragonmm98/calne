@@ -2,9 +2,8 @@ import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 
 import {Swiper, SwiperSlide} from "swiper/react";
-import  {Autoplay,Navigation,Pagination} from "swiper/modules";
-import SwiperCore from "swiper";
-SwiperCore.use({Autoplay,Navigation,Pagination});
+import SwiperCore, {Autoplay, Navigation,Pagination} from "swiper";
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 
 export function Events () {
@@ -51,30 +50,31 @@ export function Events () {
                     </Box>
                     <Box className="prev_next_frame">
                         <img 
-                        src="/icons/arrowright.svg" 
-                        className="swiper-button-prev" alt=""/>
+                        src="/icons/arrow-right.svg" 
+                        className="swiper-button-prev" alt=""
+                        style={{transform:"rotate(180deg)"}}/>
                         <div className="dot_frame_pagination swiper-pagination"></div>
                         <img 
-                        src="/icons/arrowright.svg" 
+                        src="/icons/arrow-left.svg" 
                         className="swiper-button-next"
-                        style={{transform:"rotate(-180deg)"}} alt=""/>
+                        style={{transform:"rotate(180deg)"}} alt=""/>
                     </Box>
                     <Swiper 
                     className={"events_info swiper-wrapper"}
                     slidesPerView={"auto"}
                     centeredSlides={true}
-                    spaceBetween={"30"}
+                    spaceBetween={30}
                     navigation={{
                         nextEl: ".swiper-button-next",
                         prevEl: ".swiper-button-prev"
                     }}
                     pagination={{
                         el: ".swiper-pagination",
-                        clickable: true
+                        clickable: true,
                     }}
                     autoplay={{
                         delay: 2000,
-                        disableOnInteraction: true
+                        disableOnInteraction: true,
                     }}>
                         {Events.map((value,numver) =>{
                             return (
