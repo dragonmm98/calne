@@ -86,7 +86,7 @@ export function AllRestaurant() {
                                   </IconButton>
                                 </CardOverflow>
                                 <Typography level="h2" sx={{fontSize:"md", mt: 2}}>
-                                  Black Bear Restaurant New York State
+                                  Black Bear Restaurant
                                 </Typography>
                                 <Typography level="body-md" sx={{mt: 0.5, mb:2}}>
                                   <Link 
