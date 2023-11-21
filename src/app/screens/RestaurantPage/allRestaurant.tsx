@@ -59,7 +59,7 @@ export function AllRestaurant() {
                                 my:"20px",
                             }}>
                                 <CardOverflow>
-                                    <AspectRatio ratio="1">
+                                    <AspectRatio ratio={"1"}>
                                      <img src="/restaurant/blackbear.jpg" alt=""/>
                                     </AspectRatio>
                                     <IconButton
@@ -93,7 +93,7 @@ export function AllRestaurant() {
                                   href=""
                                   startDecorator={<LocationOnRoundedIcon/>}
                                   textColor="neutral.700">
-                                    New York city street 16th
+                                    New York city street
                                   </Link>
                                 </Typography>
                                 <Typography level="body-md" sx={{mt: 0.5, mb:2}}>

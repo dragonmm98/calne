@@ -312,7 +312,8 @@
     overflow: hidden;
 }
 
-.restaurant_page .single_restaurant .restaurant_avatar_wrapper .restaurant_avatars {
+.restaurant_page .single_restaurant 
+.restaurant_avatar_wrapper .restaurant_avatars {
     width: 108px;
     height: 100%;
 
@@ -455,4 +456,344 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.single_restaurant .dish_box .dish_img {
+   position: relative;
+   width: 273px;
+   height: 275px;
+   background-size: cover;
+   border-radius: 0px 50px 0px 0px;
+}
+.restaurant_page .single_restaurant .dish_sale {
+    margin-top: 43px;
+    width: 84px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d1f4d9;
+    box-shadow: 4px 6px 20px rgb(0 0 0 /10%);
+    border-radius: 0px 50px 50px 0px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #c50a09;
+}
+
+.restaurant_page .single_restaurant .like_view_btn {
+ position: absolute;
+ top: 223px;
+ padding: 5px;
+ min-width: 40px;
+ width: 40px;
+height: 40px;
+
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+z-index: 3;
+opacity: 0;
+transition: opacity 0.5s ease;
+background: rgba(0,0,0,0.4);
+border-radius: 50%;
+}
+
+.restaurant_page .single_restaurant .dish_box .dish_desc {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.restaurant_page .single_restaurant .dish_desc .dish_title_text {
+    margin-top: 18px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #d1d1d1;
+}
+.restaurant_page .single_restaurant .dish_desc .dish_desc_text {
+    margin-top: 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #e3c08d;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.restaurant_page .single_restaurant .dish_img:before {
+    border-radius: 0px 50px 0px 0px;
+    content: "";
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
+}
+.restaurant_page .single_restaurant .dish_img:hover:before {
+    border-radius: 0px 50px 0px 0px;
+    opacity: 1;
+}
+
+.restaurant_page .single_restaurant .dish_img img {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.restaurant_page .single_restaurant .dish_img:hover .like_view_btn {
+    opacity: 1;
+}
+
+.restaurant_page .single_restaurant .dish_img:hover .view_btn {
+    opacity: 1;
+}
+
+.restaurant_page .single_restaurant .view_btn {
+    position: absolute;
+    padding: 20px;
+    top: 217px;
+    width: 64px;
+    height: 46px;
+    left: 105px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: rgba(198 0 255 / 66%);
+    border: 2px solid #d7b686;
+    border-radius: 10px;
+
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 15px;
+
+    color: #ffffff;
+}
+.restaurant_page .single_restaurant .member_reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+.restaurant_page .single_restaurant .review_for_restaurant {
+    margin-top: 60px;
+    height: 630px;
+    width: 100%;
+    display: flex;
+    background-color: #0d1518;
+
+}
+
+
+
+/*****12**/
+.restaurant_page .single_restaurant .review_stars {
+    margin-top: 10px;
+    width: 149px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.restaurant_page .single_restaurant .review_prof {
+    font-family: "Commissioner";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 36px;
+    color: #a1a1a1;
+}
+
+.restaurant_page .single_restaurant .review_desc {
+    font-family: "DM Sans";
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #616164;
+}
+
+.restaurant_page .single_restaurant .about_left {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 0px 50px 0px 0px;
+    background-size: cover;
+    background-position: center;
+}
+
+.restaurant_page .single_restaurant .about_left .about_left_desc {
+    padding: 20px;
+    width: 100%;
+    height: 329px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.25));
+}
+
+.restaurant_page .single_restaurant .about_left_desc span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 42px;
+    color: #ffffff;
+}
+
+.restaurant_page .single_restaurant .about_right {
+    margin-left: 20px;
+    width: 50%;
+    height: 480px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.restaurant_page .single_restaurant .about_left_desc p {
+    margin-top: 10px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #d4d4d4;
+}
+
+.restaurant_page .single_restaurant .about_right .about_right_img {
+    width: 250px;
+    height: 140px;
+    left: 763px;
+    top: 3653px;
+
+    display: flex;
+    border-radius: 0px 40px 0px 0px;
+    background: url("https://thumbs.dreamstime.com/b/female-cheef-cooking-tasty-kebab-smiling-76100702.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.restaurant_page .single_restaurant .about_right .about_right_desc {
+    padding-bottom: 5px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.restaurant_page .single_restaurant .about_right_desc span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #ffffff;
+}
+
+.restaurant_page .single_restaurant .about_right_desc p {
+    margin-top: 10px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #d4d4d4;
+}
+
+
+
+.single_restaurant .dishes_filter_box {
+    width: 30%;
+    height: auto;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.single_restaurant .dish_detail_box {
+    width: 418px;
+    height: auto;
+
+    background: #ffffff;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 16px rgba(242, 189, 87, 0.04);
+    border-radius: 16px;
+}
+
+.single_restaurant .dish_detail_box .model_dish_info .modal_dish {
+    margin-top: 10px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ae0000;
+}
+
+
+.single_restaurant .dish_detail_box .model_dish_desc {
+    margin-top: 20px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.single_restaurant .dish_detail_box .dish_create_dt {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000000;
+}
+
+.single_restaurant .dish_detail_box .to_basket_box {
+    margin-top: 10px;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.single_restaurant
+.dish_detail_box
+.to_basket_box
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlined {
+    padding: 6.5px 14px;
 }
