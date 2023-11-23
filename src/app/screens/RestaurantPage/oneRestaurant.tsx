@@ -73,7 +73,7 @@ export function OneRestaurant() {
                             key={index}
                             className={"restaurant_avatars"}
                             >
-                              <img src="/restaurant/blackbear.jpg"/>
+                              <img src="/restaurant/blackbear.jpg" alt=""/>
                               <span>Black Bear</span>
                             </SwiperSlide>
                         );
@@ -276,7 +276,7 @@ export function OneRestaurant() {
               width="1320"
               height="500"
               frameBorder="0"
-              style={{ border: 0 }}
+              style={{ border: 0, marginTop: "60px" }}
               aria-hidden="false"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
