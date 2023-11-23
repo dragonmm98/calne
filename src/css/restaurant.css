@@ -127,7 +127,7 @@
 }
 .restaurant_page .all_restaurant .button_search {
     position: relative;
-    width: 100px;
+    width: 120px;
     height: 33px;
     display: flex;
     border-radius: 18.5px;
@@ -179,6 +179,7 @@
     line-height: 26px;
     text-transform: capitalize;
     color: #140342;
+    position: relative;
 }
 
 .restaurant_page .all_restaurant .restaurant_desc_text {

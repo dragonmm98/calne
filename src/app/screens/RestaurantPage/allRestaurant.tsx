@@ -63,7 +63,7 @@ export function AllRestaurant() {
                                      <img src="/restaurant/blackbear.jpg" alt=""/>
                                     </AspectRatio>
                                     <IconButton
-                                     aria-labbel="Like minimal photogaphy"
+                                     aria-labbel="Like minimal photography"
                                      size="md"
                                      variant="solid"
                                      color="neutral"
@@ -75,13 +75,13 @@ export function AllRestaurant() {
                                         zIndex: 2,
                                         borderRadius: "50%",
                                         right: "1rem",
-                                        bottom: 0,
+                                        bottom: "-1rem",
                                         transfrom: "translateY(50%)",
                                         color: "rgba (0,0,0,0.4)",
                                      }}
                                      >
                                         <Favorite
-                                        style={{color: "white"}}
+                                        style={{fill: "white"}}
                                         />
                                   </IconButton>
                                 </CardOverflow>
@@ -96,7 +96,7 @@ export function AllRestaurant() {
                                     New York city street
                                   </Link>
                                 </Typography>
-                                <Typography level="body-md" sx={{mt: 0.5, mb:2}}>
+                                <Typography level="body-md" sx={{mt: 0.5, mb:0}}>
                                   <Link 
                                   href=""
                                   startDecorator={<CallIcon/>}
