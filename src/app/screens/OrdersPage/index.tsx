@@ -6,6 +6,7 @@ import { TabContext, TabList } from "@mui/lab";
 import PausedOrders from "../../components/orders/pausedOrders";
 import Marginer from "../../components/marginer";
 import ProcessOrders from "../../components/orders/proccessOrders";
+import FinishedOrders from "../../components/orders/finishedOrders";
 
 
 
@@ -35,15 +36,16 @@ export function OrdersPage(){
                         // value={value}
                         aria-label="basic tabs example"
                         style={{display: "flex", justifyContent: "space-between",}}>
-                           <Tab  label="Buyurtmalarim" value={1}/>                 
-                           <Tab  label="Jarayon" value={2}/>                 
-                           <Tab  label="Yakunlangan" value={3}/>                
+                           <Tab style={{marginLeft:"50px"}} label="Buyurtmalarim" value={"1"}/>                 
+                           <Tab style={{marginLeft:"200px"}} label="Jarayon" value={"2"}/>                 
+                           <Tab style={{marginLeft:"200px"}} label="Yakunlangan" value={"3"}/>                
                         </TabList>
                     </Box>
                 </Box>
                 <Stack className="order_main_content">
                       <PausedOrders/>
                       <ProcessOrders/>
+                      <FinishedOrders/>
                 </Stack>
                  </TabContext>
            </Stack>
@@ -83,6 +85,42 @@ export function OrdersPage(){
                     </Box>
                 </Box>
             </Box>
+
+            <form className={"order_payment_box"}>
+                <Box className={"input_box_pay"}>
+                  <input 
+                  type={"text"} 
+                  name={"card_number"} 
+                  placeholder={"Card number:12345"}
+                  className={"card_number"}/>
+                  <div className="row_input_box">
+                  <input 
+                  type={"data"} 
+                  name={"card_data"} 
+                  placeholder={"07/24"}
+                  className={"card_data"}/>
+
+                 <input 
+                  type={"text"} 
+                  name={"card_number"} 
+                  placeholder={"CVV:010"}
+                  className={"card_cvv"}/>
+                  </div>
+
+                  <input 
+                  type={"text"} 
+                  name={"user_name"} 
+                  placeholder={"Account Name"}
+                  className={"card_user"}/>
+                </Box>
+                <Box className={"payment_images"}>
+                    <img src="/icons/western_union.svg" alt=""/>
+                    <img src="/icons/master_card.svg" alt=""/>
+                    <img src="/icons/paypal.svg" alt=""/>
+                    <img src="/icons/visa.svg" alt=""/>
+                </Box>
+            
+             </form>
            </Stack>
 
         </Container>

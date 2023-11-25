@@ -4,16 +4,16 @@ import { TabPanel } from "@mui/lab";
 import moment from "moment";
 import "../../../css/order.css";
 
-const processOrders = [
+const pausedOrders = [
     [1,2,3]
     
 ];
 
-export default function ProcessOrders (props:any) {
+export default function FinishedOrders (props:any) {
     return (
-        <TabPanel value="2">
+        <TabPanel value="3">
             <Stack>
-                {processOrders?.map((order) => {
+                {pausedOrders?.map((order) => {
                     return (
                         <Box className={"order_main_box"}>
                       <Box className={"order_box_scroll"}>
@@ -35,27 +35,21 @@ export default function ProcessOrders (props:any) {
                         })}
                       </Box>
 
-                               <Box className={"total_price_box1 blue_solid"}>
+                               <Box className={"total_price_box2 black_solid"}>
                                 <Box className={"boxTotal"}>
                                     <p>mahsulot narxi </p>
-                                    <p>$60</p>
+                                    <p>$22</p>
                                     <img src="/icons/plus.svg" alt="" style={{marginLeft: "20px"}}/>
                                     <p>yetkazish xizmati </p>
-                                    <p>$5 </p>
+                                    <p>$2 </p>
                                     <img src="/icons/pause.svg" alt="" 
                                     style={{ marginLeft: "20px"}}/>
                                     <p>Jami narx </p>
-                                    <p>$65</p>
+                                    <p>$110</p>
                                 </Box>
-                                <p className="data_comp">
-                                    {moment().format("YY-MM-DD")}
-                                </p>
-                                <Button
-                                className="blue_button"
-                                variant="contained"
-                                  > Yakunlash
+                           
+                                 
 
-                                </Button>
                                </Box>
                         </Box>
                     );

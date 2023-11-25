@@ -184,7 +184,7 @@ line-height: normal;
     align-items: center;
     justify-content: center;
     width: 821px;
-    height: auto;
+    height: 43px;
     border-radius: 5px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -237,4 +237,153 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0
 }
 .order_page .red_button_box:hover {
     background: red;
+}
+
+.order_page .order_right .order_payment_box {
+    padding: 20px;
+    margin-top: 13px;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 16px;
+}
+.order_page .order_payment_box .input_box_pay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.order_page .input_box_pay .row_input_box {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    gap: 8px;
+}
+
+.order_page .row_input_box .card_data {
+    position: relative;
+    width: 162px;
+    color: #434141;
+    font-family: Commissioner;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    outline: none;
+    line-height: 36px; /* 276.923% */
+    background: #F5F5F5;
+    border: none;
+}
+
+.order_page .row_input_box .card_cvv {
+    position: relative;
+    width: 158px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    background: #F5F5F5; 
+    border: none;
+
+}
+.order_page .input_box_pay .card_number {
+    width: 322px;
+    color: #434141;
+    font-family: Commissioner;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    outline: none;
+    line-height: 36px; /* 240% */
+    margin-top: 10px;background: #F5F5F5;
+    border: none;
+
+
+
+}
+
+.order_page .input_box_pay .card_user {
+    width: 332px;
+    height: 40px;
+    border-radius: 5px;
+    background: #F5F5F5;
+    outline: none;
+    border: none;
+
+}
+
+.order_page .order_payment_box .payment_images {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.order_page .payment_images img {
+    width: 38.315px;
+   height: 25.143px;
+   
+}
+
+.order_page .total_price_box1 {
+    position: relative;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 821px;
+    height: 43px;
+    border-radius: 5px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    background: rgba(140, 102, 242, 0.81);
+    
+}
+
+.order_page .total_price_box1 .data_comp {
+    color: #000;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 10px;
+}
+
+.order_page .total_price_box1 .blue_button {
+width: 119px;
+height: 36px;
+margin-left: 20px;
+text-transform:capitalize;
+
+
+border-radius: 10px;
+border: 1px solid #0288D1;
+background: #0288D1;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+
+.order_page .total_price_box2 {
+    position: relative;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 821px;
+    height: 41px;
+    border-radius: 5px;
+    border-top: 1px solid #000; 
+    border-bottom: 1px solid #000;
+    background: #FF3434;
 }
