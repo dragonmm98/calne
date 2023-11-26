@@ -5,14 +5,16 @@ import moment from "moment";
 import "../../../css/order.css";
 
 const processOrders = [
-    [1,2,3]
+    [1,2,3],
+    [1,2,3],
+    [1,2,3],
     
 ];
 
 export default function ProcessOrders (props:any) {
     return (
         <TabPanel value="2">
-            <Stack>
+            <Stack style={{gap: "10px"}}>
                 {processOrders?.map((order) => {
                     return (
                         <Box className={"order_main_box"}>

@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import Tab from '@mui/material/Tab';
 import { TabContext, TabList } from "@mui/lab";
-import PausedOrders from "../../components/orders/pausedOrders";
+import PausedOrders from "../OrdersPage/pausedOrders";
 import Marginer from "../../components/marginer";
-import ProcessOrders from "../../components/orders/proccessOrders";
-import FinishedOrders from "../../components/orders/finishedOrders";
+import ProcessOrders from "../OrdersPage/proccessOrders";
+import FinishedOrders from "./finishedOrders";
 
 
 
