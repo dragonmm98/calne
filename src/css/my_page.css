@@ -1,0 +1,15 @@
+.member_page {
+   position: relative;
+   width: 100%;
+   height: auto;
+   background: #0b0e11;
+}
+
+.member_page .bottom_box {
+    width: 100%;
+    height: 94px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
