@@ -9,7 +9,7 @@ const followers = [
 
 export function MemberFollowers (props: any) {
     return (
-        <Stack>
+        <Stack style={{gap: "15px", marginTop: "15px"}}>
             {followers.map((follower) => {
                 const image_url = "/icons/default_user.svg";
                 return (
@@ -31,15 +31,15 @@ export function MemberFollowers (props: any) {
                                 <Button
                                 variant="contained"
                                 className="following_already"
-                                disabled>
+                                >
                                   FOLLOWING
                                 </Button>
                             ) : (
                             <Button
                             variant={"contained"}
                             startIcon={
-                                <img src="" alt=""
-                                style={{width: "40px"}}
+                                <img src="/icons/followicon.svg" alt=""
+                                style={{width: "30px", height: "28px"}}
                                 />
                             }
                             className={"follow_btn"}

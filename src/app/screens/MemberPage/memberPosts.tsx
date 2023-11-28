@@ -8,7 +8,7 @@ import { Typography } from "@mui/joy";
 export function MemberPosts (props:any) {
     return (
         <Box className={"post_content"}>
-            {["1", "2", "3"].map((article) => {
+            {["1"].map((article) => {
                 return (
                     <Stack className="all_article_box"
                     sx={{cursor: "pointer"}}

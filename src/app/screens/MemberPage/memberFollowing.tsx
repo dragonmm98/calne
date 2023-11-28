@@ -9,7 +9,7 @@ const following = [
 
 export function MemberFollowing (props: any) {
     return (
-        <Stack>
+        <Stack style={{gap: "15px", marginTop: "15px"}}>
             {following.map((following) => {
                 const image_url = "/icons/default_user.svg";
                 return (
@@ -32,8 +32,8 @@ export function MemberFollowing (props: any) {
                                 <Button
                                 variant="contained"
                                 startIcon={
-                                    <img src="" alt=""
-                                    style={{width: "40px", marginLeft: "16px"}}
+                                    <img src="/icons/followicon.svg" alt=""
+                                    style={{width: "39px", marginLeft: "15px"}}
                                     />
                                 }
                                 className={"follow_cancel_btn"}

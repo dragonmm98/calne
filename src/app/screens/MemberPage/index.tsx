@@ -7,7 +7,6 @@ import "../../../css/my_page.css";
 
 export function MembersPage(){
     let member = useRouteMatch();
-    console.log(member);
     return(
         <div className="member_page">
             <Switch>

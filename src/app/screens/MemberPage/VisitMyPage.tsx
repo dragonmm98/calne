@@ -124,7 +124,7 @@ export function VisitMyPage(props: any) {
                                     Foydalanuvchi
                              </span> 
                             </Box>
-                            <Box className={"user_media_box"}>
+                            <Box className={"user_media_box1"}>
                                 <FacebookIcon/>
                                 <InstagramIcon/>
                                 <TelegramIcon/>
@@ -134,7 +134,7 @@ export function VisitMyPage(props: any) {
                                 <p className="follows">Followers 2</p>
                                 <p className="follows">Following 2</p>
                             </Box>
-                            <p> Qo'shimcha ma;lumot kiritlmagan</p>
+                            <p> My Name is Ilhom</p>
                             <Box
                             display={"flex"}
                             justifyContent={"flex-end"}
@@ -150,7 +150,7 @@ export function VisitMyPage(props: any) {
                                     component={(e) => (
                                         <Button
                                         variant="contained"
-                                        onClick={() => setValue{"4"}}
+                                        onClick={() => setValue("4")}
                                         > 
                                         Maqola Yozish
                                         </Button>
@@ -164,6 +164,7 @@ export function VisitMyPage(props: any) {
                            <TabList
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
+                                style={{display: "flex", flexDirection: "column"}}
                                 >
                                     <Tab
                                     style={{flexDirection: "column"}}
@@ -171,7 +172,7 @@ export function VisitMyPage(props: any) {
                                     component={() => (
                                         <div
                                         className={`menu_box ${value}`}
-                                        onClick={() => setValue{"1"}}
+                                        onClick={() => setValue("1")}
                                         > 
                                         <img src="/icons/post.svg" alt=""/>
                                         <span>Maqolalarim</span>
@@ -184,7 +185,7 @@ export function VisitMyPage(props: any) {
                                     component={() => (
                                         <div
                                         className={`menu_box ${value}`}
-                                        onClick={() => setValue{"2"}}
+                                        onClick={() => setValue("2")}
                                         > 
                                         <img src="/icons/followers.svg" alt=""/>
                                         <span>Followers</span>
@@ -197,7 +198,7 @@ export function VisitMyPage(props: any) {
                                     component={() => (
                                         <div
                                         className={`menu_box ${value}`}
-                                        onClick={() => setValue{"3"}}
+                                        onClick={() => setValue("3")}
                                         > 
                                         <img src="/icons/following.svg" alt=""/>
                                         <span>Following</span>
