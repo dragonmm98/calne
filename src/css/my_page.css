@@ -48,7 +48,7 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
 }
 
 .member_page .order_info_box {
-    padding: 10px;
+    
     width: 372.58px;
     height: auto;
 
@@ -66,6 +66,7 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 25px;
 }
 .member_page  .order_user_avatar {
     position: relative;
@@ -110,8 +111,11 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
   }
 
   .member_page .settings_btn {
-    position: relative;
-    margin-left: 190px;
+    width: 18px;
+   height: 18px;
+   position: absolute;
+   left: 160px;
+
     
 }
 
@@ -277,6 +281,13 @@ margin-left: 30px;
 .post_content {
   margin-top: 15px;
 
+}
+
+.member_page .maqola_btn {
+border-radius: 10px;
+border: 1px solid #0288D1;
+background: #0288D1;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
 

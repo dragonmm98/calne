@@ -104,18 +104,20 @@ export function VisitMyPage(props: any) {
 
                         <Stack className="my_page_right"> 
                            <Box className={"order_info_box"}>
-                            <a onClick={() => setValue("6")} className={"settings_btn"}> 
-                            <SettingsIcon/>
-                            </a>
+                            
                             <Box 
                             display={"flex"}
                             flexDirection={"column"}
                             alignItems={"center"}
                             >
+                            
                                 <div className="order_user_img">
                                 <img src="/icons/default_user.svg" alt=""
                         className="order_user_avatar"/>
                         <img className="avatar_1" src="/icons/user1.svg" alt=""/>
+                        <a onClick={() => setValue("6")} className={"settings_btn"}> 
+                            <SettingsIcon/>
+                            </a>
                          </div>
                          <span className="Ismoilov-Akmaljon">
                                 Ismoilov Akmaljon
@@ -149,6 +151,7 @@ export function VisitMyPage(props: any) {
                                     value={"4"}
                                     component={(e) => (
                                         <Button
+                                        className="maqola_btn"
                                         variant="contained"
                                         onClick={() => setValue("4")}
                                         > 

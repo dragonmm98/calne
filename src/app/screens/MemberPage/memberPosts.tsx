@@ -7,8 +7,8 @@ import { Typography } from "@mui/joy";
 
 export function MemberPosts (props:any) {
     return (
-        <Box className={"post_content"}>
-            {["1"].map((article) => {
+        <Stack className={"post_content"} style={{gap: "15px"}}>
+            {["1","2"].map((article) => {
                 return (
                     <Stack className="all_article_box"
                     sx={{cursor: "pointer"}}
@@ -79,6 +79,6 @@ export function MemberPosts (props:any) {
                 )
             })}
 
-        </Box>
+        </Stack>
     )
 }
