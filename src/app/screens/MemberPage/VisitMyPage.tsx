@@ -64,14 +64,14 @@ export function VisitMyPage(props: any) {
                                 </Box>
                                 </TabPanel>
                                 
-                                <TabPanel value="2">
+                                <TabPanel value="2" >
                                     <Box className={"menu_name"}>Followers</Box>
                                     <Box className={"menu_content"}>
                                      <MemberFollowers actions_enabled={true}/>
                                     </Box>
                                 </TabPanel>
 
-                                <TabPanel value="3">
+                                <TabPanel value="3" >
                                     <Box className={"menu_name"}>Following</Box>
                                     <Box className={"menu_content"}>
                                         <MemberFollowing actions_enabled={true}/>
@@ -114,7 +114,7 @@ export function VisitMyPage(props: any) {
                                 <div className="order_user_img">
                                 <img src="/icons/default_user.svg" alt=""
                         className="order_user_avatar"/>
-                        <img className="avatar_1" src="/icons/user1.svg" alt=""/>
+                        <img  className="avatar_1" src="/icons/user1.svg" alt=""/>
                         <a onClick={() => setValue("6")} className={"settings_btn"}> 
                             <SettingsIcon/>
                             </a>
@@ -167,7 +167,7 @@ export function VisitMyPage(props: any) {
                            <TabList
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
-                                style={{display: "flex", flexDirection: "column"}}
+                                style={{display: "flex", flexDirection: "column", cursor: "grab"}}
                                 >
                                     <Tab
                                     style={{flexDirection: "column"}}

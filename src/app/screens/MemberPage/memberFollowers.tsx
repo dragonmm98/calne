@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, ButtonBase, Stack } from "@mui/material";
+import { Avatar, Box, Button, Stack } from "@mui/material";
 import React from "react";
 
 const followers = [

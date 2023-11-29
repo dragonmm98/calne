@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, ButtonBase, Stack } from "@mui/material";
+import { Avatar, Box, Button, Stack } from "@mui/material";
 import React from "react";
 
 const following = [
@@ -21,7 +21,7 @@ export function MemberFollowing (props: any) {
                                 display: "flex",
                                 flexDirection: "column",
                                 marginLeft: "25px",
-                                height: "85%",
+                                height: "85px",
                             }}>
                                 <span className="username_txt">USER</span>
                                 <span className="name_txt">{following.mb_nick}</span>
