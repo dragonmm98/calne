@@ -12,10 +12,12 @@ import { MemberPosts } from "./memberPosts";
 import { MemberFollowers } from "./memberFollowers";
 import { MemberFollowing } from "./memberFollowing";
 import { MySettings } from "./mySetting";
+import { TuiEditor } from "../../components/TuiEditor/TuiEditor";
+import TViewer from "../../components/TuiEditor/TViewer";
 
 export function VisitMyPage(props: any) {
     /** INITIALIZATIONS **/
-    const [value,setValue] = useState("1");
+    const [value,setValue] = useState("5");
     /** HANDLERS**/
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -82,13 +84,14 @@ export function VisitMyPage(props: any) {
                                 <TabPanel value="4">
                                     <Box className={"menu_name"}>Maqola Yozish</Box>
                                     <Box className={"write_content"}>
-    
+                                        <TuiEditor text= "<h1>Hello</h1>" />
                                     </Box>
                                 </TabPanel>
 
                                 <TabPanel value="5">
                                     <Box className={"menu_name"}>Tanlangan Maqola</Box>
                                     <Box className={"menu_content"}>
+                                        <TViewer/>
     
                                     </Box>
                                 </TabPanel>

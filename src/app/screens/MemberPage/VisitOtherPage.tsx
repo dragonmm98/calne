@@ -10,10 +10,11 @@ import  YoutubeIcon  from "@mui/icons-material/YouTube";
 import { MemberPosts } from "./memberPosts";
 import { MemberFollowers } from "./memberFollowers";
 import { MemberFollowing } from "./memberFollowing";
+import TViewer from "../../components/TuiEditor/TViewer";
 
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
-    const [value,setValue] = useState("1");
+    const [value,setValue] = useState("4");
     /** HANDLERS**/
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -75,7 +76,7 @@ export function VisitOtherPage(props: any) {
                                 <TabPanel value="4">
                                     <Box className={"menu_name"}>Tanlangan Maqola</Box>
                                     <Box className={"menu_content"}>
-    
+                                      <TViewer/>
                                     </Box>
                                 </TabPanel>
 
