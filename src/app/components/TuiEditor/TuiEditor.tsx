@@ -6,7 +6,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 
 export const TuiEditor = (props: any) => {
     const editorRef = useRef();
-
+    
     return (
         <Stack>
             <Stack
@@ -52,13 +52,16 @@ export const TuiEditor = (props: any) => {
                     />
                 </Box>
             </Stack>
-            {/*@ts-ignore*/}
+            
             <Editor
-            ref={editorRef}
-            placeholder="Type here"
+            initialValue="  "
+            placeholder="Type Here"
             previewStyle="vertical"
             height="640px"
-            initialEditType="WYSIWYG"
+            initialEditType="wysiwyg"
+            useCommandShortcut={false}
+            // @ts-ignore
+            ref={editorRef}
             toolbarItems={[
                 ["heading", "bold", "italic", "strike"],
                 ["image", "table", "link"],
@@ -84,4 +87,4 @@ export const TuiEditor = (props: any) => {
                 </Stack>  
         </Stack>
     );
-}
+};
