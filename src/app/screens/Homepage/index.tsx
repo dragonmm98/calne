@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import { Advertisement } from "./advertisement";
 import { BestDishes } from "./bestDishes";
 import { BestRestaurants } from "./bestRestaurants";
@@ -10,6 +10,12 @@ import { TopRestaurants } from "./topRestaurant";
 import '../../../css/home.css'
 
 export function HomePage(){
+    useEffect(() => {
+        console.log("componentlar did mount yani joylandi = data fetching");
+        return () => {
+            console.log ("componentlar unmount ya'ni yo'qotildi disappear holatiga otdi ")
+        }
+    },[]); 
     return( <div className="homepage">
         <Statistics/>
         <TopRestaurants/>

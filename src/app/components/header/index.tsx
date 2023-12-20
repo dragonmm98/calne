@@ -1,9 +1,14 @@
 import { Badge, Box, Button, Container, IconButton, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export function NavbarHome (props:any) {
-    const [value, setValue] = useState(0);
+    const [count,setCount] = useState(0)
+    const [value, setValue] = useState(true);
+
+    useEffect(()=> {
+        setCount(count+1);
+    }, [value]);
     return (
     <div className="format home_navbar">
         <Container>
@@ -55,7 +60,7 @@ export function NavbarHome (props:any) {
                     <Box className="timeline_serv">{value} soat xizmatingizdamiz.</Box>
                     <Box sx={{mt:'90px'}}>
                         <Button variant="contained" style={{width: '210px', height: '60px', background: '#1976d2', color:'#FFFFF'}} 
-                        onClick={() => setValue(value+1)}>Register</Button>
+                        onClick={() => setValue(!value)}>Register</Button>
                     </Box>
                 </Stack>
 
