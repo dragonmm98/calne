@@ -8,7 +8,23 @@ import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import { CardOverflow, CssVarsProvider, IconButton } from "@mui/joy";
 import { Favorite, Visibility } from "@mui/icons-material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
+
+//Redux
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import {retrieveTopRestaurants} from "../../screens/Homepage/selector";
+import { Restaurant } from "../../../types/user";
+import { serverApi } from "../../../lib/config";
+
+//Redux Selector
+const topRestaurantRetriever = createSelector(retrieveTopRestaurants,
+  (topRestaurants)=>({
+      topRestaurants,
+  })
+);
 export function TopRestaurants () {
+  const {topRestaurants} = useSelector(topRestaurantRetriever);
+
     return (
         <div className="top_restaurant_frame">
             <Container>
@@ -22,15 +38,19 @@ export function TopRestaurants () {
                     sx={{mt:"43px"}}
                     m={"16px"}
                     gap="10px">
-                     <CssVarsProvider> 
-                     <Card sx={{
+                     
+                       {topRestaurants.map((ele:Restaurant)=> {
+                        const image_path= `${serverApi}/${ele.mb_image}`;
+                        return (
+                          <CssVarsProvider key={ele._id}>
+                                  <Card sx={{
                          minHeight: '430px', 
                          minWidth: '325px',
                          mr: "35px" , 
                         cursor:"pointer" }}>
       <CardCover>
         <img
-          src="/restaurant/blackbear.jpg"
+          src={image_path}
           loading="lazy"
           alt=""
         />
@@ -43,13 +63,13 @@ export function TopRestaurants () {
       />
       <CardContent sx={{ justifyContent: 'flex-end' }}>
         <Typography level="title-lg" textColor="#fff">
-          Black Bear Restaurant
+          {ele.mb_nick}
         </Typography>
         <Typography
           startDecorator={<LocationOnRoundedIcon />}
           textColor="neutral.300"
         >
-          California, USA Street 16th
+          {ele.mb_address}
         </Typography>
       </CardContent>
       <CardOverflow
@@ -76,7 +96,8 @@ export function TopRestaurants () {
         transform: "translateY(50%)",
         color: "rgba (0,0,0, .4)"
         }}>
-        <Favorite style={{fill:"white"}}/>
+        <Favorite style={{fill:
+          ele?.mb_liked && ele?.mb_liked[0].my_favorite ? "red" : "white"}}/>
        </IconButton>
        <Typography level="body-md"
        sx={{
@@ -84,7 +105,7 @@ export function TopRestaurants () {
         color: "neutral.300",
         alignItems: "center",
         display: "flex"
-       }}> 100{""}
+       }}> {ele.mb_views}
        <VisibilityIcon sx={{fontSize:20, marginLeft: "5px"}}/>
        </Typography>
        <Box sx={{width: 2, bgcolor: "divider"}}/>
@@ -94,240 +115,15 @@ export function TopRestaurants () {
         alignItems: "center",
         display: "flex"
        }}>
-        <div>50</div>
-        <Favorite sx={{fontSize: 20, marginLeft: "5px"}}/>
-       </Typography>
-      </CardOverflow>
-                     </Card>
-                     <Card sx={{
-                         minHeight: '430px', 
-                         minWidth: '325px',
-                         mr: "35px" , 
-                        cursor:"pointer" }}>
-      <CardCover>
-        <img
-          src="/restaurant/blackbear.jpg"
-          loading="lazy"
-          alt=""
-        />
-      </CardCover>
-      <CardCover
-        sx={{
-          background:
-            'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
-        }}
-      />
-      <CardContent sx={{ justifyContent: 'flex-end' }}>
-        <Typography level="title-lg" textColor="#fff">
-          Black Bear Restaurant
-        </Typography>
-        <Typography
-          startDecorator={<LocationOnRoundedIcon />}
-          textColor="neutral.300"
-        >
-          California, USA Street 16th
-        </Typography>
-      </CardContent>
-      <CardOverflow
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 1.5,
-        py: 1.5,
-        px: "var(--Card-padding)",
-        borderTop: "1px solid"
-
-      }}>
-       <IconButton 
-       aria-label="Like minimal photography"
-       size="md"
-       variant="solid"
-       color="neutral"
-       sx={{
-        position: "absolute",
-        zIndex: 2,
-        borderRadius: "50%",
-        right: "1rem",
-        bottom: 45,
-        transform: "translateY(50%)",
-        color: "rgba (0,0,0, .4)"
-        }}>
-        <Favorite style={{fill:"white"}}/>
-       </IconButton>
-       <Typography level="body-md"
-       sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}> 100{""}
-       <VisibilityIcon sx={{fontSize:20, marginLeft: "5px"}}/>
-       </Typography>
-       <Box sx={{width: 2, bgcolor: "divider"}}/>
-       <Typography sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}>
-        <div>50</div>
-        <Favorite sx={{fontSize: 20, marginLeft: "5px"}}/>
-       </Typography>
-      </CardOverflow>
-                     </Card>
-                     <Card sx={{
-                         minHeight: '430px', 
-                         minWidth: '325px',
-                         mr: "35px" , 
-                        cursor:"pointer" }}>
-      <CardCover>
-        <img
-          src="/restaurant/blackbear.jpg"
-          loading="lazy"
-          alt=""
-        />
-      </CardCover>
-      <CardCover
-        sx={{
-          background:
-            'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
-        }}
-      />
-      <CardContent sx={{ justifyContent: 'flex-end' }}>
-        <Typography level="title-lg" textColor="#fff">
-          Black Bear Restaurant
-        </Typography>
-        <Typography
-          startDecorator={<LocationOnRoundedIcon />}
-          textColor="neutral.300"
-        >
-          California, USA Street 16th
-        </Typography>
-      </CardContent>
-      <CardOverflow
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 1.5,
-        py: 1.5,
-        px: "var(--Card-padding)",
-        borderTop: "1px solid"
-
-      }}>
-       <IconButton 
-       aria-label="Like minimal photography"
-       size="md"
-       variant="solid"
-       color="neutral"
-       sx={{
-        position: "absolute",
-        zIndex: 2,
-        borderRadius: "50%",
-        right: "1rem",
-        bottom: 45,
-        transform: "translateY(50%)",
-        color: "rgba (0,0,0, .4)"
-        }}>
-        <Favorite style={{fill:"white"}}/>
-       </IconButton>
-       <Typography level="body-md"
-       sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}> 100{""}
-       <VisibilityIcon sx={{fontSize:20, marginLeft: "5px"}}/>
-       </Typography>
-       <Box sx={{width: 2, bgcolor: "divider"}}/>
-       <Typography sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}>
-        <div>50</div>
-        <Favorite sx={{fontSize: 20, marginLeft: "5px"}}/>
-       </Typography>
-      </CardOverflow>
-                     </Card>
-                     <Card sx={{
-                         minHeight: '430px', 
-                         minWidth: '325px',
-                         mr: "35px" , 
-                        cursor:"pointer" }}>
-      <CardCover>
-        <img
-          src="/restaurant/blackbear.jpg"
-          loading="lazy"
-          alt=""
-        />
-      </CardCover>
-      <CardCover
-        sx={{
-          background:
-            'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
-        }}
-      />
-      <CardContent sx={{ justifyContent: 'flex-end' }}>
-        <Typography level="title-lg" textColor="#fff">
-          Black Bear Restaurant
-        </Typography>
-        <Typography
-          startDecorator={<LocationOnRoundedIcon />}
-          textColor="neutral.300"
-        >
-          California, USA Street 16th
-        </Typography>
-      </CardContent>
-      <CardOverflow
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 1.5,
-        py: 1.5,
-        px: "var(--Card-padding)",
-        borderTop: "1px solid"
-
-      }}>
-       <IconButton 
-       aria-label="Like minimal photography"
-       size="md"
-       variant="solid"
-       color="neutral"
-       sx={{
-        position: "absolute",
-        zIndex: 2,
-        borderRadius: "50%",
-        right: "1rem",
-        bottom: 45,
-        transform: "translateY(50%)",
-        color: "rgba (0,0,0, .4)"
-        }}>
-        <Favorite style={{fill:"white"}}/>
-       </IconButton>
-       <Typography level="body-md"
-       sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}> 100{""}
-       <VisibilityIcon sx={{fontSize:20, marginLeft: "5px"}}/>
-       </Typography>
-       <Box sx={{width: 2, bgcolor: "divider"}}/>
-       <Typography sx={{
-        fontWeight: "md",
-        color: "neutral.300",
-        alignItems: "center",
-        display: "flex"
-       }}>
-        <div>50</div>
+        <div>{ele.mb_likes}</div>
         <Favorite sx={{fontSize: 20, marginLeft: "5px"}}/>
        </Typography>
       </CardOverflow>
                      </Card>
                      </CssVarsProvider>
+                        )
+                       })}
+               
                     </Stack>
                 </Stack>
             </Container>
