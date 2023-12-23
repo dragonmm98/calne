@@ -10,11 +10,10 @@ import { TopRestaurants } from "./topRestaurant";
 import '../../../css/home.css'
 
 export function HomePage(){
+    //selector : sore => data
     useEffect(() => {
-        console.log("componentlar did mount yani joylandi = data fetching");
-        return () => {
-            console.log ("componentlar unmount ya'ni yo'qotildi disappear holatiga otdi ")
-        }
+        // backend data request  => data
+        // slice data => store
     },[]); 
     return( <div className="homepage">
         <Statistics/>
