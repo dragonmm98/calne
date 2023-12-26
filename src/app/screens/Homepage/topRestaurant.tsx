@@ -97,7 +97,7 @@ export function TopRestaurants () {
         color: "rgba (0,0,0, .4)"
         }}>
         <Favorite style={{fill:
-          ele?.mb_liked && ele?.mb_liked[0].my_favorite ? "red" : "white"}}/>
+          ele?.mb_liked && ele?.mb_liked[0]?.my_favorite ? "red" : "white"}}/>
        </IconButton>
        <Typography level="body-md"
        sx={{
