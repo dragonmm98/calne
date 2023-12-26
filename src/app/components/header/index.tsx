@@ -6,9 +6,9 @@ export function NavbarHome (props:any) {
     const [count,setCount] = useState(0)
     const [value, setValue] = useState(true);
 
-    useEffect(()=> {
-        setCount(count+1);
-    }, [value]);
+    // useEffect(()=> {
+    //     setCount(count+1);
+    // }, [value]);
     return (
     <div className="format home_navbar">
         <Container>
@@ -45,7 +45,8 @@ export function NavbarHome (props:any) {
                     </IconButton>
                 </Box>
                  <Box> 
-                    <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}>Login</Button>
+                    <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}
+                    onClick={props.handleLoginOpen}>Login</Button>
                  </Box>
             </Stack>
             </Stack>
@@ -57,10 +58,10 @@ export function NavbarHome (props:any) {
                     </Box>
                     <Box className="define_restaurant">
                         The Authentic Restaurant & Cafe</Box>
-                    <Box className="timeline_serv">{value} soat xizmatingizdamiz.</Box>
+                    <Box className="timeline_serv">24 soat xizmatingizdamiz.</Box>
                     <Box sx={{mt:'90px'}}>
                         <Button variant="contained" style={{width: '210px', height: '60px', background: '#1976d2', color:'#FFFFF'}} 
-                        onClick={() => setValue(!value)}>Register</Button>
+                        onClick={props.handleSignUpOpen}>Register</Button>
                     </Box>
                 </Stack>
 
