@@ -1,4 +1,5 @@
-import { Badge, Box, Button, Container, IconButton, Stack } from "@mui/material";
+import { Logout } from "@mui/icons-material";
+import { Badge, Box, Button, Container, IconButton, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -22,6 +23,11 @@ export function NavbarOthers (props:any) {
                 <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/community"} activeClassName="underline">Community</NavLink>
                 </Box>
+                {props.verifiedMemberData ? 
+                <Box className="hover-line" onClick={props.setpath}>
+                <NavLink to={"/member-page"} activeClassName="underline">My Page</NavLink>
+            </Box> : null
+                }
                 <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/help"} activeClassName="underline">Help</NavLink>
                 </Box>
@@ -38,8 +44,58 @@ export function NavbarOthers (props:any) {
                     </IconButton>
                 </Box>
                  <Box> 
-                    <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}
-                    onClick={props.handleLoginOpen}>Login</Button>
+                 {!props.verifiedMemberData ? (
+                     <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}
+                     onClick={props.handleLoginOpen}>Login</Button>
+                   ) : (<img style={{width: "48px", height: "48px", borderRadius: "24px" }} 
+                   src={props.verifiedMemberData.mb_image} 
+                   onClick={props.handleLogoutClick}
+                />)}
+                    <Menu
+                anchorEl={props.anchorEl}
+                open={props.open}
+                onClose={props.handleCloseLogout}
+                onClick={props.handleCloseLogout}
+                slotProps={{
+                  // Use slotProps instead of PaperProps
+                  paper: {
+                    elevation: 0,
+                    sx: {
+                      overflow: "visible",
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      mt: 1.5,
+                      "& .MuiAvatar-root": {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1
+                      },
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "background.paper",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0
+                      }
+                    }
+                  }
+                }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+                <MenuItem
+                         onClick={props.handleLogOutRequest}>
+                  {/* onClick handler goes here */}
+                  <ListItemIcon>
+                    <Logout fontSize="small" style={{ color: "blue" }} />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
                  </Box>
             </Stack>
             </Stack>

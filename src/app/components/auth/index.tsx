@@ -70,7 +70,6 @@ export default function AuthenticationModal(props: any) {
       
     } catch (err) {
       console.log(err);
-      props.handleSignUpClose();
       sweetErrorHandling(err).then();
     }
    }
