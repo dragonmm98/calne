@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Favorite } from "@mui/icons-material";
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -12,6 +12,11 @@ import { createSelector } from "reselect";
 import {retrievebestRestaurants} from "../../screens/Homepage/selector";
 import { Restaurant } from "../../../types/user";
 import { serverApi } from "../../../lib/config";
+import { useHistory } from "react-router-dom";
+import assert from "assert";
+import MemberApiService from "../../apiService/memberApiService";
+import { Definer } from "../../../lib/Definer";
+import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 
 //Redux Selector
 const bestRestaurantRetriever = createSelector(retrievebestRestaurants,
@@ -22,7 +27,46 @@ const bestRestaurantRetriever = createSelector(retrievebestRestaurants,
 
 export function BestRestaurants () {
   //***INITIALIZATIONS ***/
+  const history = useHistory();
   const {bestRestaurants} = useSelector(bestRestaurantRetriever);
+
+  const refs: any = useRef([]);
+
+
+  //*****HANDLERS ******/
+  const chosenRestaurantHandler = (id: string) => {
+    history.push(`/restaurant/${id}`);
+  };
+
+  const goRestaurantsHandler = () => history.push("/restaurant")
+
+  const targetLikeBest = async (e:any, id:string) => {
+    try{
+      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1)
+
+      const member_service = new MemberApiService(),
+      like_result:any = await member_service.memberLikeTarget({
+        like_ref_id: id, 
+        group_type: "member"});
+        console.log(like_result)
+      assert.ok(like_result, Definer.general_err1);
+  
+
+    
+      if (like_result.like_status > 0) {
+         e.target.style.fill = "red";
+         refs.current[like_result.like_ref_id].innerHTML++;
+      } else {
+        e.target.style.fill = "white";
+        refs.current[like_result.like_ref_id].innerHTML--;
+      }
+     await sweetTopSmallSuccessAlert("success", 700, false);
+      
+    } catch (err:any) {
+      console.log("targetLikeTop", err);
+      sweetErrorHandling(err).then();
+    }
+  }
     return (
         <div className="best_restaurant_frame">
             <img 
@@ -41,7 +85,9 @@ export function BestRestaurants () {
 
                     return(
                       <CssVarsProvider>
-                      <Card variant="outlined" sx={{
+                      <Card onClick={() => chosenRestaurantHandler(ele._id)}
+                      variant="outlined" 
+                      sx={{
                                minHeight: '483px', 
                                minWidth: '320px',
                                mr: "35px" , 
@@ -51,6 +97,7 @@ export function BestRestaurants () {
                                           <img src={image_path} alt=""/>
                                       </AspectRatio>
                                       <IconButton 
+                                      onClick={(e) => {e.stopPropagation()}}
                                       aria-label="Like minimal photography"
                                       size="md"
                                       variant="solid"
@@ -64,7 +111,9 @@ export function BestRestaurants () {
                                       transform: "translateY(50%)",
                                       color: "rgba (0,0,0, .4)"
                                       }}>
-                                    <Favorite style={{fill:
+                                    <Favorite 
+                                    onClick={(e) => targetLikeBest(e, ele._id) }  
+                                    style={{fill:
                                     ele?.me_liked && ele?.me_liked[0]?.my_favorite ? "red" : "white"}}/>
                                   </IconButton>
                                   </CardOverflow>
@@ -114,7 +163,9 @@ export function BestRestaurants () {
               alignItems: "center",
               display: "flex"
              }}>
-              <div>{ele.mb_likes}</div>
+              <div
+               ref={(element) => (refs.current[ele._id] = element)}>
+                {ele.mb_likes}</div>
               <Favorite sx={{fontSize: 20, marginLeft: "5px"}}/>
              </Typography>
             </CardOverflow>
