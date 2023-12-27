@@ -26,6 +26,7 @@ import { serverApi } from '../lib/config';
 import { sweetFailureProvider, sweetTopSmallSuccessAlert } from '../lib/sweetAlert';
 import { Definer } from '../lib/Definer';
 import MemberApiService from './apiService/memberApiService';
+import "../app/apiService/verify";
 
 
 function App() {
@@ -62,7 +63,7 @@ useEffect(() => {
       : "/auth/default_user.svg";
       setVerifiedMemberData(member_data);
      }
-  },[signUpOpen, loginOpen, handleLogoutClick]);
+  },[signUpOpen, loginOpen]);
 
   
   //** HANDLERS**/
