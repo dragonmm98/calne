@@ -183,7 +183,9 @@ export function BestRestaurants () {
                     justifyContent="flex-end"
                     style={{width:"100%", marginTop:"16px"}} 
                     >
-                        <Button style={{background:"#1976d2", color: "white"}}>
+                        <Button
+                        onClick={goRestaurantsHandler}
+                        style={{background:"#1976d2", color: "white"}}>
                             Barchasini Ko'rish
                     </Button>
                      </Stack>
