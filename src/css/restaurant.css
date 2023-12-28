@@ -350,6 +350,7 @@
 }
 
 .restaurant_page .single_restaurant .review_for_restaurant {
+    position: relative;
     margin-top: 60px;
     width: 100%;
     height: 630px;
@@ -412,7 +413,7 @@
 .single_restaurant .dish_category_box {
     margin-top: 60px;
     width: 50px;
-    height: auto;
+    height: 480px;
     display: flex;
     flex-direction: column;
 }
