@@ -947,13 +947,13 @@ line-height: normal;
     display: flex;
     flex-direction: row;
     margin-top: 21px;
-    margin-left: 55px;
-    margin-right: 56px;
-    width: auto;
-    height: auto;
+    /* margin-left: 55px;
+    margin-right: 56px; */
+    width: 450px;
+    height: 245px;
     border-radius: 15px;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 .chosen_dish_page .restaurant_avatars {

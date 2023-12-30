@@ -1,6 +1,6 @@
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Box, Button, Checkbox, Container, Rating, Stack } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -23,6 +23,8 @@ import { retrieveChosenProduct, retrieveChosenRestaurant } from "./selector";
 import ProductApiService from "../../apiService/productApiService";
 import RestaurantApiService from "../../apiService/restaurantApiService";
 import { serverApi } from "../../../lib/config";
+import MemberApiService from "../../apiService/memberApiService";
+import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 
 //** REDUX SLICE**/
 const actionDispatch = (dispach: Dispatch) => ({
@@ -54,7 +56,8 @@ export function ChosenDish() {
   const {chosenProduct} = useSelector(chosenProductRetriever);
   const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
   let {dish_id} = useParams<{dish_id:string }>();
-  
+  const [productRebuild, setproductRebuild] = useState<Date>(new Date());
+
   const dishRelatedProcess = async () => {
     try {
         const productService = new ProductApiService();
@@ -74,9 +77,33 @@ export function ChosenDish() {
   useEffect(() => {
 
     dishRelatedProcess().then();
-  }, [])
+  }, [productRebuild])
   
     const label= {inputProps: {"aria-label": "CheckBox demo"}};
+    
+    
+    //******HANDLERS *****/
+    //like mechanism
+    const targetLikeProduct = async (e:any): Promise<void> => {
+      try{
+        assert.ok(localStorage.getItem("member_data"), Definer.auth_err1)
+  
+        const member_service = new MemberApiService(),
+        like_result:any = await member_service.memberLikeTarget({
+          like_ref_id: e.target.id, 
+          group_type: "product"});
+          console.log(like_result)
+        assert.ok(like_result, Definer.general_err1);
+       await sweetTopSmallSuccessAlert("success", 700, false);
+       setproductRebuild(new Date());
+      } catch (err:any) {
+        console.log("targetLikeProduct", err);
+        sweetErrorHandling(err).then();
+      }
+    }
+  
+  
+ 
 
     return (
         <div className="chosen_dish_page">
@@ -106,12 +133,10 @@ export function ChosenDish() {
                     <Swiper
                      className={"dish_avatar_wrapper"}
                      slidesPerView={chosenProduct?.product_images.length}
-                     centeredSlides={false}
-                     spaceBetween={10}
-                     navigation={{
-                        nextEl: ".restaurant-next",
-                        prevEl: ".restaurant-prev",
-                        }}
+                     watchSlidesProgress={true}
+                     freeMode={true}
+                     modules={[FreeMode,Navigation,Thumbs]}
+                     loop={true}
                         >
                        {chosenProduct?.product_images.map((ele:string) => {
                         const image_path = `${serverApi}/${ele}`;
@@ -132,8 +157,8 @@ export function ChosenDish() {
                 
                 <Stack className="chosen_dish_info_container">
                     <Box className="chosen_dish_info_box">
-                     <strong className="dish_txt">Sweet Sandwich</strong>
-                     <span className="resto_name">Black Bear</span>
+                     <strong className="dish_txt">{chosenProduct?.product_name}</strong>
+                     <span className="resto_name">{chosenRestaurant?.mb_nick}</span>
                      <Box className="rating_box">
                         <Rating  name="half-rating" defaultValue={3.5} precision={0.5}/>
                         <div className="evaluation_box">
@@ -146,17 +171,20 @@ export function ChosenDish() {
                                 <Checkbox {...label}
                                 icon={<FavoriteBorder/>}
                                 checkedIcon={<Favorite style={{ color: "red"}}/>}
-                                checked={true}
+                                id={chosenProduct?._id}
+                                onClick={targetLikeProduct}
+                                checked={chosenProduct?.me_liked 
+                                  && chosenProduct?.me_liked[0]?.my_favorite ? true : false}
                                 />
-                                <span>98 ta</span>
+                                <span>{chosenProduct?.product_likes} ta</span>
                             </div>
                             <div style={{display: "flex", alignItems:"center"}}>
                                 <RemovedRedEyeIcon style={{width: "32px", height: "24px"}} sx={{mr: "10px"}}/>
-                                <span className="eye_txt">1000 ta</span>
+                                <span className="eye_txt">{chosenProduct?.product_views} ta</span>
                             </div>
                         </div>
                      </Box>
-                     <p className="dish_desc_info">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.  </p>
+                     <p className="dish_desc_info"> {chosenProduct?.product_description ? chosenProduct?.product_description : "no descirption"} </p>
                      <Marginer
                      direction="horizontal"
                      height="1"
@@ -164,7 +192,7 @@ export function ChosenDish() {
                      bg="#000000"/>
                      <div className="dish_price_box">
                         <span>Price:</span>
-                        <span>$11</span>
+                        <span>{chosenProduct?.product_price}$</span>
                      </div>
                      <div className="button_box">
                         <Button variant="contained">Savatchaga qo'shish</Button>
@@ -174,4 +202,8 @@ export function ChosenDish() {
             </Container>
         </div>
     )
+}
+
+function setproductRebuild(arg0: Date) {
+  throw new Error("Function not implemented.");
 }
