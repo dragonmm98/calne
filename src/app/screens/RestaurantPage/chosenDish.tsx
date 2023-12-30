@@ -132,6 +132,7 @@ export function ChosenDish() {
                     
                     <Swiper
                      className={"dish_avatar_wrapper"}
+                     spaceBetween={20}
                      slidesPerView={chosenProduct?.product_images.length}
                      watchSlidesProgress={true}
                      freeMode={true}
