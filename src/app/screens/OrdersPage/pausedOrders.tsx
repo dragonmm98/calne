@@ -4,12 +4,27 @@ import { TabPanel } from "@mui/lab";
 import moment from "moment";
 import "../../../css/order.css";
 
+//*****REDUX *****/
+import {  useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrievePausedOrders } from "./selector";
+
+//Redux Selector**//
+const pausedOrdersRetriever = createSelector( 
+    retrievePausedOrders,
+    (pausedOrders)=>({
+        pausedOrders,
+    })
+  );
+
 const pausedOrders = [
     [1,2,3]
     
 ];
 
 export default function PausedOrders (props:any) {
+    //** INITIALIZATIONS**/
+    // const {pausedOrders} = useSelector(pausedOrdersRetriever);
     return (
         <TabPanel value="1">
             <Stack>

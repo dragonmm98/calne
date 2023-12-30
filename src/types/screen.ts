@@ -6,6 +6,7 @@ import { Restaurant } from "./user";
 export interface AppRootState {
     homePage: HomePageState;
     restaurantPage: RestaurantPageState;
+    ordersPage: OrdersPageState;
 }
 
 export interface HomePageState {
