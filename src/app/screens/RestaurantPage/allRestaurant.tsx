@@ -75,7 +75,7 @@ export function AllRestaurant() {
     history.push(`/restaurant/${id}`);
   }
   
-  const targetLikeHandler = async (e:any, id:string) => {
+  const targetLikeHandler = async (e:any, id:string): Promise<void> => {
     try{
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1)
 

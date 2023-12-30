@@ -5,7 +5,7 @@ import { RestaurantPageState } from "../../../types/screen";
 const initialState: RestaurantPageState = {
     targetRestaurants: [],
     randomRestaurants: [],
-    chosenRestaurants:  null,
+    chosenRestaurant:  null,
     targetProducts: [],
     chosenProduct: null,
 }
@@ -21,7 +21,7 @@ const restaurantPageSlice = createSlice({
             state.randomRestaurants = action.payload;
         },
         setChosenRestaurants: (state,action) => {
-            state.chosenRestaurants = action.payload;
+            state.chosenRestaurant = action.payload;
         },
         setTargetProducts: (state,action) => {
             state.targetProducts = action.payload;

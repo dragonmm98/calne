@@ -1,6 +1,6 @@
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Box, Button, Checkbox, Container, Rating, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -9,13 +9,73 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemovedRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Marginer from "../../components/marginer";
+import { useParams } from "react-router-dom";
+import assert from "assert";
+import { Definer } from "../../../lib/Definer";
+//*****REDUX *****/
+import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { Restaurant } from "../../../types/user";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setChosenProduct, setChosenRestaurants } from "./slice";
+import { Product } from "../../../types/product";
+import { retrieveChosenProduct, retrieveChosenRestaurant } from "./selector";
+import ProductApiService from "../../apiService/productApiService";
+import RestaurantApiService from "../../apiService/restaurantApiService";
+import { serverApi } from "../../../lib/config";
 
+//** REDUX SLICE**/
+const actionDispatch = (dispach: Dispatch) => ({
+    setChosenProduct: (data:Product) => dispach(setChosenProduct(data)),
+    setChosenRestaurant:(data:Restaurant) => dispach(setChosenRestaurants(data)),
+  });
+
+//** REDUX SELECTOR**/
+const chosenRestaurantRetriever = createSelector(
+    retrieveChosenRestaurant,
+    (chosenRestaurant) =>({
+        chosenRestaurant,
+    })
+);
+const chosenProductRetriever = createSelector(
+    retrieveChosenProduct,
+    (chosenProduct) =>({
+        chosenProduct,
+    })
+);
 
 const chosen_list = Array.from(Array(3).keys());
 const restaurant_list = Array.from(Array(8).keys());
 
 export function ChosenDish() {
-        
+  //****INITIALIZATIONS ****/
+  const {setChosenProduct,setChosenRestaurant} = 
+  actionDispatch(useDispatch());
+  const {chosenProduct} = useSelector(chosenProductRetriever);
+  const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
+  let {dish_id} = useParams<{dish_id:string }>();
+  
+  const dishRelatedProcess = async () => {
+    try {
+        const productService = new ProductApiService();
+        const product:Product = await productService
+        .getChosenDish(dish_id);
+        setChosenProduct(product);
+
+        const restaurantService = new RestaurantApiService();
+        const restaurant: Restaurant = await restaurantService
+        .getChosenRestaurant(product.restaurant_mb_id);
+        setChosenRestaurant(restaurant)
+    } catch (err) {
+        console.log(`dishRelatedProcess, ERROR`, err);
+    }
+  };
+
+  useEffect(() => {
+
+    dishRelatedProcess().then();
+  }, [])
+  
     const label= {inputProps: {"aria-label": "CheckBox demo"}};
 
     return (
@@ -29,8 +89,8 @@ export function ChosenDish() {
                   navigation={true}
                   modules={[FreeMode,Navigation,Thumbs]}
                   >
-                 {chosen_list.map((ele) => {
-                    const image_path = `/others/foodmm.jpg`;
+                 {chosenProduct?.product_images.map((ele:string) => {
+                    const image_path = `${serverApi}/${ele}`;
                     return (
                       <SwiperSlide>
                         <img 
@@ -45,7 +105,7 @@ export function ChosenDish() {
                     
                     <Swiper
                      className={"dish_avatar_wrapper"}
-                     slidesPerView={3}
+                     slidesPerView={chosenProduct?.product_images.length}
                      centeredSlides={false}
                      spaceBetween={10}
                      navigation={{
@@ -53,14 +113,15 @@ export function ChosenDish() {
                         prevEl: ".restaurant-prev",
                         }}
                         >
-                       {restaurant_list.map((ele,index) => {
+                       {chosenProduct?.product_images.map((ele:string) => {
+                        const image_path = `${serverApi}/${ele}`;
                         return (
                             <SwiperSlide
                             style={{cursor: "pointer"}}
-                            key={index}
+                            key={chosenProduct._id}
                             className={"restaurant_avatars"}
                             >
-                              <img src="/others/sliderimg.jpg" alt=""/>
+                              <img src={image_path} alt=""/>
                             </SwiperSlide>
                         );
                        })}

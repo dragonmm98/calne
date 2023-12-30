@@ -13,7 +13,7 @@ class ProductApiService {
         this.path = serverApi;
 }
 
-async getTargetProducts(data:ProductSearchObj ) {
+async getTargetProducts(data:ProductSearchObj ): Promise<Product[]> {
     try {
       const url = "/products",
       result = await axios.post(this.path + url,data,{
@@ -29,6 +29,22 @@ async getTargetProducts(data:ProductSearchObj ) {
     }
 }
 
+
+async getChosenDish(dish_id: string): Promise<Product> {
+  try {
+    const url = `/products/${dish_id}`,
+    result = await axios.get(this.path + url,{
+      withCredentials: true,
+    });
+    assert.ok(result, Definer.input_err2);
+    console.log ("state:::", result.data.state)
+    const product : Product = result.data.data;
+    return product;
+  } catch (err: any) {
+      console.log(`ERROR::: getChosenDish ${err.message}`);
+      throw err;
+  }
+}
 }
 
 export default ProductApiService;

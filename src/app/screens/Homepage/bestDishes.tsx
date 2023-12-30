@@ -11,6 +11,7 @@ import { setTrendProducts } from "./slice";
 import ProductApiService from "../../apiService/productApiService";
 import { retrievetrendProducts } from "./selector";
 import { serverApi } from "../../../lib/config";
+import { useHistory } from "react-router-dom";
 
 //Redux Selector
 const trendProductRetriever = createSelector(retrievetrendProducts,
@@ -26,6 +27,7 @@ const actionDispatch = (dispach: Dispatch) => ({
 
 export function BestDishes () {
     //**Initializations**//
+    const history = useHistory();
     const {setTrendProducts} = actionDispatch(useDispatch())
     const {trendProduct} = useSelector(trendProductRetriever)
     useEffect(() => {
@@ -34,6 +36,13 @@ export function BestDishes () {
       .then((data) => {setTrendProducts(data)})
       .catch(err=> console.log(err));
     }, [])
+
+//******HANDLERS ******/
+const chosenDishHandler = (id:string) => {
+    history.push(`/restaurant/dish/${id}`)
+  }
+    
+
     return (
         <div className="best_dishes_frame">
             <Container>
@@ -51,7 +60,9 @@ export function BestDishes () {
                             <Stack className="dish_img" 
                             sx={{backgroundImage:`url(${image_path})`}}>
                             <div className="dish_sale">{size_volume}</div>
-                            <div className="view_btn">Batafsil ko'rish
+                            <div className="view_btn"
+                            onClick={() => chosenDishHandler(product._id) }
+                            >Batafsil ko'rish
                               <img 
                               src={"/icons/arrowright.svg"}
                               style={{marginLeft: "9px"}}/>

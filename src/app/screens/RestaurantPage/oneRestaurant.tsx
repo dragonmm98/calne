@@ -34,8 +34,8 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
   );
   
   const chosenRestaurantRetriever = createSelector(retrieveChosenRestaurant,
-    (chosenRestaurants)=>({
-        chosenRestaurants,
+    (chosenRestaurant)=>({
+        chosenRestaurant,
     })
   );
   
@@ -48,7 +48,7 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
   const actionDispatch = (dispach: Dispatch) => ({
     setRandomRestaurants: (data:Restaurant[]) =>
      dispach(setRandomRestaurants(data)),
-    setChosenRestaurants: (data:Restaurant[]) => 
+    setChosenRestaurant: (data:Restaurant) => 
     dispach(setChosenRestaurants(data)),
     setTargetProducts: (data:Product[]) => 
     dispach(setTargetProducts(data)),
@@ -66,10 +66,10 @@ export function OneRestaurant() {
   const history = useHistory();
 
 
-  const {setRandomRestaurants,setChosenRestaurants,setTargetProducts} = 
+  const {setRandomRestaurants,setChosenRestaurant,setTargetProducts} = 
   actionDispatch(useDispatch());
   const {randomRestaurants} = useSelector(randomRestaurantRetriever);
-  const {chosenRestaurants} = useSelector(chosenRestaurantRetriever);
+  const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
   const {targetProducts} = useSelector(targetProductsRetriever);
 
   const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(restaurant_id);
@@ -94,14 +94,17 @@ export function OneRestaurant() {
    }).then((data) => setRandomRestaurants(data))
    .catch((err) => console.log (err));
 
-
+  restaurantService
+  .getChosenRestaurant(chosenRestaurantId)
+  .then((data) => setChosenRestaurants(data))
+  .catch((err) => console.log(err)); 
 
    const productService = new ProductApiService();
    productService
    .getTargetProducts(targetProductSearchObj)
    .then((data) => setTargetProducts(data))
    .catch((err) => console.log(err));
-  }, [targetProductSearchObj,productRebuild])
+  }, [targetProductSearchObj,productRebuild,chosenRestaurantId])
 
   //*****HANDLERS****/
   const chosenRestaurantHandler = (id:string) => {
@@ -124,9 +127,12 @@ export function OneRestaurant() {
         setTargetProductSearchObj({...targetProductSearchObj});
 
   }
+  const chosenDishHandler = (id:string) => {
+    history.push(`/restaurant/dish/${id}`)
+  }
     
   //like mechanism
-  const targetLikeProduct = async (e:any) => {
+  const targetLikeProduct = async (e:any): Promise<void> => {
     try{
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1)
 
@@ -280,11 +286,16 @@ export function OneRestaurant() {
                                     <Box className={"dish_box"} key={product._id}>
                                         <Box 
                                         className={"dish_img"}
-                                        sx={{backgroundImage: `url(${image_path})`,
+                                        onClick={() => chosenDishHandler(product._id)}
+                                        sx={{backgroundImage:  `url(${image_path})`,
+                                        
                                         }}
                                         >
-                                            <div className="dish_sale">{size_volume}</div>
+                                            <div className="dish_sale" 
+                                            onClick={(event) => event.stopPropagation()}
+                                            >{size_volume}</div>
                                             <Button
+                                            onClick={(event) => event.stopPropagation()}
                                             className="like_view_btn"
                                             style={{left: "36px"}}>
                                                 <Badge badgeContent={product.product_likes} color="primary">
@@ -303,11 +314,15 @@ export function OneRestaurant() {
 
                                                 </Badge>
                                             </Button>
-                                            <Button className="view_btn">
+                                            <Button
+                                            onClick={(event) => event.stopPropagation()} 
+                                            className="view_btn">
                                                 <img src="/icons/shopping_cart.svg" alt=""
                                                 style={{display: "flex"}}/>
                                             </Button>
-                                            <Button className="like_view_btn"
+                                            <Button 
+                                            onClick={(event) => event.stopPropagation()}
+                                            className="like_view_btn"
                                             style={{right: "36px"}}>
                                                 <Badge badgeContent={product.product_views} color="primary">
                                                     <Checkbox 
@@ -381,11 +396,11 @@ export function OneRestaurant() {
                 width={"90%"}
                 sx={{mt:"70px"}}>
                     <Box className={"about_left"}
-                    sx={{ backgroundImage: `url("/restaurant/blackbear1.jpg")`}}
+                    sx={{ backgroundImage: `url(${serverApi}/${chosenRestaurant?.mb_image})`}}
                     >
                         <div className="about_left_desc">
-                            <span>Black Bear</span>
-                            <p>Amazing Taste </p>
+                            <span>{chosenRestaurant?.mb_nick}</span>
+                            <p>{chosenRestaurant?.mb_description} </p>
                         </div>
                         </Box>
                         <Box className={"about_right"}>

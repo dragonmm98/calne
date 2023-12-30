@@ -12,7 +12,7 @@ constructor () {
     this.path = serverApi;
 }
 
-public async loginRequest(login_data: any) {
+public async loginRequest(login_data: any): Promise<Member> {
     try {
     const result = await axios.post(this.path + "/login", login_data, {
         withCredentials: true,
@@ -32,7 +32,7 @@ public async loginRequest(login_data: any) {
     }
 }
 
-public async signupRequest(signup_data: any) {
+public async signupRequest(signup_data: any): Promise<Member> {
     try {
     const result = await axios.post(this.path + "/signup", signup_data, {
         withCredentials: true,
@@ -52,7 +52,7 @@ public async signupRequest(signup_data: any) {
     }
 }
 
-public async logOutRequest() {
+public async logOutRequest(): Promise<boolean> {
     try {
       const result = await axios.get(this.path+"/logout",{
         withCredentials: true,
@@ -71,7 +71,7 @@ public async logOutRequest() {
     }
 }
 
-public async memberLikeTarget(data:any) {
+public async memberLikeTarget(data:any): Promise<MemberLiken> {
     try {
        const url = "/member-liken",
        result = await axios.post(this.path + url, data, {
