@@ -57,7 +57,7 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
 
 
 
-export function OneRestaurant() {
+export function OneRestaurant(props:any) {
 
     //*** INITIALIZATIONS***/
     let {restaurant_id} = useParams<{restaurant_id:string }>();
@@ -315,7 +315,10 @@ export function OneRestaurant() {
                                                 </Badge>
                                             </Button>
                                             <Button
-                                            onClick={(event) => event.stopPropagation()} 
+                                            onClick={(e) => {
+                                                props.onAdd(product);
+                                                e.stopPropagation();
+                                            }} 
                                             className="view_btn">
                                                 <img src="/icons/shopping_cart.svg" alt=""
                                                 style={{display: "flex"}}/>

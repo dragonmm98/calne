@@ -46,10 +46,10 @@ const chosenProductRetriever = createSelector(
     })
 );
 
-const chosen_list = Array.from(Array(3).keys());
-const restaurant_list = Array.from(Array(8).keys());
+// const chosen_list = Array.from(Array(3).keys());
+// const restaurant_list = Array.from(Array(8).keys());
 
-export function ChosenDish() {
+export function ChosenDish(props:any) {
   //****INITIALIZATIONS ****/
   const {setChosenProduct,setChosenRestaurant} = 
   actionDispatch(useDispatch());
@@ -196,7 +196,8 @@ export function ChosenDish() {
                         <span>{chosenProduct?.product_price}$</span>
                      </div>
                      <div className="button_box">
-                        <Button variant="contained">Savatchaga qo'shish</Button>
+                        <Button variant="contained"
+                        onClick={() => {props.onAdd(chosenProduct)}}>Savatchaga qo'shish</Button>
                      </div>
                     </Box>
                 </Stack>

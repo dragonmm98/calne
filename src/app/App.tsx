@@ -27,6 +27,8 @@ import { sweetFailureProvider, sweetTopSmallSuccessAlert } from '../lib/sweetAle
 import { Definer } from '../lib/Definer';
 import MemberApiService from './apiService/memberApiService';
 import "../app/apiService/verify";
+import { CartItem } from '../types/others';
+import { Product } from '../types/product';
 
 
 function App() {
@@ -37,6 +39,11 @@ function App() {
   
   const [signUpOpen, setSignUpOpen] = useState(false); 
   const [loginOpen, setLoginOpen] = useState(false);
+
+  //** Basket**/
+  const cartJson: any = localStorage.getItem("cart_data");
+  const currentCart: CartItem[] = JSON.parse(cartJson) ?? [];
+  const [cartItems,setCartItems] = useState<CartItem[]>(currentCart);
 
 //** Logout Initializations**/
 const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -80,6 +87,61 @@ useEffect(() => {
     setLoginOpen(false);
   };
 
+  const onAdd = (product:Product) => {  
+    const exist: any = cartItems.find((item:CartItem) => 
+    item._id === product._id);
+    if(exist) {
+      const cart_updated = cartItems.map((item: CartItem) => 
+        item._id === product._id 
+        ? {...exist,quantity: exist.quantity + 1 } 
+        : item 
+      );
+      setCartItems(cart_updated);
+      localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+    }else { 
+    const new_item: CartItem = {
+      _id: product._id,
+      quantity: 1,
+      name: product.product_name,
+      price: product.product_price,
+      image: product.product_images[0],
+    };
+    const cart_updated = [...cartItems,{...new_item }];
+    setCartItems(cart_updated);
+    localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+    }
+  };
+
+  const onRemove = (data:CartItem) => { 
+    const item_data : any = cartItems.find(
+      (ele:CartItem) => ele._id === data._id
+    );
+    if(item_data.quantity === 1) {
+       const cart_updated = cartItems.filter((ele:CartItem) => 
+       ele._id !== data._id);
+       setCartItems(cart_updated);
+       localStorage.setItem("cart_data", JSON.stringify(cart_updated)); 
+       
+    } else {
+     const cart_updated = cartItems.map((item:CartItem) => 
+     item._id === data._id 
+     ? {...item_data, quantity: item_data.quantity -1}
+     : item
+     );
+     setCartItems(cart_updated);
+    localStorage.setItem("cart_data", JSON.stringify(cart_updated)); 
+    }
+   };
+
+  const onDelete = (item: CartItem) => {
+    const cart_updated = cartItems.filter(
+      (ele:CartItem) => ele._id !== item._id);
+    setCartItems(cart_updated);
+    localStorage.setItem("cart_data", JSON.stringify(cart_updated)); 
+    
+   }
+  const onDeleteAll = () => {  }
+
 const handleLogOutRequest = async() => {
   try {
       const memberApiService = new MemberApiService();
@@ -104,6 +166,11 @@ const handleLogOutRequest = async() => {
       handleLogoutClick={handleLogoutClick}
       handleCloseLogout={handleCloseLogout}
       handleLogOutRequest={handleLogOutRequest}
+      cartItems={cartItems}
+      onAdd={onAdd}
+      onRemove={onRemove}
+      onDelete={onDelete}
+      
        />
     ) : main_path.includes("/restaurant") ? (
       <NavbarRestaurant 
@@ -116,6 +183,10 @@ const handleLogOutRequest = async() => {
       handleLogoutClick={handleLogoutClick}
       handleCloseLogout={handleCloseLogout}
       handleLogOutRequest={handleLogOutRequest}
+      cartItems={cartItems}
+      onAdd={onAdd}
+      onRemove={onRemove}
+      onDelete={onDelete}
 
 
       />
@@ -129,6 +200,10 @@ const handleLogOutRequest = async() => {
       handleLogoutClick={handleLogoutClick}
       handleCloseLogout={handleCloseLogout}
       handleLogOutRequest={handleLogOutRequest}
+      cartItems={cartItems}
+      onAdd={onAdd}
+      onRemove={onRemove}
+      onDelete={onDelete}
 
 
       />
@@ -136,7 +211,7 @@ const handleLogOutRequest = async() => {
 
       <Switch>
         <Route path="/restaurant">
-          <RestaurantPage/>
+          <RestaurantPage onAdd={onAdd}/>
         </Route>
         <Route path="/community">
           <CommunityPage/>

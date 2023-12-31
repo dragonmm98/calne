@@ -3,6 +3,7 @@ import { Logout } from "@mui/icons-material";
 import { Badge, Box, Button, Container, IconButton, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Basket from "./basket";
 
 export function NavbarHome (props:any) {
   
@@ -42,18 +43,13 @@ export function NavbarHome (props:any) {
                 <Box className="hover-line" onClick={props.setpath}>
                     <NavLink to={"/help"} activeClassName="underline">Help</NavLink>
                 </Box>
-                <Box className="hover-line">
-                    <IconButton 
-                    aria-label="cart" 
-                    id="basic-button"
-                    aria-controls={undefined}
-                    aria-haspopup="true"
-                    aria-expanded={undefined} >
-                       <Badge badgeContent={3} color="secondary">
-                        <img src={"/icons/shopping-cart.svg"} alt=''/>
-                       </Badge>
-                    </IconButton>
-                </Box>
+                
+                <Basket 
+                cartItems={props.cartItems}
+                onAdd={props.onAdd} 
+                onRemove={props.onRemove}
+                onDelete={props.onDelete}/>
+
                 {!props.verifiedMemberData ? (
                     <Box> 
                     <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}
