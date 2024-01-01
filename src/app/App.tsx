@@ -140,7 +140,10 @@ useEffect(() => {
     localStorage.setItem("cart_data", JSON.stringify(cart_updated)); 
     
    }
-  const onDeleteAll = () => {  }
+  const onDeleteAll = () => { 
+    setCartItems([]);
+    localStorage.removeItem("cart_data");
+   };
 
 const handleLogOutRequest = async() => {
   try {
@@ -170,6 +173,8 @@ const handleLogOutRequest = async() => {
       onAdd={onAdd}
       onRemove={onRemove}
       onDelete={onDelete}
+      onDeleteAll={onDeleteAll}
+
       
        />
     ) : main_path.includes("/restaurant") ? (
@@ -187,6 +192,7 @@ const handleLogOutRequest = async() => {
       onAdd={onAdd}
       onRemove={onRemove}
       onDelete={onDelete}
+      onDeleteAll={onDeleteAll}
 
 
       />
@@ -204,6 +210,8 @@ const handleLogOutRequest = async() => {
       onAdd={onAdd}
       onRemove={onRemove}
       onDelete={onDelete}
+      onDeleteAll={onDeleteAll}
+
 
 
       />
