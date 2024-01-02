@@ -11,7 +11,7 @@ class OrderApiService {
     constructor () {
         this.path = serverApi;
 }
-async createOrder (data: CartItem[]) {
+async createOrder (data: CartItem[]): Promise<boolean> {
     try{
         const url = "/orders/create",
         result = await axios.post(this.path + url,data,{

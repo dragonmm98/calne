@@ -58,7 +58,7 @@ export function ChosenDish(props:any) {
   let {dish_id} = useParams<{dish_id:string }>();
   const [productRebuild, setproductRebuild] = useState<Date>(new Date());
 
-  const dishRelatedProcess = async () => {
+  const dishRelatedProcess = async ():Promise<void> => {
     try {
         const productService = new ProductApiService();
         const product:Product = await productService

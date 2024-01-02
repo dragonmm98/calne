@@ -145,7 +145,7 @@ useEffect(() => {
     localStorage.removeItem("cart_data");
    };
 
-const handleLogOutRequest = async() => {
+const handleLogOutRequest = async(): Promise<void> => {
   try {
       const memberApiService = new MemberApiService();
       await memberApiService.logOutRequest();
