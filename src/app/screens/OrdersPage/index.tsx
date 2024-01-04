@@ -111,7 +111,7 @@ export function OrdersPage(props:any){
                             <Box className={"location_bottom"}>
                                 <img src="/icons/location1.svg"/>
                                 <span className="location">
-                                    {props.verifiedMemberData?.mb_address}
+                                    {props.verifiedMemberData?.mb_address ?? "Adress kiritilmagan"}
                                 </span>
                             </Box>
 
