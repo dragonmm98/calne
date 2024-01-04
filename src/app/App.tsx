@@ -36,9 +36,9 @@ function App() {
   const [verifiedMemberData, setVerifiedMemberData] = useState<Member | null>(null);
   const [path, setpath] = useState();
   const main_path = window.location.pathname;
-  
   const [signUpOpen, setSignUpOpen] = useState(false); 
   const [loginOpen, setLoginOpen] = useState(false);
+  const [orderRebuild, setorderRebuild] = useState<Date>(new Date());
 
   //** Basket**/
   const cartJson: any = localStorage.getItem("cart_data");
@@ -174,6 +174,7 @@ const handleLogOutRequest = async(): Promise<void> => {
       onRemove={onRemove}
       onDelete={onDelete}
       onDeleteAll={onDeleteAll}
+      setorderRebuild={setorderRebuild}
 
       
        />
@@ -193,6 +194,7 @@ const handleLogOutRequest = async(): Promise<void> => {
       onRemove={onRemove}
       onDelete={onDelete}
       onDeleteAll={onDeleteAll}
+      setorderRebuild={setorderRebuild}
 
 
       />
@@ -211,7 +213,7 @@ const handleLogOutRequest = async(): Promise<void> => {
       onRemove={onRemove}
       onDelete={onDelete}
       onDeleteAll={onDeleteAll}
-
+      setorderRebuild={setorderRebuild}
 
 
       />
@@ -225,7 +227,11 @@ const handleLogOutRequest = async(): Promise<void> => {
           <CommunityPage/>
         </Route>
         <Route path="/orders">
-          <OrdersPage/>
+          <OrdersPage 
+          orderRebuild={orderRebuild}
+          setorderRebuild={setorderRebuild}
+          verifiedMemberData={verifiedMemberData}
+          />
         </Route>
         <Route path="/member-page">
           <MembersPage />

@@ -7,6 +7,9 @@ import "../../../css/order.css";
 import {  useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveFinishedOrders } from "./selector";
+import { Order } from "../../../types/order";
+import { Product } from "../../../types/product";
+import { serverApi } from "../../../lib/config";
 
 //Redux Selector**//
 const finishedOrdersRetriever = createSelector( 
@@ -18,33 +21,31 @@ const finishedOrdersRetriever = createSelector(
 
 
 
-const pausedOrders = [
-    [1,2,3]
-    
-];
 
 export default function FinishedOrders (props:any) {
     //** INITIALIZATIONS**/
-    // const {finishedOrders} = useSelector(pausedOrdersRetriever);
+    const {finishedOrders} = useSelector(finishedOrdersRetriever);
     return (
         <TabPanel value="3">
             <Stack>
-                {pausedOrders?.map((order) => {
+                {finishedOrders?.map((order:Order) => {
                     return (
                         <Box className={"order_main_box"}>
                       <Box className={"order_box_scroll"}>
-                        {order.map((item) => {
-                            const image_path = `/others/foodmm.jpg`;
+                        {order.order_items.map((item) => {
+                            const product: Product = order.product_data
+                            .filter(ele => ele._id === item.product_id )[0];
+                            const image_path = `${serverApi}/${product.product_images[0]}`;
                             return (
                                 <Box className={"ordersName_price"}>
                                     <img src={image_path} className={"orderDishImg"} alt=""/>
-                                    <p className="titleDish">Qovurilgan go’sht cho’poncha</p>
+                                    <p className="titleDish">{product.product_name}</p>
                                     <Box className={"priceBox"}>
-                                        <p>$7</p>
+                                        <p>${item.item_price}</p>
                                         <img src="/icons/Close.svg" alt="" />
-                                        <p>$3</p>
+                                        <p>{item.item_quantity}</p>
                                         <img src="/icons/pause.svg" alt=""/>
-                                        <p style={{marginLeft: "4px"}}>$21</p>
+                                        <p style={{marginLeft: "4px"}}>${item.item_price * item.item_quantity}</p>
                                     </Box>
                                      </Box>
                             );
@@ -54,14 +55,14 @@ export default function FinishedOrders (props:any) {
                                <Box className={"total_price_box2 black_solid"}>
                                 <Box className={"boxTotal"}>
                                     <p>mahsulot narxi </p>
-                                    <p>$22</p>
+                                    <p>${order.order_total_amount - order.order_delivery_cost}</p>
                                     <img src="/icons/plus.svg" alt="" style={{marginLeft: "20px"}}/>
                                     <p>yetkazish xizmati </p>
-                                    <p>$2 </p>
+                                    <p>${order.order_delivery_cost} </p>
                                     <img src="/icons/pause.svg" alt="" 
                                     style={{ marginLeft: "20px"}}/>
                                     <p>Jami narx </p>
-                                    <p>$110</p>
+                                    <p>${order.order_total_amount}</p>
                                 </Box>
                            
                                  

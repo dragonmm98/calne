@@ -12,6 +12,7 @@ import { Order } from "../../../types/order";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
+import OrderApiService from "../../apiService/orderApiService";
 
 //***REDUX SLICE ***//
 const actionDispatch = (dispach: Dispatch) => ({
@@ -20,15 +21,32 @@ const actionDispatch = (dispach: Dispatch) => ({
     setFinishedOrders: (data:Order[]) => dispach(setFinishedOrders(data)),
 });
 
-export function OrdersPage(){
+export function OrdersPage(props:any){
     /*** INITITIALIZATIONS***/
     const [value, setValue] = useState("1");
     const {setPausedOrders,setProcessOrders,setFinishedOrders} = 
     actionDispatch(useDispatch());
 
+
     useEffect(() => {
-    }, [])
+        const orderService = new OrderApiService();
+        orderService
+        .getMyOrders("paused")
+        .then(data => setPausedOrders(data))
+        .catch(err=> console.log(err));
+        
+        orderService
+        .getMyOrders("process")
+        .then(data => setProcessOrders(data))
+        .catch(err=> console.log(err));
+
+        orderService
+        .getMyOrders("finished")
+        .then(data => setFinishedOrders(data))
+        .catch(err=> console.log(err));
+    }, [props.orderRebuild])
    
+
      /**HANDLERS **/
      const handleChange= (event: any, newValue: string) => {
         setValue(newValue);
@@ -58,9 +76,9 @@ export function OrdersPage(){
                     </Box>
                 </Box>
                 <Stack className="order_main_content">
-                      <PausedOrders/>
-                      <ProcessOrders/>
-                      <FinishedOrders/>
+                      <PausedOrders setorderRebuild = {props.setorderRebuild}/>
+                      <ProcessOrders setorderRebuild = {props.setorderRebuild}/>
+                      <FinishedOrders setorderRebuild = {props.setorderRebuild}/>
                 </Stack>
                  </TabContext>
            </Stack>
@@ -72,15 +90,16 @@ export function OrdersPage(){
                 flexDirection={"column"}
                 alignItems={"center"}>
                     <div className="order_user_img">
-                        <img src="/icons/default_user.svg" alt=""
+                        <img src={props.verifiedMemberData?.mb_image ?? "/icons/default_user.svg"} alt=""
                         className="order_user_avatar"/>
                         <img className="avatar_1" src="/icons/user1.svg" alt=""/>
                     </div>
                     <span className="Ismoilov-Akmaljon">
-                          Ismoilov Akmaljon
+                          {props.verifiedMemberData?.mb_nick}
                                </span>
                                <span className="Foydalanuvchi">
-                                    Foydalanuvchi
+                                {props.verifiedMemberData?.mb_type ?? "Foydalanuvchi"}
+                                    
                              </span> 
                              <Box className={"marginer_botline"}>
                             <Marginer
@@ -92,7 +111,7 @@ export function OrdersPage(){
                             <Box className={"location_bottom"}>
                                 <img src="/icons/location1.svg"/>
                                 <span className="location">
-                                    Seoul
+                                    {props.verifiedMemberData?.mb_address}
                                 </span>
                             </Box>
 

@@ -109,6 +109,7 @@ line-height: 24px; /* 150% */
 /** Pause order box**/
 .order_page .order_main_box {
 position: relative;
+margin-bottom: 20px;
 width: 821px;
 height: auto;
 border-radius: 16px;
@@ -118,7 +119,9 @@ box-shadow: 0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset, 0px 4px 4px 0px rgb
 .order_page .order_box_scroll {
     position: relative;
     display: flex;
-    height: 149px;
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: 151px;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 40px;
@@ -177,14 +180,14 @@ line-height: normal;
 
 .order_page .total_price_box {
     position: relative;
-    margin-top: 80px;
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 821px;
-    height: 43px;
+    max-height: 43px;
     border-radius: 5px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -333,14 +336,14 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0
 
 .order_page .total_price_box1 {
     position: relative;
-    margin-top: 80px;
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 821px;
-    height: 43px;
+    max-height: 43px;
     border-radius: 5px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -374,14 +377,14 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0
 
 .order_page .total_price_box2 {
     position: relative;
-    margin-top: 80px;
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 821px;
-    height: 41px;
+    max-height: 50px;
     border-radius: 5px;
     border-top: 1px solid #000; 
     border-bottom: 1px solid #000;

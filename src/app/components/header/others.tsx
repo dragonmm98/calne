@@ -40,7 +40,8 @@ export function NavbarOthers (props:any) {
                  onAdd={props.onAdd} 
                  onRemove={props.onRemove}
                  onDelete={props.onDelete}
-                 onDeleteAll={props.onDeleteAll}/>             
+                 onDeleteAll={props.onDeleteAll}
+                 setorderRebuild={props.setorderRebuild}/>             
 
                  <Box> 
                  {!props.verifiedMemberData ? (
