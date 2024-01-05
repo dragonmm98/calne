@@ -5,14 +5,16 @@ import moment from "moment";
 import React from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import  FavoriteIcon  from "@mui/icons-material/Favorite";
+import { BoArticle } from "../../../types/boArticle";
+import { serverApi } from "../../../lib/config";
 
 
 
 export function TargetArticles(props: any) {
     return (
         <Stack style={{gap: "15px"}}>
-            {props.targetBoArticles?.map((article: any, index: string) =>{
-                const art_image_url = "/community/xasbulla.webp";
+            {props.targetBoArticles?.map((article: BoArticle) =>{
+                const art_image_url = article?.art_image ? `${serverApi}/${article.art_image}` : "/community/xasbulla.webp";
                 return (
                     <Link className="all_article_box"
                     sx={{textDecoration: "none"}}
@@ -28,16 +30,16 @@ export function TargetArticles(props: any) {
                                 width={"35px"}
                                 style={{borderRadius: "50%", backgroundSize: "cover"}}
                                 />
-                                <span className="all_article_author_user">Alex</span>
+                                <span className="all_article_author_user">{article?.members_data.mb_nick}</span>
                             </Box>
                             <Box
                             display={"flex"}
                             flexDirection={"column"}
                             sx={{mt: "15px"}}
                             >
-                                <span className="all_article_title">evoluation</span>
+                                <span className="all_article_title">{article?.bo_id}</span>
                                 <p className="all_article_desc">
-                                    Black Bear is amazing restaurant
+                                    {article?.art_subject}
                                 </p>
                             </Box>
 
@@ -49,6 +51,7 @@ export function TargetArticles(props: any) {
                                 </p>
                                 <Box className={"heartandeye"}>
                                 <Typography
+                                id={article._id}
                                 level="body-sm"
                                 sx={{
                                     fontWeight: "md",
@@ -58,7 +61,7 @@ export function TargetArticles(props: any) {
                                     }}
                                     >
                                     <FavoriteIcon sx={{fontSize:20, marginLeft: "5px",}}/>
-                                    <div style={{marginLeft: "10px"}}>2</div>
+                                    <div style={{marginLeft: "10px"}}>{article?.art_likes}</div>
                                 </Typography>
                                 
                                 <Typography
@@ -70,7 +73,7 @@ export function TargetArticles(props: any) {
                                     display: "flex",
                                 }}>
                                   <VisibilityIcon sx={{fontSize:20, marginLeft:"5px"}}/>
-                                  <div style={{marginLeft: "6px"}}>2</div>
+                                  <div style={{marginLeft: "6px"}}>{article?.art_views}</div>
                                 </Typography>
                                 
                                 
