@@ -12,8 +12,49 @@ import { MemberFollowers } from "./memberFollowers";
 import { MemberFollowing } from "./memberFollowing";
 import TViewer from "../../components/TuiEditor/TViewer";
 
+//Redux
+import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setChosenMember, setChosenMemberBoArticles, setChosenSingleBoArticle } from "./slice";
+import { Member } from "../../../types/user";
+import { BoArticle } from "../../../types/boArticle";
+import { retrieveChosenMember, retrieveChosenMemberBoArticles, retrieveChosenSingleBoArticle } from "./selector";
+
+  //Redux Slice
+  const actionDispatch = (dispach: Dispatch) => ({
+    setChosenMember: (data:Member) => dispach(setChosenMember(data)),
+    setChosenMemberBoArticles: (data:BoArticle[]) => dispach(setChosenMemberBoArticles(data)),
+    setChosenSingleBoArticle: (data:BoArticle) => dispach(setChosenSingleBoArticle(data))
+  });
+
+
+//Redux Selector
+const chosenMemberRetriever = createSelector(retrieveChosenMember,
+    (chosenMember)=>({
+        chosenMember,
+    })
+  );
+  const chosenMemberBoArticlesRetriever = createSelector(retrieveChosenMemberBoArticles,
+    (chosenMemberBoArticles)=>({
+        chosenMemberBoArticles,
+    })
+  );
+  const chosenSingleBoArticleRetriever = createSelector(retrieveChosenSingleBoArticle,
+    (chosenSingleBoArticle)=>({
+        chosenSingleBoArticle,
+    })
+  );
+
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
+    const {setChosenMember,
+        setChosenMemberBoArticles,
+        setChosenSingleBoArticle} = actionDispatch(useDispatch());
+  
+   const {chosenMemberBoArticles} = useSelector(chosenMemberBoArticlesRetriever);
+   const {chosenSingleBoArticle} = useSelector(chosenSingleBoArticleRetriever);
+   const {chosenMember} = useSelector(chosenMemberRetriever);
     const [value,setValue] = useState("4");
     /** HANDLERS**/
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {

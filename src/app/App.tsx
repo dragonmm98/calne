@@ -234,7 +234,7 @@ const handleLogOutRequest = async(): Promise<void> => {
           />
         </Route>
         <Route path="/member-page">
-          <MembersPage />
+          <MembersPage verifiedMemberData={verifiedMemberData}/>
         </Route>
         <Route path="/help">
           <HelpPage />
