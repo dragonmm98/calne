@@ -65,7 +65,7 @@ export function VisitMyPage(props: any) {
 
     const [value,setValue] = useState("1");
     const [articleRebuild, setArticleRebuild] = useState<Date>(new Date());
-
+    const [followRebuild, setFollowRebuild] = useState<boolean>(false)
     const [memberArticleSearchObj,setMemberArticleSearchObj] = useState<SearchMemberArticlesObj>({
         mb_id: "none", page: 1, limit: 5
     });
@@ -158,14 +158,20 @@ export function VisitMyPage(props: any) {
                                 <TabPanel value="2" >
                                     <Box className={"menu_name"}>Followers</Box>
                                     <Box className={"menu_content"}>
-                                     <MemberFollowers actions_enabled={true}/>
+                                     <MemberFollowers actions_enabled={true}
+                                     setFollowRebuild={setFollowRebuild}
+                                     followRebuild={followRebuild}
+                                     mb_id={props.verifiedMemberData?._id}/>
                                     </Box>
                                 </TabPanel>
 
                                 <TabPanel value="3" >
                                     <Box className={"menu_name"}>Following</Box>
                                     <Box className={"menu_content"}>
-                                        <MemberFollowing actions_enabled={true}/>
+                                        <MemberFollowing actions_enabled={true}
+                                        setFollowRebuild={setFollowRebuild}
+                                        followRebuild={followRebuild}
+                                        mb_id={props.verifiedMemberData?._id}/>
     
                                     </Box>
                                 </TabPanel>
@@ -204,7 +210,9 @@ export function VisitMyPage(props: any) {
                             >
                             
                                 <div className="order_user_img">
-                                <img src="/icons/default_user.svg" alt=""
+                                <img src={ chosenMember?.mb_type === "RESTAURANT" 
+                                ? "/restaurant/Rectangle 4391.png" 
+                                : "/icons/default_user.svg"} alt=""
                         className="order_user_avatar"/>
                         <img  className="avatar_1" src="/icons/user1.svg" alt=""/>
                         <a onClick={() => setValue("6")} className={"settings_btn"}> 
@@ -212,10 +220,10 @@ export function VisitMyPage(props: any) {
                             </a>
                          </div>
                          <span className="Ismoilov-Akmaljon">
-                                Ismoilov Akmaljon
+                                {chosenMember?.mb_nick}
                                </span>
                             <span className="Foydalanuvchi">
-                                    Foydalanuvchi
+                                    {chosenMember?.mb_type}
                              </span> 
                             </Box>
                             <Box className={"user_media_box1"}>
@@ -225,10 +233,10 @@ export function VisitMyPage(props: any) {
                                 <YoutubeIcon/>
                             </Box>
                             <Box className={"user_media_box"}>
-                                <p className="follows">Followers 2</p>
-                                <p className="follows">Following 2</p>
+                                <p className="follows">Followers {chosenMember?.mb_subscriber_cnt}</p>
+                                <p className="follows">Following {chosenMember?.mb_follow_cnt}</p>
                             </Box>
-                            <p> My Name is Ilhom</p>
+                            <p>{chosenMember?.mb_description ?? "no extra info"}</p>
                             <Box
                             display={"flex"}
                             justifyContent={"flex-end"}
