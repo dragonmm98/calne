@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Container, Pagination, PaginationItem, Stack, Tab } from "@mui/material";
@@ -21,8 +21,11 @@ import { createSelector } from "reselect";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setChosenMember, setChosenMemberBoArticles, setChosenSingleBoArticle } from "./slice";
 import { Member } from "../../../types/user";
-import { BoArticle } from "../../../types/boArticle";
+import { BoArticle, SearchMemberArticlesObj } from "../../../types/boArticle";
 import { retrieveChosenMember, retrieveChosenMemberBoArticles, retrieveChosenSingleBoArticle } from "./selector";
+import { sweetErrorHandling, sweetFailureProvider } from "../../../lib/sweetAlert";
+import CommunityApiService from "../../apiService/communityApiService";
+import MemberApiService from "../../apiService/memberApiService";
 
   //Redux Slice
   const actionDispatch = (dispach: Dispatch) => ({
@@ -51,6 +54,7 @@ const chosenMemberRetriever = createSelector(retrieveChosenMember,
 
 export function VisitMyPage(props: any) {
     /** INITIALIZATIONS **/
+    const {verifiedMemberData} = props;
     const {setChosenMember,
          setChosenMemberBoArticles,
          setChosenSingleBoArticle} = actionDispatch(useDispatch());
@@ -59,17 +63,55 @@ export function VisitMyPage(props: any) {
     const {chosenSingleBoArticle} = useSelector(chosenSingleBoArticleRetriever);
     const {chosenMember} = useSelector(chosenMemberRetriever);
 
-    const [value,setValue] = useState("5");
+    const [value,setValue] = useState("1");
+    const [articleRebuild, setArticleRebuild] = useState<Date>(new Date());
+
+    const [memberArticleSearchObj,setMemberArticleSearchObj] = useState<SearchMemberArticlesObj>({
+        mb_id: "none", page: 1, limit: 5
+    });
+
+    useEffect(() => {
+      if (!localStorage.getItem("member_data")) {
+        sweetFailureProvider("Please login first", true, true);
+      }
+
+      const communityService = new CommunityApiService();
+      const memberService = new MemberApiService();
+
+      communityService.getMemberCommunityArticles(memberArticleSearchObj)
+      .then((data) => setChosenMemberBoArticles(data))
+      .catch((err) => console.log(err));
+
+      memberService.getChosenMember(verifiedMemberData?._id)
+      .then((data) => setChosenMember(data))
+      .catch((err) => console.log(err));
+
+    }, [memberArticleSearchObj,articleRebuild])
+
     /** HANDLERS**/
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    const handleChange = (event: any, newValue: string) => {
         setValue(newValue);
     };
   
         const handlePaginationChange = (event: any, value: number) => {
-            console.log(value);
+            memberArticleSearchObj.page = value;
+            setMemberArticleSearchObj({...memberArticleSearchObj});
         };
 
-    
+    const renderChosenArticleHandler =  async (art_id:string) => {
+    try {
+      const communityService = new CommunityApiService();
+      communityService.getChosenArticle(art_id)
+      .then((data) => {
+        setChosenSingleBoArticle(data);
+      setValue("5")})
+      .catch((err) => console.log(err));
+
+    } catch (err: any) {
+        console.log (err);
+        sweetErrorHandling(err).then()
+    }
+    }
     
     return (
          <div className="my_page">
@@ -81,7 +123,11 @@ export function VisitMyPage(props: any) {
                             <TabPanel value="1">
                                 <Box className={"menu_name"}>Mening Maqolalarim</Box>
                                 <Box className={"menu_content"}>
-                                     <MemberPosts/>
+                                     <MemberPosts 
+                                     chosenMemberBoArticles={chosenMemberBoArticles}
+                                     renderChosenArticleHandler={renderChosenArticleHandler}
+                                     setArticleRebuild={setArticleRebuild}
+                                     />
                                      <Stack
                                      sx={{my: "40px"}}
                                      direction="row"
@@ -89,8 +135,8 @@ export function VisitMyPage(props: any) {
                                      justifyContent={"center"}>
                                         <Box className="bottom_box">
                                         <Pagination
-                                  count={3}
-                                  page={1}
+                                  count={memberArticleSearchObj.limit}
+                                  page={memberArticleSearchObj.page}
                                   renderItem={(item) => (
                                     <PaginationItem
                                     style={{color: "white"}}
@@ -102,6 +148,7 @@ export function VisitMyPage(props: any) {
                                     color={"secondary"}
                                     />
                                   )} 
+                                  onChange={handlePaginationChange}
                                   />
                                   </Box>
                                  </Stack>
@@ -133,7 +180,7 @@ export function VisitMyPage(props: any) {
                                 <TabPanel value="5">
                                     <Box className={"menu_name"}>Tanlangan Maqola</Box>
                                     <Box className={"menu_content"}>
-                                        <TViewer/>
+                                        <TViewer chosenSingleBoArticle={chosenSingleBoArticle}/>
     
                                     </Box>
                                 </TabPanel>
