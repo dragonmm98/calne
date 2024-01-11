@@ -86,7 +86,7 @@ export function VisitMyPage(props: any) {
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
 
-    }, [memberArticleSearchObj,articleRebuild])
+    }, [memberArticleSearchObj,articleRebuild,followRebuild])
 
     /** HANDLERS**/
     const handleChange = (event: any, newValue: string) => {
@@ -135,7 +135,8 @@ export function VisitMyPage(props: any) {
                                      justifyContent={"center"}>
                                         <Box className="bottom_box">
                                         <Pagination
-                                  count={memberArticleSearchObj.limit}
+                                  count={memberArticleSearchObj.page >= 3 
+                                    ? memberArticleSearchObj.page + 1 : 3 }
                                   page={memberArticleSearchObj.page}
                                   renderItem={(item) => (
                                     <PaginationItem

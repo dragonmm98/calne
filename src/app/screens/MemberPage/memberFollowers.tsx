@@ -1,5 +1,7 @@
-import { Avatar, Box, Button, Stack } from "@mui/material";
+import { Avatar, Box, Button, Pagination, PaginationItem, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -61,6 +63,10 @@ export function MemberFollowers (props: any) {
             sweetErrorHandling(err).then();
         }
       }
+      const handlePaginationChange = (event: any, value: number) => {
+        followersSearchObj.page = value;
+        setFollowersSearchObj({...followersSearchObj});
+    };
 
     return (
         <Stack style={{gap: "15px", marginTop: "15px"}}>
@@ -107,6 +113,31 @@ export function MemberFollowers (props: any) {
                     </Box>
                 );
             })}
+             <Stack
+                                     sx={{my: "40px"}}
+                                     direction="row"
+                                     alignItems={"center"}
+                                     justifyContent={"center"}>
+                                        <Box className="bottom_box">
+                                        <Pagination
+                                  count={followersSearchObj.page >= 3 
+                                    ? followersSearchObj.page + 1 : 3}
+                                  page={followersSearchObj.page}
+                                  renderItem={(item) => (
+                                    <PaginationItem
+                                    style={{color: "white"}}
+                                    components={{
+                                        previous: ArrowBackIcon,
+                                        next: ArrowForwardIcon,
+                                    }}
+                                    {...item}
+                                    color={"secondary"}
+                                    />
+                                  )} 
+                                  onChange={handlePaginationChange}
+                                  />
+                                  </Box>
+                                 </Stack>
         </Stack>
     );
 }
