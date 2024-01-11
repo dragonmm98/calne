@@ -180,7 +180,8 @@ export function VisitMyPage(props: any) {
                                 <TabPanel value="4">
                                     <Box className={"menu_name"}>Maqola Yozish</Box>
                                     <Box className={"write_content"}>
-                                        <TuiEditor text= "<h1>Hello</h1>" />
+                                        <TuiEditor setValue={setValue}
+                                        setArticleRebuild={setArticleRebuild}/>
                                     </Box>
                                 </TabPanel>
 
@@ -244,8 +245,11 @@ export function VisitMyPage(props: any) {
                             sx={{mt: "10px"}}
                             >
                                 <TabList
+                                orientation="vertical"
+                                variant="scrollable"
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
+                                style={{width: "95%"}}
                                 >
                                     <Tab
                                     style={{flexDirection: "column"}}
