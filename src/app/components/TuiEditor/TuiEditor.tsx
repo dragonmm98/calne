@@ -139,7 +139,7 @@ export const TuiEditor = (props: any) => {
                    const uploadImageURL = await uploadImage(image);
                    console.log("uploadImageURL", uploadImageURL);
                    callback(uploadImageURL)
-                    return false;
+
                 },
             }}
             events={{

@@ -26,6 +26,7 @@ import { retrieveChosenMember, retrieveChosenMemberBoArticles, retrieveChosenSin
 import { sweetErrorHandling, sweetFailureProvider } from "../../../lib/sweetAlert";
 import CommunityApiService from "../../apiService/communityApiService";
 import MemberApiService from "../../apiService/memberApiService";
+import { verifiedMemberData } from "../../apiService/verify";
 
   //Redux Slice
   const actionDispatch = (dispach: Dispatch) => ({
@@ -54,7 +55,6 @@ const chosenMemberRetriever = createSelector(retrieveChosenMember,
 
 export function VisitMyPage(props: any) {
     /** INITIALIZATIONS **/
-    const {verifiedMemberData} = props;
     const {setChosenMember,
          setChosenMemberBoArticles,
          setChosenSingleBoArticle} = actionDispatch(useDispatch());
@@ -212,11 +212,11 @@ export function VisitMyPage(props: any) {
                             >
                             
                                 <div className="order_user_img">
-                                <img src={ chosenMember?.mb_type === "RESTAURANT" 
-                                ? "/restaurant/Rectangle 4391.png" 
-                                : "/icons/default_user.svg"} alt=""
+                                <img src={verifiedMemberData?.mb_image} alt=""
                         className="order_user_avatar"/>
-                        <img  className="avatar_1" src="/icons/user1.svg" alt=""/>
+                        <img  className="avatar_1" src={ chosenMember?.mb_type === "RESTAURANT" 
+                                ? "/restaurant/Rectangle 4391.png" 
+                                : "/icons/user1.svg"} alt=""/>
                         <a onClick={() => setValue("6")} className={"settings_btn"}> 
                             <SettingsIcon/>
                             </a>

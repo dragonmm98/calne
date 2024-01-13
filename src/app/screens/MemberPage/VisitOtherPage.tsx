@@ -27,6 +27,7 @@ import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/swee
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import FollowApiService from "../../apiService/followApiService ";
+import { verifiedMemberData } from "../../apiService/verify";
 
   //Redux Slice
   const actionDispatch = (dispach: Dispatch) => ({
@@ -56,7 +57,7 @@ const chosenMemberRetriever = createSelector(retrieveChosenMember,
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
     const history  = useHistory()
-    const {verifiedMemberData, chosen_mb_id,chosen_art_id} = props;
+    const {chosen_mb_id,chosen_art_id} = props;
     const {setChosenMember,
         setChosenMemberBoArticles,
         setChosenSingleBoArticle} = actionDispatch(useDispatch());

@@ -45,7 +45,7 @@ export function TargetArticles(props: any) {
                 return (
                     <Link className="all_article_box"
                     sx={{textDecoration: "none"}}
-                    href={``}
+                    href={`/member-page/other?mb_id=${article.mb_id}&art_id=${article._id}`}
                     >
                         <Box className={"all_article_img"}
                         sx={{backgroundImage: `url("${art_image_url}")`}}> 
