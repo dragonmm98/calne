@@ -13,8 +13,10 @@ const TViewer = (props: any) => {
 
     return (
       
-        <Stack sx={{background: "white", mt: "30px", borderRadius: "10px"}}>
-            <Box sx={{mt: "40px"}}>
+        <Stack
+        style={{width: "100%", height:"100%"}} 
+        sx={{background: "white", mt: "20px", borderRadius: "10px"}}>
+            <Box sx={{mt: "10px"}}>
                 <Viewer
                 // @ts-ignore
                 ref={editorRef}
