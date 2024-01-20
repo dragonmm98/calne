@@ -20,7 +20,7 @@ const TViewer = (props: any) => {
                 <Viewer
                 // @ts-ignore
                 ref={editorRef}
-                initialValue={props.chosenSingleBoArticle?.art_subject}
+                initialValue={""}
                 height={"600px"} 
                /> 
                <h3 style={{marginLeft: "75px", marginBottom: "18px"}}>{props.chosenSingleBoArticle?.art_content}</h3>
