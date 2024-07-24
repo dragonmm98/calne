@@ -51,10 +51,10 @@ export function HomePage() {
     },[]); 
     return( <div className="homepage">
         <Statistics/>
+        <Advertisement/>
         <TopRestaurants/>
         <BestRestaurants/>
         <BestDishes/>
-        <Advertisement/>
         <Events/>
         <Recommendation/>
     </div>

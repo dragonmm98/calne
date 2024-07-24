@@ -67,7 +67,7 @@ export function ChosenDish(props:any) {
 
         const restaurantService = new RestaurantApiService();
         const restaurant: Restaurant = await restaurantService
-        .getChosenRestaurant(product.restaurant_mb_id);
+        .getChosenRestaurant(product.dealers_mb_id);
         setChosenRestaurant(restaurant)
     } catch (err) {
         console.log(`dishRelatedProcess, ERROR`, err);

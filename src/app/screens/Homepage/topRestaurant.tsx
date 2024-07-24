@@ -39,7 +39,7 @@ export function TopRestaurants () {
   //****** HANDLERS*******/
 
   const chosenRestaurantHandler = (id: string) => {
-    history.push(`/restaurant/${id}`);
+    history.push(`/dealers/${id}`);
   }
 
 
@@ -78,7 +78,7 @@ export function TopRestaurants () {
                 flexDirection={"column"} 
                 alignItems="center"
                 sx={{mt:"45px"}}>
-                    <Box className="category_title">TOP Restaurants</Box>
+                    <Box className="category_title">Top Dealers</Box>
                     <Stack 
                     flexDirection={'row'}
                     sx={{mt:"43px"}}

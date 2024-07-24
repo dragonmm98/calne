@@ -19,7 +19,7 @@ import { HomePage } from './screens/Homepage';
 import { NavbarHome } from './components/header';
 import { NavbarRestaurant } from './components/header/restaurant';
 import { NavbarOthers } from './components/header/others';
-import { Footer } from './components/footer';
+import { Footer } from './components/footer'
 import AuthenticationModal from './components/auth';
 import { Member } from '../types/user';
 import { serverApi } from '../lib/config';

@@ -52,8 +52,8 @@ const chosenDishHandler = (id:string) => {
                     {trendProduct.map((product: Product) => {
                         const image_path  = `${serverApi}/${product.product_images[0]}`;
                         const size_volume = product.product_collection === "drink" 
-                        ? product.product_volume + 'L' 
-                        : product.product_size + " size"  
+                        ? product.product_milaege + 'km' 
+                        : product.product_size   
                         return (
                             <Box className="dish_box">
 

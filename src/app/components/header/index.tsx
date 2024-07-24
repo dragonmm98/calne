@@ -10,26 +10,24 @@ export function NavbarHome (props:any) {
     
     const [value, setValue] = useState(true);
 
-    // useEffect(()=> {
-    //     setCount(count+1);
-    // }, [value]);
+
     return (
     <div className="format home_navbar">
         <Container>
             <Stack flexDirection={'row'} className="navbar_config" justifyContent={"space-between"}>
             <Box>
-                <img  src="/icons/papay..svg" alt="" />
+                <img  src="/home/logocar.png" alt="" width={"140px"} height={"100px"}/>
             </Box>
             <Stack flexDirection={"row"} justifyContent="space-evenly" alignItems={"center"} className="navbar_links">
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/"} activeClassName="underline">Bosh Sahifa</NavLink>
+                    <NavLink to={"/"} activeClassName="underline">Home Page</NavLink>
                 </Box>
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/restaurant"} activeClassName="underline">Oshxona</NavLink>
+                    <NavLink to={"/restaurant"} activeClassName="underline">Dealers</NavLink>
                 </Box>
                 {props.verifiedMemberData ? 
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/orders"} activeClassName="underline">Orders</NavLink>
+                    <NavLink to={"/orders"} activeClassName="underline">Buy a Car</NavLink>
                 </Box>: null
                 }
                 <Box className="hover-line" onClick={props.setpath}>
@@ -37,7 +35,7 @@ export function NavbarHome (props:any) {
                 </Box>
                 {props.verifiedMemberData ? 
                 <Box className="hover-line" onClick={props.setpath}>
-                <NavLink to={"/member-page"} activeClassName="underline">Sahifam</NavLink>
+                <NavLink to={"/member-page"} activeClassName="underline">My Page</NavLink>
             </Box> : null
                 }
                 <Box className="hover-line" onClick={props.setpath}>
@@ -54,7 +52,7 @@ export function NavbarHome (props:any) {
 
                 {!props.verifiedMemberData ? (
                     <Box> 
-                    <Button variant="contained" style={{color:"#FFFFF", background:"#1976d2"}}
+                    <Button variant="contained" style={{color:"#FFFFF", background:"transparent", border: "1px inset"}}
                     onClick={props.handleLoginOpen}>Login</Button>
                  </Box>
                 ) : (<img style={{width: "48px", height: "48px", borderRadius: "24px" }} 
@@ -114,14 +112,17 @@ export function NavbarHome (props:any) {
             <Stack className="head_information" justifyContent={"row"}>
                 <Stack justifyContent={'column'} style={{marginTop: "86px", marginLeft: "24px"}}>
                     <Box>
-                    <img  src="/icons/welcome.svg" alt=""/>
+                      <h2 style={{
+                        fontFamily:"-moz-initial", color:"#AD6D4F"
+                      }}
+                      >Welcome to Calne</h2> 
                     </Box>
                     <Box className="define_restaurant">
-                        The Authentic Restaurant & Cafe</Box>
-                    <Box className="timeline_serv">24 soat xizmatingizdamiz.</Box>
+                    Get your desired one in your Desired Way</Box>
+                    <Box className="timeline_serv"></Box>
                     <Box sx={{mt:'90px'}}>
                         {!props.verifiedMemberData ? (
-                    <Button variant="contained" style={{width: '210px', height: '60px', background: '#1976d2', color:'#FFFFF'}} 
+                    <Button variant="contained" style={{width: '210px', height: '60px', background: 'transparent', color:'#FFFF', border: "1px inset"}} 
                     onClick={props.handleSignUpOpen}>Register</Button>
                         ) : null}
                

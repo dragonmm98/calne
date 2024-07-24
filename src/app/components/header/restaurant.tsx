@@ -9,18 +9,18 @@ export function NavbarRestaurant (props:any) {
          <Container>
             <Stack flexDirection={'row'} className="navbar_config" justifyContent={"space-between"}>
             <Box>
-                <img  src="/icons/papay..svg" alt="" />
+            <img  src="/home/logocar.png" alt="" width={"140px"} height={"100px"}/>
             </Box>
             <Stack flexDirection={"row"} justifyContent="space-evenly" alignItems={"center"} className="navbar_links">
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/"}>Bosh Sahifa</NavLink>
+                    <NavLink to={"/"}>Home Page</NavLink>
                 </Box>
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/restaurant"} activeClassName="underline">Oshxona</NavLink>
+                    <NavLink to={"/restaurant"} activeClassName="underline">Dealers</NavLink>
                 </Box>
                 {props.verifiedMemberData ? 
                 <Box className="hover-line" onClick={props.setpath}>
-                    <NavLink to={"/orders"} activeClassName="underline">Orders</NavLink>
+                    <NavLink to={"/orders"} activeClassName="underline">Buy a Car</NavLink>
                 </Box>: null
                 }
                 <Box className="hover-line" onClick={props.setpath}>
