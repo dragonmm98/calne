@@ -178,7 +178,7 @@ const handleLogOutRequest = async(): Promise<void> => {
 
       
        />
-    ) : main_path.includes("/restaurant") ? (
+    ) : main_path.includes("/dealers") ? (
       <NavbarRestaurant 
       setpath={setpath}
       handleSignUpOpen={handleSignUpOpen}
@@ -220,7 +220,7 @@ const handleLogOutRequest = async(): Promise<void> => {
     )}
 
       <Switch>
-        <Route path="/restaurant">
+        <Route path="/dealers">
           <RestaurantPage onAdd={onAdd}/>
         </Route>
         <Route path="/community">

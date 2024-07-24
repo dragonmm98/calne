@@ -214,7 +214,7 @@ export function VisitMyPage(props: any) {
                                 <div className="order_user_img">
                                 <img src={verifiedMemberData?.mb_image} alt=""
                         className="order_user_avatar"/>
-                        <img  className="avatar_1" src={ chosenMember?.mb_type === "RESTAURANT" 
+                        <img  className="avatar_1" src={ chosenMember?.mb_type === "DEALER" 
                                 ? "/restaurant/Rectangle 4391.png" 
                                 : "/icons/user1.svg"} alt=""/>
                         <a onClick={() => setValue("6")} className={"settings_btn"}> 

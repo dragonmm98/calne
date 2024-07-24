@@ -2,7 +2,6 @@ import { Container } from "@mui/system";
 import React, { useEffect } from "react";
 import { Advertisement } from "./advertisement";
 import { BestDishes } from "./bestDishes";
-import { BestRestaurants } from "./bestRestaurants";
 import { Events } from "./events";
 import { Recommendation } from "./recommendation";
 import { Statistics } from "./statistics";
@@ -53,7 +52,6 @@ export function HomePage() {
         <Statistics/>
         <Advertisement/>
         <TopRestaurants/>
-        <BestRestaurants/>
         <BestDishes/>
         <Events/>
         <Recommendation/>

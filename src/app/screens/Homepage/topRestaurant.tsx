@@ -6,7 +6,7 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import { CardOverflow, CssVarsProvider, IconButton } from "@mui/joy";
-import { Favorite, Visibility } from "@mui/icons-material";
+import { Call, Favorite, Visibility } from "@mui/icons-material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 //Redux
@@ -86,7 +86,7 @@ export function TopRestaurants () {
                     gap="10px">
                      
                        {topRestaurants.map((ele:Restaurant)=> {
-                        const image_path= `${serverApi}/${ele.mb_image}`;
+                      const imagePath = ele.mb_image ? `${serverApi}/${ele.mb_image}` : "/restaurant/cardealerdefault.avif";
                         return (
                           <CssVarsProvider key={ele._id}>
                      <Card 
@@ -98,7 +98,7 @@ export function TopRestaurants () {
                         cursor:"pointer" }}>
       <CardCover>
         <img
-          src={image_path}
+          src={imagePath}
           loading="lazy"
           alt=""
         />
@@ -118,6 +118,12 @@ export function TopRestaurants () {
           textColor="neutral.300"
         >
           {ele.mb_address}
+        </Typography>
+        <Typography
+          startDecorator={<Call />}
+          textColor="neutral.300"
+        >
+          {ele.mb_phone}
         </Typography>
       </CardContent>
       <CardOverflow

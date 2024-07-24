@@ -13,7 +13,7 @@ constructor () {
 
 async getTopRestaurants(): Promise<Restaurant[]> {
     try {
-        const url = "/restaurants?order=top&page=1&limit=4",
+        const url = "/dealer?order=top&page=1&limit=4",
         result = await axios.get(this.path+url,{withCredentials: true});
         assert.ok(result,Definer.input_err2);
         console.log("state", result.data.state);
@@ -21,14 +21,14 @@ async getTopRestaurants(): Promise<Restaurant[]> {
         return top_restaurants;
 
     } catch (err:any) {
-        console.log(`ERROR::: getTopRestaurants ${err.message}`);
+        console.log(`ERROR::: getTopDealers ${err.message}`);
         throw err;
     }
 }
 
 async getRestaurants(data: SearchObj): Promise<Restaurant[]> {
     try {
-        const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`,
+        const url = `/dealer?order=${data.order}&page=${data.page}&limit=${data.limit}`,
         result = await axios.get(this.path+url,{withCredentials: true});
         assert.ok(result,Definer.input_err2);
         console.log("state", result.data.state);
@@ -43,7 +43,7 @@ async getRestaurants(data: SearchObj): Promise<Restaurant[]> {
 
 async getChosenRestaurant(id: string): Promise<Restaurant> {
     try {
-        const url = `/restaurants/${id}`,
+        const url = `/dealer/${id}`,
         result = await axios.get(this.path+url,{withCredentials: true});
         assert.ok(result,Definer.general_err1);
         console.log("state", result.data.data);
@@ -51,7 +51,7 @@ async getChosenRestaurant(id: string): Promise<Restaurant> {
         return restaurant;
 
     } catch (err:any) {
-        console.log(`ERROR::: getChosenRestaurants ${err.message}`);
+        console.log(`ERROR::: getChosenDealers ${err.message}`);
         throw err;
     }
 }

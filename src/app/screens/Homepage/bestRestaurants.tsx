@@ -38,7 +38,7 @@ export function BestRestaurants () {
     history.push(`/restaurant/${id}`);
   };
 
-  const goRestaurantsHandler = () => history.push("/restaurant")
+  const goRestaurantsHandler = () => history.push("/dealer")
 
   const targetLikeBest = async (e:any, id:string) => {
     try{
@@ -70,18 +70,17 @@ export function BestRestaurants () {
     return (
         <div className="best_restaurant_frame">
             <img 
-            src={"icons/bestres.svg"}
             alt=""
             style={{position: "absolute", left:"6%", transform:"rotate(0deg)"}} 
             />
               
             <Container sx={{paddingTop:"153px"}}>
                 <Stack flexDirection={"column"} alignItems='center'>
-                    <Box className="category_title">Zo'r Restaurantlar</Box>
+                    <Box className="category_title">New Comers</Box>
                     <Stack sx={{mt:"43px"}} flexDirection="row">
                   
                   {bestRestaurants.map((ele: Restaurant) => {
-                        const image_path= `${serverApi}/${ele.mb_image}`;
+                        const imagePath = ele.mb_image ? `${serverApi}/${ele.mb_image}` : "/restaurant/cardealerdefault.avif";
 
                     return(
                       <CssVarsProvider>
@@ -94,7 +93,7 @@ export function BestRestaurants () {
                               cursor:"pointer" }}>
                                   <CardOverflow>
                                       <AspectRatio ratio={"1"}>
-                                          <img src={image_path} alt=""/>
+                                          <img src={imagePath} alt=""/>
                                       </AspectRatio>
                                       <IconButton 
                                       onClick={(e) => {e.stopPropagation()}}
