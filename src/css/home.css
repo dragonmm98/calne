@@ -157,6 +157,9 @@
 }
 .homepage .dish_desc .dish_desc_text{
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;

@@ -159,9 +159,16 @@ export function ChosenDish(props:any) {
                 <Stack className="chosen_dish_info_container">
                     <Box className="chosen_dish_info_box">
                      <strong className="dish_txt">{chosenProduct?.product_name}</strong>
-                     <span className="resto_name">{chosenRestaurant?.mb_nick}</span>
-                     <Box className="rating_box">
-                        <Rating  name="half-rating" defaultValue={3.5} precision={0.5}/>
+                     <Box className="about_txt">
+                     <span className="resto_name">Owner: {chosenRestaurant?.mb_nick}</span>
+                     <span className="resto_name">Company: {chosenProduct?.product_company}</span>
+                     <span className="resto_name">Condition: {chosenProduct?.product_collection}</span>
+                     <span className="resto_name">Year: {chosenProduct?.product_year} Year Model</span>
+                     <span className="resto_name">Milaege: {chosenProduct?.product_milaege} km</span>
+                     <span className="resto_name">Color: {chosenProduct?.product_color}</span>
+                     <span className="resto_name">Type: {chosenProduct?.product_size} car</span>
+                     </Box>
+                        
                         <div className="evaluation_box">
                             <div 
                             style={{
@@ -182,6 +189,7 @@ export function ChosenDish(props:any) {
                             <div style={{display: "flex", alignItems:"center"}}>
                                 <RemovedRedEyeIcon style={{width: "32px", height: "24px"}} sx={{mr: "10px"}}/>
                                 <span className="eye_txt">{chosenProduct?.product_views} ta</span>
+                                
                             </div>
                         </div>
                      </Box>
@@ -197,9 +205,8 @@ export function ChosenDish(props:any) {
                      </div>
                      <div className="button_box">
                         <Button variant="contained"
-                        onClick={() => {props.onAdd(chosenProduct)}}>Savatchaga qo'shish</Button>
+                        onClick={() => {props.onAdd(chosenProduct)}}>Send Message</Button>
                      </div>
-                    </Box>
                 </Stack>
             </Container>
         </div>

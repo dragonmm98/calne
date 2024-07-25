@@ -1,5 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function Footer() {
     return (
@@ -9,30 +10,42 @@ export function Footer() {
                 <Stack flexDirection={"row"} style={{height: "242px"}}>
                     <Stack className="info" flexDirection={"column"}>
                         <Box>
-                            <img src="/icons/papays-footer.svg" alt=""/>
+                            <img src="/home/logocar.png" alt="" 
+                            style={{width:"80px", height: "60px"}}/>
                         </Box>
                         <Box className="main_text">
                             Lorem ipsum dolor sit amet consectetur adipisicing  illum ipsa labore delectus aut magnam maiores architecto ipsam asperiores officiis!
                         </Box>
                         <Stack className= "contact_links">
                             <Box>
+                            <a href="https://www.facebook.com/">
                                 <img src="/icons/facebook.svg"  alt=""/>
+                                </a>
                             </Box>
                             <Box>
+                            <a href="https://www.youtube.com/">
                             <img src="/icons/youtube.svg"  alt=""/>
+                            </a>
                             </Box>
                             <Box>
+                            <a href="https://www.instagram.com/">
                             <img src="/icons/instagram.svg"  alt=""/>
+                            </a>
                               </Box>
                             <Box>
+                            <a href="https://www.twitter.com/">
                             <img src="/icons/twitter.svg"  alt=""/>
+                            </a>
                              </Box>
                         </Stack>
                     </Stack>
                     <Stack className="parts">
-                      <Box className="part_subject">Bo'limlar</Box>
+                      <Box className="part_subject">Categories</Box>
                       <Box className="divider"></Box>
-                      <Box className="target">Bosh Sahifa Oshxona Jamiyat Yordam</Box>
+                      <Box className="target">
+                      <a href="/"> Home Page</a>
+                      <a href="/help">Help Page</a>
+                      </Box>
                     </Stack>
                     <Stack className="find_us">
                         <Box className="find">Find Us</Box>
@@ -55,7 +68,7 @@ export function Footer() {
                 </Stack>
                 <Box className="linear"></Box>
                 <Box className="copyrights">
-                    Copyright Papays 2023, All rights reserved
+                    Copyright Papays 2024, All rights reserved
                 </Box>
             </Stack>
         </Container>

@@ -8,7 +8,6 @@ import "../../../css/restaurant.css";
 
 export function RestaurantPage(props:any){
      let restaurant = useRouteMatch();
-     console.log(restaurant)
     return(
        <div className="restaurant_page">
         <Switch>

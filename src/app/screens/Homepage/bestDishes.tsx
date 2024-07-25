@@ -33,14 +33,14 @@ export function BestDishes () {
     const {trendProduct} = useSelector(trendProductRetriever)
     useEffect(() => {
       const productService = new ProductApiService();
-      productService.getTargetProducts({order: "product_likes", page: 1, limit: 10})
+      productService.getTargetProducts({order: "product_likes", page: 1, limit: 5})
       .then((data) => {setTrendProducts(data)})
       .catch(err=> console.log(err));
     }, [])
 
 //******HANDLERS ******/
 const chosenDishHandler = (id:string) => {
-    history.push(`/restaurant/dish/${id}`)
+    history.push(`/dealers/dish/${id}`)
   }
     
 
@@ -51,15 +51,6 @@ const chosenDishHandler = (id:string) => {
                 <Box className="category_title">Top Cars</Box>
                
                 <Stack sx={{marginTop: "43px"}} flexDirection="row">
-                <Swiper style={{width: "1400px"}}
-                 loop={true}
-                 slidesPerView={"auto"}
-                 centeredSlides={true}
-                 autoplay={{
-                     delay: 2500,
-                     disableOnInteraction: true,
-                    }}
-                    >
                     {trendProduct.map((product: Product) => {
                         const image_path  = `${serverApi}/${product.product_images[0]}`;
                         const size_volume = product.product_collection === "drink" 
@@ -67,7 +58,6 @@ const chosenDishHandler = (id:string) => {
                         : product.product_size   
                         return (
                             
-                            <SwiperSlide>
                            <Box className="dish_box">
 
                             <Stack className="dish_img" 
@@ -89,11 +79,9 @@ const chosenDishHandler = (id:string) => {
                                     </span>
                             </Stack>
                         </Box>
-                    </SwiperSlide>
+                
                         )
                     })}
-                   
-                </Swiper>
                 </Stack>
                 </Stack>
                 

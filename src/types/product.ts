@@ -8,6 +8,9 @@ export interface MeLiked {
 export interface Product {
     _id:string;
     product_name: string;
+    product_company: string;
+    product_color: string;
+    product_year: number;
     product_collection: string;
     product_status: string;
     product_price: number;

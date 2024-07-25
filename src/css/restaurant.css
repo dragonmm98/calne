@@ -838,7 +838,7 @@ border-radius: 50%;
 .chosen_dish_page .chosen_dish_info_container {
     padding: 30px 40px;
     width: 49%;
-    height: 452px;
+    height: 550px;
     display: flex;
     background: #ffffff;
     box-shadow: inset 0px 4px 4px rgba(0,0,0,0.25),
@@ -863,14 +863,20 @@ border-radius: 50%;
     line-height: 36px;
     color: #000000;
 }
+.about_txt {
+    display: flex;
+    flex-direction: column;
+    height: 230px;
+    width: 260px;
+}
 .chosen_dish_page .chosen_dish_info_box .resto_name {
-    margin-top: 16px;
+    width: 250px;
+    height: 40px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
     font-size: 17px;
-    line-height: 15px;
-    color: #979797;
+    color: black;
 }
 .chosen_dish_page .rating_box {
     position: relative;
@@ -880,7 +886,11 @@ border-radius: 50%;
     align-items: center;
 }
 .chosen_dish_page .evaluation_box {
-    position: relative;
+    position:absolute;
+    right: 10px;
+    top: 130px;
+    width: 280px;
+    height: 30px;
     display: flex;
     flex-direction: row;
 }
@@ -903,12 +913,12 @@ line-height: normal;
 }
 
 .chosen_dish_page .dish_desc_info {
-    width: 543px;
-    height: 112px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+width: 543px;
+height: 112px;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
 
 color: #000;
 font-family: "Poppins";
