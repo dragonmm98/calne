@@ -3,6 +3,7 @@ import { Follower, Following } from "./follow";
 import { Order } from "./order";
 import { Product } from "./product";
 import { Member, Restaurant } from "./user";
+import { Event } from "./boArticle";
 
 export interface AppRootState {
     homePage: HomePageState;
@@ -19,6 +20,7 @@ export interface HomePageState {
     bestBoArticles: BoArticle[];
     trendBoArticles: BoArticle[];
     newsBoArticles: BoArticle[];
+    events:Event[];
 }
 
 

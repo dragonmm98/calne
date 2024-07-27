@@ -28,3 +28,7 @@ export const retrievenewsBoArticles = createSelector (
     selectHomePage,
     (HomePage) => HomePage.newsBoArticles
 )
+export const retrieveEvents = createSelector (
+    selectHomePage,
+    (HomePage) => HomePage.events
+)

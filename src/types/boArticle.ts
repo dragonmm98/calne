@@ -23,7 +23,15 @@ export interface BoArticle {
     members_data: Member;
     me_liked:MeLiked[]; //Meliked
 }
-
+export interface Event {
+    _id: string;
+    event_name: string;
+    event_status: string;
+    event_description: string;
+    event_image: string[];
+    createdAt: Date;
+    updatedAt: Date;
+}
 export interface SearchArticleObj {
     page: number;
     limit: number;

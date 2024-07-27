@@ -5,8 +5,20 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Autoplay, Navigation,Pagination} from "swiper";
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
+// Redux
+import {useDispatch,useSelector} from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
+import { setEvents } from "../../screens/Homepage/slice";
+import {retrieveEvents} from "../../screens/Homepage/selector"
+
+//Redux slice
+
+
 
 export function Events () {
+
+
     const Events =[
         {
             title:"Welcome to Black Beer",

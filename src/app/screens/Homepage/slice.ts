@@ -9,6 +9,7 @@ const initialState: HomePageState = {
     bestBoArticles: [],
     trendBoArticles: [],
     newsBoArticles: [],
+    events:[],
 }
 
 const HomePageSlice = createSlice({
@@ -33,13 +34,16 @@ const HomePageSlice = createSlice({
         setNewsBoArticles: (state,action) => {
             state.newsBoArticles = action.payload
         },
+        setEvents: (state,action) => {
+            state.events = action.payload
+        },
     }
 });
 
 export const  {
     setTopRestaurants,setbestRestaurants,
     setTrendProducts,setBestBoArticles,
-    setTrendBoArticles,setNewsBoArticles} = HomePageSlice.actions;
+    setTrendBoArticles,setNewsBoArticles,setEvents} = HomePageSlice.actions;
 
 const HomePageReducer = HomePageSlice.reducer;
 export default  HomePageReducer;
