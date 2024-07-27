@@ -40,7 +40,7 @@ export function BestDishes () {
 
 //******HANDLERS ******/
 const chosenDishHandler = (id:string) => {
-    history.push(`/dealers/dish/${id}`)
+    history.push(`/dealer/dish/${id}`)
   }
     
 

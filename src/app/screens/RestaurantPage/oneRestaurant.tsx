@@ -60,7 +60,7 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
 export function OneRestaurant(props:any) {
 
     //*** INITIALIZATIONS***/
-    let {restaurant_id} = useParams<{restaurant_id:string }>();
+    let {dealer_id} = useParams<{dealer_id:string }>();
 
   const refs: any = useRef([]);
   const history = useHistory();
@@ -72,13 +72,13 @@ export function OneRestaurant(props:any) {
   const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
   const {targetProducts} = useSelector(targetProductsRetriever);
 
-  const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(restaurant_id);
+  const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(dealer_id);
   const [targetProductSearchObj, setTargetProductSearchObj] = useState<ProductSearchObj>({
     page: 1,
     limit: 8,
     order: "createdAt",
-    restaurant_mb_id: restaurant_id,
-    product_collection: "dish",
+    dealers_mb_id: dealer_id,
+    product_size: "ORDINARY"
   });
 
   const [productRebuild, setproductRebuild] = useState<Date>(new Date());
@@ -109,14 +109,14 @@ export function OneRestaurant(props:any) {
   //*****HANDLERS****/
   const chosenRestaurantHandler = (id:string) => {
     setChosenRestaurantId(id);
-    targetProductSearchObj.restaurant_mb_id = id;
+    targetProductSearchObj.dealers_mb_id = id;
     setTargetProductSearchObj({...targetProductSearchObj});
-    history.push(`/restaurant/${id}`);
+    history.push(`/dealer/${id}`);
   }
   
     const searchCollectionHandler = (collection:string) => {
         targetProductSearchObj.page = 1;
-        targetProductSearchObj.product_collection = collection;
+        targetProductSearchObj.product_size = collection;
         setTargetProductSearchObj({...targetProductSearchObj});
     }
 
@@ -128,7 +128,7 @@ export function OneRestaurant(props:any) {
 
   }
   const chosenDishHandler = (id:string) => {
-    history.push(`/restaurant/dish/${id}`)
+    history.push(`/dealer/dish/${id}`)
   }
     
   //like mechanism
@@ -156,23 +156,8 @@ export function OneRestaurant(props:any) {
                 <Stack flexDirection={"column"} alignItems="center">
                     <Stack className="avatar_big_box">
                         <Box className="top_text">
-                            <p>Black Bear Restaurant</p>
-                            <Box className="single_search_box">
-                                <form className="single_search_form" action="" method="">
-                                    <input
-                                    type={"search"}
-                                    className="single_searchInput"
-                                    name="Single_search"
-                                    placeholder="Search"/>
-                                    <Button
-                                    className="Single_button_search"
-                                    variant="contained"
-                                    endIcon={<SearchIcon/>}
-                                    >
-                                     Search
-                                    </Button>
-                                </form>
-                            </Box>
+                            <p>Dealer Page</p>
+                            
                         </Box>
                     </Stack>
                     
@@ -199,7 +184,7 @@ export function OneRestaurant(props:any) {
                         }}
                         >
                        {randomRestaurants.map((ele:Restaurant) => {
-                        const image_path = `${serverApi}/${ele.mb_image}`;
+                        const imagePath = ele.mb_image ? `${serverApi}/${ele.mb_image}` : "/restaurant/cardealerdefault.avif";
                         return ( 
                              <SwiperSlide 
                              onClick={() => chosenRestaurantHandler(ele._id)}
@@ -207,7 +192,7 @@ export function OneRestaurant(props:any) {
                             key={ele._id}
                             className={"restaurant_avatars"}
                             >
-                              <img src={image_path} alt=""/>
+                              <img src={imagePath} alt=""/>
                               <span>{ele.mb_nick}</span>
                             </SwiperSlide>
                         );
@@ -254,24 +239,24 @@ export function OneRestaurant(props:any) {
                         <Stack className="dish_category_box">
                             <div className="dish_category_main">
                             <Button variant="contained" color="secondary"
-                            onClick={() => searchCollectionHandler("etc")}>
-                                boshqa
+                            onClick={() => searchCollectionHandler("SPORT")}>
+                                Sport
                             </Button>
                             <Button variant="contained" color="secondary"
-                            onClick={() => searchCollectionHandler("desert")}>
-                                desert
+                            onClick={() => searchCollectionHandler("ORDINARY")}>
+                                Ordinary
                             </Button>
                             <Button variant="contained" color="secondary"
-                            onClick={() => searchCollectionHandler("drink")}>
-                                ichimlik
+                            onClick={() => searchCollectionHandler("VAN")}>
+                                Van
                             </Button>
                             <Button variant="contained" color="secondary"
-                            onClick={() => searchCollectionHandler("salad")}>
-                                salad
+                            onClick={() => searchCollectionHandler("MINI")}>
+                                Mini
                             </Button>
                             <Button variant="contained" color="secondary"
-                            onClick={() => searchCollectionHandler("dish")}>
-                                ovqatlar
+                            onClick={() => searchCollectionHandler("TRUCK")}>
+                                Truck
                             </Button>
                             </div>
                         </Stack>
@@ -359,7 +344,7 @@ export function OneRestaurant(props:any) {
                     alignItems: "center",
                 }}
                 >
-                    <Box className={"category_title"}>Oshxona Haqida Fikrlar</Box>
+                    <Box className={"category_title"}>Feedbacks</Box>
                     <Stack 
                     flexDirection={"row"}
                     display={"flex"}
@@ -392,36 +377,7 @@ export function OneRestaurant(props:any) {
              </div>
 
              <Container className="member_reviews">
-                <Box className={"category_title"}> Oshxona Haqida</Box>
-                <Stack 
-                display={"flex"}
-                flexDirection="row"
-                width={"90%"}
-                sx={{mt:"70px"}}>
-                    <Box className={"about_left"}
-                    sx={{ backgroundImage: `url(${serverApi}/${chosenRestaurant?.mb_image})`}}
-                    >
-                        <div className="about_left_desc">
-                            <span>{chosenRestaurant?.mb_nick}</span>
-                            <p>{chosenRestaurant?.mb_description} </p>
-                        </div>
-                        </Box>
-                        <Box className={"about_right"}>
-                            {Array.from(Array(3).keys()).map((ele,index) => {
-                                return (
-                                    <Box display={"flex"} flexDirection={"row"} key={index}>
-                                        <div className="about_right_img"></div>
-                                        <div className="about_right_desc">
-                                            <span>Bizning mohir oshpazlar</span>
-                                            <p>Bizning oshpazlarimiz nufuzli joylarda malaka 
-                                                oshirib kelishgan
-                                            </p>
-                                        </div>
-                                    </Box>
-                                );
-                            })}
-                        </Box>
-                    </Stack> 
+               
 
                     <Stack
                     sx={{mt:"60px"}}
@@ -431,7 +387,7 @@ export function OneRestaurant(props:any) {
                         alignItems: "center",
                     }}
                     >
-                        <Box className={"category_title"}>Restaurant Adress</Box>
+                        <Box className={"category_title"}>Office Adress</Box>
                         <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sPT%20Kulkul%20Teknologi%20Internasional!5e0!3m2!1sen!2sid!4v1601138221085!5m2!1sen!2sid"
               width="1320"

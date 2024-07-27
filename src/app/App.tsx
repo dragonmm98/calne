@@ -220,7 +220,7 @@ const handleLogOutRequest = async(): Promise<void> => {
     )}
 
       <Switch>
-        <Route path="/dealers">
+        <Route path="/dealer">
           <RestaurantPage onAdd={onAdd}/>
         </Route>
         <Route path="/community">

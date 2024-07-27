@@ -138,7 +138,7 @@ const getKeyHandler = (e: any) => {
     return (
         <Stack className="chat_frame">
          <Box className={"chat_top"}>
-            <div>Jonli Muloqot</div> 
+            <div>Live Chat</div> 
             <RippleBadge 
             style={{margin: "-30px 0 0 20px"}}
             badgeContent={onlineUsers}/>
@@ -150,7 +150,7 @@ const getKeyHandler = (e: any) => {
                 style={{display: "flex"}}
                 sx={{m: "10px 0px"}}
                 >
-                    <div className="msg_left">Bu yer jonli muloqot</div>
+                    <div className="msg_left">Welcome to Live Chat</div>
                 </Box>
 
                 {messagesList}

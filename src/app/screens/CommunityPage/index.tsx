@@ -61,13 +61,13 @@ export function CommunityPage(props: any){
          searchArticleObj.bo_id = "all";
                break;
          case "2" :
-            searchArticleObj.bo_id = "celebrity";
+            searchArticleObj.bo_id = "dealerfeed";
             break;
          case "3" :
-           searchArticleObj.bo_id = "evaluation";
+           searchArticleObj.bo_id = "aboutcars";
                 break;
         case "4" :
-          searchArticleObj.bo_id = "story";
+          searchArticleObj.bo_id = "recommendation";
                 break;
      }
       setSearchArticleObj({...searchArticleObj});
@@ -101,10 +101,10 @@ export function CommunityPage(props: any){
                                 aria-label="lab API tabs example"
                                 style={{borderColor: "blue"}}
                                 >
-                                    <Tab sx={{color: "white"}} label="Barcha Maqolalar" value={"1"}/>
-                                    <Tab sx={{color: "white"}} label="Mashxurlar" value={"2"}/>
-                                    <Tab sx={{color: "white"}} label="Oshxona Baholar" value={"3"}/>
-                                    <Tab sx={{color: "white"}} label="Hikoyalar" value={"4"}/>
+                                    <Tab sx={{color: "white"}} label="All feedbacks" value={"1"}/>
+                                    <Tab sx={{color: "white"}} label="Dealer Feedback" value={"2"}/>
+                                    <Tab sx={{color: "white"}} label="Car Feedbacks" value={"3"}/>
+                                    <Tab sx={{color: "white"}} label="Recommendation" value={"4"}/>
                                 </TabList>
                                 </Box>
                                 </Box>

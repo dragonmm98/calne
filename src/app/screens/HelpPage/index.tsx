@@ -15,7 +15,7 @@ export function HelpPage() {
      } ,
      {
         question: "How to can I order?",
-        answer: "You can make order by using order page or restaurant page"
+        answer: "You can make order by using order page or Dealers page"
      } ,
      {
         question: "Can we use withour registration",
@@ -56,9 +56,9 @@ export function HelpPage() {
                          aria-label="lab API tabs example"
                          style={{display: "flex", justifyContent: "space-between",}}
                          >
-                            <Tab style={{marginLeft:"183px"}} label="Qoidalar" value={"1"}/>
+                            <Tab style={{marginLeft:"183px"}} label="Rules" value={"1"}/>
                             <Tab style={{marginLeft:"230px"}} label="FAQ" value={"2"}/>
-                            <Tab style={{marginLeft:"230px"}} label="Adminga Xat" value={"3"}/>
+                            <Tab style={{marginLeft:"230px"}} label="Letter to Admin" value={"3"}/>
                         </TabList>
                     </Box>
                 </Box>
@@ -99,9 +99,8 @@ export function HelpPage() {
                         <Stack className="admin_letter_box">
                             <Stack className="admin_letter_container">
                                 <Box className={"admin_letter_frame"}>
-                                    <span>Adminga Xat Qoldirish</span>
-                                    <p>Adminga Xat qoldirish uchun quyidagi formlarni 
-                                        to'ldiring {""}
+                                    <span>Letter to Admins</span>
+                                    <p>Fill these boxes in order to send message to Admin {""}
                                         </p>
                                        </Box>
                                        <form
@@ -110,7 +109,7 @@ export function HelpPage() {
                                        className="admin_letter_frame"
                                        >
                                         <div className="admin_input_box">
-                                            <label>Ism</label>
+                                            <label>Name</label>
                                             <input
                                             type={"text"}
                                             name={"mb_nick"}
@@ -118,7 +117,7 @@ export function HelpPage() {
                                             />
                                         </div>
                                         <div className="admin_input_box">
-                                            <label>Elektron Manzil</label>
+                                            <label>E-mail</label>
                                             <input 
                                             type="text"
                                             name="mb_email"
@@ -126,10 +125,10 @@ export function HelpPage() {
                                             />
                                         </div>
                                         <div className="admin_input_box">
-                                            <label>Xabar</label>
+                                            <label>Message</label>
                                             <textarea
                                             name="mb_msg"
-                                            placeholder="Xabar" 
+                                            placeholder="Text here" 
                                             ></textarea>
                                         </div>
                                         <Box 
@@ -138,7 +137,7 @@ export function HelpPage() {
                                         sx={{mt: "30px"}}
                                         >
                                             <Button type="submit" variant="contained">
-                                                Jo'natish
+                                                Send
                                             </Button>
                                         </Box>
                                        </form>

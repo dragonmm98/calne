@@ -8,8 +8,8 @@ export interface ProductSearchObj {
     page: number,
     limit: number,
     order: string,
-    restaurant_mb_id?: string,
-    product_collection?: string;
+    dealers_mb_id?: string,
+    product_size?: string;
 }
 
 export interface MemberLiken {

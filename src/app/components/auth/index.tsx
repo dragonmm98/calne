@@ -125,9 +125,9 @@ export default function AuthenticationModal(props: any) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "800px" }}
+            sx={{ width: "800px", backgroundColor: "black", border: "0.5px groove gold" }}
           >
-            <ModalImg src={"/auth/password.jpeg"} alt="camera" />
+            <ModalImg src={"/home/main1.jpg"} alt="camera" style={{background: "cover"}}/>
             <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
               <h2>SignUp Form</h2>
               <TextField
@@ -182,9 +182,9 @@ export default function AuthenticationModal(props: any) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "700px" }}
+            sx={{ width: "700px", backgroundColor: "black", border: "0.5px groove gold"}}
           >
-            <ModalImg src={"/auth/password.jpeg"} alt="camera" />
+            <ModalImg src={"/home/main1.jpg"} alt="camera" style={{background: "cover"}} />
             <Stack
               sx={{
                 marginLeft: "65px",

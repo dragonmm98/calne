@@ -39,7 +39,7 @@ export function TopRestaurants () {
   //****** HANDLERS*******/
 
   const chosenRestaurantHandler = (id: string) => {
-    history.push(`/dealers/${id}`);
+    history.push(`/dealer/${id}`);
   }
 
 

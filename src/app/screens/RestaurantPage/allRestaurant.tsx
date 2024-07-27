@@ -28,7 +28,6 @@ import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/swee
 import { useHistory } from "react-router-dom";
 
 
-// const order_list = Array.from(Array(8).keys());
 
 //Redux Selector
 const targetRestaurantRetriever = createSelector(retrieveTargetRestaurants,
@@ -72,7 +71,7 @@ export function AllRestaurant() {
   }
   
   const chosenRestaurantHandler = (id:string) => {
-    history.push(`/restaurant/${id}`);
+    history.push(`/dealer/${id}`);
   }
   
   const targetLikeHandler = async (e:any, id:string): Promise<void> => {
@@ -118,9 +117,9 @@ export function AllRestaurant() {
                             <a onClick={() => searchHandler("mb_point")}>Best</a>
                             <a onClick={() => searchHandler("mb_views")}>Famous</a>
                             <a onClick={() => searchHandler("mb_likes")}>Trend</a>
-                            <a onClick={() => searchHandler("createdAt")}>New One</a>
+                            <a onClick={() => searchHandler("createdAt")}>New Comers</a>
                         </Box>
-                        <Box className="search_big_box">
+                        {/* <Box className="search_big_box">
                             <form className="search_form" action="" method="">
                            <input
                            type={"search"}
@@ -134,14 +133,14 @@ export function AllRestaurant() {
                             Izlash
                            </Button>
                             </form>
-                        </Box>
+                        </Box> */}
                     </Box>
 
                     
                     <Stack className="all_res_box">
                         <CssVarsProvider>
                             {targetRestaurants.map((ele: Restaurant) => {
-                              const image_path = `${serverApi}/${ele.mb_image}`
+                              const imagePath = ele.mb_image ? `${serverApi}/${ele.mb_image}` : "/restaurant/cardealerdefault.avif";
                                 return (
                             <Card
                      onClick={() => chosenRestaurantHandler(ele._id)}
@@ -155,7 +154,7 @@ export function AllRestaurant() {
                             }}>
                                 <CardOverflow>
                                     <AspectRatio ratio={"1"}>
-                                     <img src={image_path} alt=""/>
+                                     <img src={imagePath} alt=""/>
                                     </AspectRatio>
                                     <IconButton
                                      aria-labbel="Like minimal photography"
@@ -183,7 +182,7 @@ export function AllRestaurant() {
                                   </IconButton>
                                 </CardOverflow>
                                 <Typography level="h2" sx={{fontSize:"md", mt: 2}}>
-                                  {ele.mb_nick} Restaurant
+                                  {ele.mb_nick} Dealer
                                 </Typography>
                                 <Typography level="body-md" sx={{mt: 0.5, mb:2}}>
                                   <Link 

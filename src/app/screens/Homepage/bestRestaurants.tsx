@@ -35,7 +35,7 @@ export function BestRestaurants () {
 
   //*****HANDLERS ******/
   const chosenRestaurantHandler = (id: string) => {
-    history.push(`/restaurant/${id}`);
+    history.push(`/dealer/${id}`);
   };
 
   const goRestaurantsHandler = () => history.push("/dealer")
@@ -117,7 +117,7 @@ export function BestRestaurants () {
                                   </IconButton>
                                   </CardOverflow>
                                   <Typography level="h2" sx={{fontSize: "md", mt:2}}>
-                                   {ele.mb_nick} Restaurant
+                                   {ele.mb_nick} Dealer
                                   </Typography>
                                   <Typography level="body-md" sx={{mt:0.5, mb:2}}> 
                                      <Link 
