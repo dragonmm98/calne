@@ -1,0 +1,403 @@
+/*****Single Resto Css Section******/
+
+.single_cars    {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #0b0e11;
+}
+ .single_cars .avatar_big_box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ .single_cars .top_text {
+    position: relative;
+    width: 100%;
+    height: 43px;
+    margin-top: 80px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+ .single_cars .top_text p {
+    position: relative;
+    margin-left: 380px;
+
+    font-family: "Dancing Script";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+    color: #e3c08d;
+}
+ .single_cars .single_search_box {
+    position: relative;
+    width: 360px;
+    height: 33px;
+
+    display: flex;
+    align-items: center;
+    background: #fffcfc;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
+    border-radius: 18.5px;
+    box-sizing: border-box;
+}
+ .single_cars .single_search_form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ .single_cars .single_searchInput {
+    position: relative;
+    width: 245px;
+    height: 29px;
+    margin-left: 10px;
+
+    display: flex;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+    font-family: "GT Walsheim Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    color: #4f547b;
+}
+
+ .single_cars .Single_button_search {
+    position: relative;
+    width: 100px;
+    height: 33px;
+    display: flex;
+    border-radius: 18.5px;
+    background: #f8be69;
+}
+
+ .single_cars .prev_btn,
+.single_cars .next_btn {
+    width: 10%;
+    height: 147px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+ .single_cars .restaurant_avatar_wrapper {
+    width: 90%;
+    height: 147px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+ .single_cars
+.restaurant_avatar_wrapper .restaurant_avatars {
+    width: 108px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ .single_cars .restaurant_avatars img {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+}
+ .single_cars .restaurant_avatars span {
+    margin-top: 14px;
+    font-family: "Solway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #fffcfc;
+}
+
+ .single_cars .dish_img:hover .like_view_button {
+    opacity: 1;
+}
+ .single_cars .member_reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+ .single_cars .review_for_restaurant {
+    position: relative;
+    margin-top: 60px;
+    width: 100%;
+    height: 630px;
+    display: flex;
+    background-color: #0d1518;
+}
+ .single_cars .category_title {
+    font-family: "Dancing script";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+    color: #e3c08d;
+}
+ .single_cars .review_box {
+    margin-top: 40px;
+    padding: 20px;
+    width: 249px;
+    height: 346px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: inset 0px 4px 4px rgba(0,0,0,0.25),
+     inset 0px 4px 4px rgba(0,0,0,0.25)
+      inset 0px 4px 16px rgba(242,189,87,0.04);
+      border-radius: 16px;
+}
+
+ .single_cars .review_img {
+    width: 110px;
+    height: 110px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+    border-radius: 37px;
+}
+ .single_cars .review_name {
+    margin-top: 10px;
+    font-family: "Commissioner";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    color: #08090d;
+}
+ .single_cars .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+ .single_cars .dishs_filter_box {
+    width: 30%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.single_cars .dish_category_box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: transparent;
+}
+
+
+.single_cars .dish_category_box .dish_category_main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
+.single_cars .dish_category_box .dish_category_main button {
+    min-width: auto;
+    margin-right: 10px;
+}
+
+.single_cars .css-1p7b7rs-MuiBadge-badge {
+    position: absolute;
+    top: 26%;
+    right: 15%;
+}
+
+.single_cars .dish_wrapper {
+    margin-left: 20px;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.single_cars .dish_box {
+    margin-top: 60px;
+    margin-right: 26px;
+    width: 273px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.single_cars .dish_box .dish_img {
+   position: relative;
+   width: 273px;
+   height: 275px;
+   background-size: cover;
+   border-radius: 0px 50px 0px 0px;
+}
+ .single_cars .dish_sale {
+    margin-top: 43px;
+    width: 84px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d1f4d9;
+    box-shadow: 4px 6px 20px rgb(0 0 0 /10%);
+    border-radius: 0px 50px 50px 0px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #c50a09;
+}
+
+ .single_cars .like_view_btn {
+ position: absolute;
+ top: 223px;
+ padding: 5px;
+ min-width: 40px;
+ width: 40px;
+height: 40px;
+
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+z-index: 3;
+opacity: 0;
+transition: opacity 0.5s ease;
+background: rgba(0,0,0,0.4);
+border-radius: 50%;
+}
+
+ .single_cars .dish_box .dish_desc {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+ .single_cars .dish_desc .dish_title_text {
+    margin-top: 18px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #d1d1d1;
+}
+ .single_cars .dish_desc .dish_desc_text {
+    margin-top: 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #e3c08d;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+ .single_cars .dish_img:before {
+    border-radius: 0px 50px 0px 0px;
+    content: "";
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
+}
+ .single_cars .dish_img:hover:before {
+    border-radius: 0px 50px 0px 0px;
+    opacity: 1;
+}
+
+ .single_cars .dish_img img {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+ .single_cars .dish_img:hover .like_view_btn {
+    opacity: 1;
+}
+
+ .single_cars .dish_img:hover .view_btn {
+    opacity: 1;
+}
+
+ .single_cars .view_btn {
+    position: absolute;
+    padding: 20px;
+    top: 217px;
+    width: 64px;
+    height: 46px;
+    left: 105px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: rgba(198 0 255 / 66%);
+    border: 2px solid #d7b686;
+    border-radius: 10px;
+
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 15px;
+
+    color: #ffffff;
+}
+ .single_cars .member_reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+ .single_cars .review_for_restaurant {
+    margin-top: 60px;
+    height: 630px;
+    width: 100%;
+    display: flex;
+    background-color: #0d1518;
+
+}

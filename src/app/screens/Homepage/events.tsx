@@ -1,25 +1,49 @@
 import { Box, Container, Stack } from "@mui/material";
-import React from "react";
-
+import React, { useEffect } from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Autoplay, Navigation,Pagination} from "swiper";
-SwiperCore.use([Autoplay, Navigation, Pagination]);
-
 // Redux
 import {useDispatch,useSelector} from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { setEvents } from "../../screens/Homepage/slice";
 import {retrieveEvents} from "../../screens/Homepage/selector"
+import CommunityApiService from "../../apiService/communityApiService";
+import {Event} from "../../../types/events"
+import { serverApi } from "../../../lib/config";
 
-//Redux slice
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 
+
+// Redux slice
+
+const actionDispatch = (dispach: Dispatch) => ({
+    setEvents: (data: Event[]) => dispach(setEvents(data)),
+});
+
+// Redux Selector
+const eventRetriever = createSelector(
+    retrieveEvents,
+    (events)=> ({
+        events
+    })
+);
 
 export function Events () {
 
+// Initialize 
+const {setEvents} = actionDispatch(useDispatch());
+const {events} = useSelector(eventRetriever)
+  
+useEffect(() => {
+    const eventService = new CommunityApiService();
+    eventService.getChosenEvents().then((data) => 
+    setEvents(data))
+    .catch((err) => console.log(err))
+}, [])
 
-    const Events =[
+    const gevents =[
         {
             title:"Welcome to Black Beer",
             desc: "New Taste, New style, New Dish",
@@ -88,29 +112,30 @@ export function Events () {
                         delay: 2000,
                         disableOnInteraction: true,
                     }}>
-                        {Events.map((value,numver) =>{
+                        {events.map((ele: Event) =>{
+                             const image_path = ele?.event_image ? `${serverApi}/${ele.event_image}` : "/community/xasbulla.webp";
                             return (
                                 <SwiperSlide className="events_info_frame">
                                 <div className="events_img">
-                                    <img src={value.img} className="events_img" alt=""/>
+                                    <img src={image_path} className="events_img" alt=""/>
                                 </div>
                                 <Box className="events_desc">
                                     <Box className="events_bott">
                                     <Box className="bott_left">
                                         <div className="event_title_speaker">
-                                            <strong>{value.title}</strong>
+                                            <strong>{ele.event_description}</strong>
                                             <div className="event_organizator">
                                                 <img src="/icons/speaker.svg"
                                                 alt=""
                                                 style={{width:"20px", marginRight:"10px"}}/>
-                                                <p className="spec_text_author">{value.author}</p>
+                                                <p className="spec_text_author">{ele.event_name}</p>
                                             </div>
                                         </div>
                                         <p
                                         className="text_desc"
                                         style={{marginTop:"10px"}}>
                                            {""}
-                                           {value.desc}{""}
+                                           {ele.event_description}{""}
                                         </p>
                                         <div 
                                         className="bott_info"
@@ -120,14 +145,14 @@ export function Events () {
                                                 src="/icons/calendar.svg"
                                                 alt=""
                                                 style={{marginRight:"10px"}}/>
-                                                {value.date}
+                                                {ele.event_description}
                                             </div>
                                             <div className="bott_info_main">
                                                 <img
                                                 src="/icons/location.svg"
                                                 alt=""
                                                 style={{marginRight: "10px"}}/>
-                                                {value.location}
+                                                gg
                                             </div>
                                         </div>
                                     </Box>

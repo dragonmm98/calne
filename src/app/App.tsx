@@ -29,6 +29,7 @@ import MemberApiService from './apiService/memberApiService';
 import "../app/apiService/verify";
 import { CartItem } from '../types/others';
 import { Product } from '../types/product';
+import { Cars } from './screens/RestaurantPage/cars';
 
 
 function App() {
@@ -222,6 +223,9 @@ const handleLogOutRequest = async(): Promise<void> => {
       <Switch>
         <Route path="/dealer">
           <RestaurantPage onAdd={onAdd}/>
+        </Route>
+        <Route path="/allcars">
+          <Cars/>
         </Route>
         <Route path="/community">
           <CommunityPage/>

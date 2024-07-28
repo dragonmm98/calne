@@ -1,5 +1,5 @@
 import { MonetizationOn } from "@mui/icons-material";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import React, { useEffect } from "react";
 
 //Redux
@@ -42,6 +42,8 @@ export function BestDishes () {
 const chosenDishHandler = (id:string) => {
     history.push(`/dealer/dish/${id}`)
   }
+
+  const goCarHandler = () => history.push("/allcars")
     
 
     return (
@@ -83,6 +85,17 @@ const chosenDishHandler = (id:string) => {
                         )
                     })}
                 </Stack>
+                <Stack 
+                    flexDirection={"row"}
+                    justifyContent="flex-end"
+                    style={{width:"100%", marginTop:"16px"}} 
+                    >
+                        <Button
+                        onClick={goCarHandler}
+                        style={{background:"transparent", color:"white",  border: "1px solid white"}}>
+                            View All
+                    </Button>
+                     </Stack>
                 </Stack>
                 
             </Container>

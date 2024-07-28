@@ -14,7 +14,7 @@ export function RestaurantPage(props:any){
             <Route path={`${restaurant.path}/dish/:dish_id`}>
                 <ChosenDish onAdd={props.onAdd}/>
             </Route>
-            <Route path={`${restaurant.path}/:restaurant_id`}>
+            <Route path={`${restaurant.path}/:dealer_id`}>
                 <OneRestaurant onAdd={props.onAdd}/>
             </Route>
             <Route path={`${restaurant.path}`}>

@@ -93,7 +93,7 @@ public async memberLikeTarget(data:any): Promise<MemberLiken> {
 
 public async getChosenMember (id:string): Promise<Member> {
     try {
-       const url = `/member/${id}`,
+       const url = `/dealer/${id}`,
        result = await axios.get(this.path + url, {
         withCredentials:true,
        });

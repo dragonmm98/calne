@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import React, { useRef } from "react";
 import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
@@ -41,7 +41,7 @@ export function TopRestaurants () {
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/dealer/${id}`);
   }
-
+  const goRestaurantsHandler = () => history.push("/dealer")
 
   const targetLikeTop = async (e:any, id:string) => {
     try{
@@ -182,8 +182,19 @@ export function TopRestaurants () {
                      </CssVarsProvider>
                         )
                        })}
-               
+                   
                     </Stack>
+                    <Stack 
+                    flexDirection={"row"}
+                    justifyContent="flex-end"
+                    style={{width:"100%", marginTop:"16px"}} 
+                    >
+                        <Button
+                        onClick={goRestaurantsHandler}
+                        style={{background:"transparent", color:"white",  border: "1px solid white"}}>
+                            View All
+                    </Button>
+                     </Stack>
                 </Stack>
             </Container>
         </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import assert from "assert";
 import { Definer } from "../../lib/Definer";
 import { BoArticle, BoArticleInput, SearchArticleObj, SearchMemberArticlesObj } from "../../types/boArticle";
+import {Event} from "../../types/events"
 
 class CommunityApiService {
     private readonly path : string;
@@ -118,6 +119,28 @@ public async getChosenArticle (art_id: string): Promise<BoArticle> {
           
     } catch (err:any) {
         console.log(`ERROR::: getChosenArticle ${err.message}`);
+        throw err;
+    }
+} 
+
+public async getChosenEvents (): Promise<Event[]> {
+    try{
+        let url = "/community/events"; 
+      
+      
+        const result = await axios.get(this.path + url, {
+            withCredentials: true,
+          });
+
+          assert.ok(result?.data, Definer.general_err1);
+          assert.ok(result?.data?.state != "fail", result?.data?.message);
+          console.log("state::events", result.data.state);
+
+          const events: Event[] = result.data.data;
+          return events;
+          
+    } catch (err:any) {
+        console.log(`ERROR::: getChosenEvents ${err.message}`);
         throw err;
     }
 } 

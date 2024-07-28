@@ -11,6 +11,9 @@ export interface ProductSearchObj {
     dealers_mb_id?: string,
     product_size?: string;
 }
+export interface CarSearchObj {
+    product_size: string;
+}
 
 export interface MemberLiken {
     like_group: string,

@@ -2,7 +2,7 @@ import axios from "axios";
 import assert from "assert";
 import { Definer } from "../../lib/Definer";
 import { serverApi } from "../../lib/config";
-import { ProductSearchObj } from "../../types/others";
+import { CarSearchObj, ProductSearchObj } from "../../types/others";
 import { Product } from "../../types/product";
 
 
@@ -28,6 +28,23 @@ async getTargetProducts(data:ProductSearchObj ): Promise<Product[]> {
         console.log(`ERROR::: getTargetProducts ${err.message}`);
         throw err;
     }
+}
+
+async getSizeProducts(data:CarSearchObj ): Promise<Product[]> {
+  try {
+    const url = "/filter",
+    result = await axios.post(this.path + url,data,{
+      withCredentials: true,
+    });
+    assert.ok(result?.data, Definer.general_err1);
+    assert.ok(result?.data?.state != "fail", result?.data?.message);  
+    console.log("state::", result.data.state);
+    const productssize : Product[] = result.data.data;
+    return productssize;
+  } catch (err: any) {
+      console.log(`ERROR::: getTargetProducts ${err.message}`);
+      throw err;
+  }
 }
 
 
