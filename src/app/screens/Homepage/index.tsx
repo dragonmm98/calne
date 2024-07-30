@@ -16,6 +16,9 @@ import {setbestRestaurants, setTopRestaurants} from "../../screens/Homepage/slic
 import {retrieveTopRestaurants} from "../../screens/Homepage/selector";
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiService/restaurantApiService";
+import { Chatbot } from "../../components/chatbot/chat";
+import Chat from "../../components/chatbot/nest";
+
 
 //Redux Slice
 const actionDispatch = (dispach: Dispatch) => ({
@@ -55,6 +58,7 @@ export function HomePage() {
         <BestDishes/>
         <Events/>
         <Recommendation/>
+        <Chatbot/>
     </div>
     )
 }

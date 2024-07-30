@@ -14,7 +14,7 @@ export function Footer() {
                             style={{width:"80px", height: "60px"}}/>
                         </Box>
                         <Box className="main_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing  illum ipsa labore delectus aut magnam maiores architecto ipsam asperiores officiis!
+                            Lorem ipsum dolor sit amet consectetur adieriores officiis!
                         </Box>
                         <Stack className= "contact_links">
                             <Box>
