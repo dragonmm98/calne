@@ -96,9 +96,9 @@ export const TuiEditor = (props: any) => {
                         <MenuItem value="">
                             <span>Choose Category</span>
                         </MenuItem>
-                        <MenuItem value={"celebrity"}> Mashhurlar </MenuItem>
-                        <MenuItem value={"evaluation"}> Restaurant baho </MenuItem>
-                        <MenuItem value={"story"}> Mening Hikoyam </MenuItem>
+                        <MenuItem value={"dealerfeed"}> About Dealers </MenuItem>
+                        <MenuItem value={"aboutcars"}> About Cars </MenuItem>
+                        <MenuItem value={"recommendation"}> Recommendation </MenuItem>
                     </Select>
                    </FormControl>
                 </Box>
@@ -108,7 +108,7 @@ export const TuiEditor = (props: any) => {
                     style={{color: "rgb(225 255 233)", margin: "10px"}}
                     variant="h3"
                     >
-                        Mavzu
+                        Title
                     </Typography>
                     <TextField
                     id="filled-basic"
@@ -153,7 +153,7 @@ export const TuiEditor = (props: any) => {
                 style={{margin: "30px", width: "250px", height: "45px"}}
                 onClick={handleRegisterButton}
                 >
-                    Register
+                    Save
                 </Button>
                 </Stack>  
         </Stack>

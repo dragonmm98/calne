@@ -56,7 +56,7 @@ const targetLikeHandler = async (e:any) => {
                                 <img
                                 src= {article?.members_data?.mb_image 
                                     ? `${serverApi}/${article.members_data.mb_image}` 
-                                    : "/icons/default_user.svg"}
+                                    : "/dealers/cardealer.jpg"}
                                 width={"35px"}
                                 height={"35px"}
                                 style={{borderRadius: "50%", backgroundSize: "cover"}}

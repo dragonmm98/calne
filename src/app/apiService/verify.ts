@@ -11,7 +11,7 @@ if (cookies.get("access_token")) {
     if (member_data) {
         member_data.mb_image = member_data.mb_image 
         ? `${serverApi}/${member_data.mb_image}` 
-        : "/auth/default_user.svg";
+        : "/dealers/cardealer.jpg";
     }
 } else {
     localStorage.removeItem("member_data");

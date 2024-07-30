@@ -57,7 +57,7 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #ffffff;
+    background: #5529AD;
     box-shadow: inset 0px 4px 4px rgba(0,0,0,0.25),inset 0px 4px 4px rgba(0,0,0,0.25),inset 0px 4px 4px rgba(0,0,0,0.25);
     border-radius: 16px;
 }
@@ -126,7 +126,7 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
     gap: 28px;
 }
 .member_page  .follows {
-    color: #616164;
+    color: #D7319C;
     font-family: DM Sans;
     font-size: 16px;
     font-style: normal;
@@ -135,14 +135,14 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
 }
 
 .member_page .order_info_box p {
-    color: #616164;
+    color: #D7319C;
 font-family: DM Sans;
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
-
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 .member_page .user_media_box1 {
     display: flex;
     flex-direction: row;
@@ -150,6 +150,67 @@ line-height: normal;
     margin-top: 11px;
     color: #AAAAAA;
 }
+.user_media_box1 .social-icons {
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+    margin: 0.15em;
+    position: relative;
+    font-size: 1em;
+}
+.social-icons li {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin: 0.15em;
+    position: relative;
+    font-size: 1em;
+  }
+  
+  .social-icons i {
+    color: #fff;
+    align-items: center;
+    position: absolute;
+    top: 0.95em;
+    left: 0.96em;
+    transition: all 265ms ease-out;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons a:before {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    content: " ";
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: block;
+    background: linear-gradient(45deg, #ff003c, #c648c8);
+    transition: all 265ms ease-out;
+  }
+  
+  .social-icons a:hover:before {
+    transform: scale(0);
+    transition: all 265ms ease-in;
+  }
+  
+  .social-icons a:hover i {
+    transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    color: #ff003c;
+    background: -webkit-linear-gradient(45deg, #ff003c, #c648c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 265ms ease-in;
+  }
+  
 
 .member_page .my_page_menu .menu_box {
     position: relative;
@@ -159,7 +220,7 @@ line-height: normal;
     align-items: center;
     justify-content: center;
     border-radius: 20px; 
-    background: #FFF;
+    background: #5529AD;
     box-shadow: 0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 
 }

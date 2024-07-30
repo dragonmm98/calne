@@ -161,7 +161,7 @@ export function VisitOtherPage(props: any) {
                     <Stack className="my_page_left">
                         <Box display={"flex"} flexDirection={"column"}>
                             <TabPanel value="1">
-                                <Box className={"menu_name"}>Maqolalar</Box>
+                                <Box className={"menu_name"}>Feedbacks</Box>
                                 <Box className={"menu_content"}>
                                      <MemberPosts
                                      chosenMemberBoArticles={chosenMemberBoArticles}
@@ -220,7 +220,7 @@ export function VisitOtherPage(props: any) {
 
 
                                 <TabPanel value="4">
-                                    <Box className={"menu_name"}>Tanlangan Maqola</Box>
+                                    <Box className={"menu_name"}>Chosen Feedback</Box>
                                     <Box className={"menu_content"}>
                                       <TViewer chosenSingleBoArticle={chosenSingleBoArticle}/>
                                     </Box>
@@ -239,7 +239,7 @@ export function VisitOtherPage(props: any) {
                             >
                             
                                 <div className="order_user_img">
-                                <img src="/icons/default_user.svg" alt=""
+                                <img src="/dealers/cardealer.jpg" alt=""
                         className="order_user_avatar"/>
                         <img  className="avatar_1" src="/icons/user1.svg" alt=""/>
                          </div>
@@ -251,10 +251,12 @@ export function VisitOtherPage(props: any) {
                              </span> 
                             </Box>
                             <Box className={"user_media_box1"}>
-                                <FacebookIcon/>
-                                <InstagramIcon/>
-                                <TelegramIcon/>
-                                <YoutubeIcon/>
+                            <ul className="social-icons">
+      <li><a href="https://www.facebook.com/"><i className="fa fa-instagram"><FacebookIcon/></i></a></li>
+      <li><a href="https://www.instagram.com/"><i className="fa fa-twitter"><InstagramIcon/></i></a></li>
+      <li><a href="https://www.telegram.com/"><i className="fa fa-linkedin"><TelegramIcon/></i></a></li>
+      <li><a href="https://www.youtube.com/"><i className="fa fa-codepen"><YoutubeIcon/></i></a></li>
+    </ul>
                             </Box>
                             <Box className={"user_media_box"}>
                                 <p className="follows">Followers {chosenMember?.mb_subscriber_cnt}</p>
@@ -323,7 +325,7 @@ export function VisitOtherPage(props: any) {
                                         onClick={() => setValue("1")}
                                         > 
                                         <img src="/icons/post.svg" alt=""/>
-                                        <span>Maqolalari</span>
+                                        <span>Feedbacks</span>
                                         </div>
                                     )}
                                     />

@@ -121,7 +121,7 @@ export function VisitMyPage(props: any) {
                     <Stack className="my_page_left">
                         <Box display={"flex"} flexDirection={"column"}>
                             <TabPanel value="1">
-                                <Box className={"menu_name"}>Mening Maqolalarim</Box>
+                                <Box className={"menu_name"}>My Posts</Box>
                                 <Box className={"menu_content"}>
                                      <MemberPosts 
                                      chosenMemberBoArticles={chosenMemberBoArticles}
@@ -178,7 +178,7 @@ export function VisitMyPage(props: any) {
                                 </TabPanel>
 
                                 <TabPanel value="4">
-                                    <Box className={"menu_name"}>Maqola Yozish</Box>
+                                    <Box className={"menu_name"}>Write Feedback</Box>
                                     <Box className={"write_content"}>
                                         <TuiEditor setValue={setValue}
                                         setArticleRebuild={setArticleRebuild}/>
@@ -186,7 +186,7 @@ export function VisitMyPage(props: any) {
                                 </TabPanel>
 
                                 <TabPanel value="5">
-                                    <Box className={"menu_name"}>Tanlangan Maqola</Box>
+                                    <Box className={"menu_name"}>Chosen Feedback</Box>
                                     <Box className={"menu_content"}>
                                         <TViewer chosenSingleBoArticle={chosenSingleBoArticle}/>
     
@@ -215,7 +215,7 @@ export function VisitMyPage(props: any) {
                                 <img src={verifiedMemberData?.mb_image} alt=""
                         className="order_user_avatar"/>
                         <img  className="avatar_1" src={ chosenMember?.mb_type === "DEALER" 
-                                ? "/restaurant/Rectangle 4391.png" 
+                                ? "/dealers/cardealer.jpg" 
                                 : "/icons/user1.svg"} alt=""/>
                         <a onClick={() => setValue("6")} className={"settings_btn"}> 
                             <SettingsIcon/>
@@ -229,10 +229,12 @@ export function VisitMyPage(props: any) {
                              </span> 
                             </Box>
                             <Box className={"user_media_box1"}>
-                                <FacebookIcon/>
-                                <InstagramIcon/>
-                                <TelegramIcon/>
-                                <YoutubeIcon/>
+                                 <ul className="social-icons">
+      <li><a href="https://www.facebook.com/"><i className="fa fa-instagram"><FacebookIcon/></i></a></li>
+      <li><a href="https://www.instagram.com/"><i className="fa fa-twitter"><InstagramIcon/></i></a></li>
+      <li><a href="https://www.telegram.com/"><i className="fa fa-linkedin"><TelegramIcon/></i></a></li>
+      <li><a href="https://www.youtube.com/"><i className="fa fa-codepen"><YoutubeIcon/></i></a></li>
+    </ul>
                             </Box>
                             <Box className={"user_media_box"}>
                                 <p className="follows">Followers {chosenMember?.mb_subscriber_cnt}</p>
@@ -260,8 +262,10 @@ export function VisitMyPage(props: any) {
                                         variant="contained"
                                         onClick={() => setValue("4")}
                                         > 
-                                        Maqola Yozish
+                                        Write feedbacks
                                         </Button>
+
+                                        
                                     )}
                                     />               
                                 </TabList>
@@ -283,7 +287,7 @@ export function VisitMyPage(props: any) {
                                         onClick={() => setValue("1")}
                                         > 
                                         <img src="/icons/post.svg" alt=""/>
-                                        <span>Maqolalarim</span>
+                                        <span>My Feedbacks</span>
                                         </div>
                                     )}
                                     />
