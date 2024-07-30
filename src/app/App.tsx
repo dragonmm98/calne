@@ -94,7 +94,7 @@ useEffect(() => {
     if(exist) {
       const cart_updated = cartItems.map((item: CartItem) => 
         item._id === product._id 
-        ? {...exist,quantity: exist.quantity + 1 } 
+        ? {...exist,quantity: exist.quantity + 0 } 
         : item 
       );
       setCartItems(cart_updated);
@@ -225,7 +225,7 @@ const handleLogOutRequest = async(): Promise<void> => {
           <RestaurantPage onAdd={onAdd}/>
         </Route>
         <Route path="/allcars">
-          <Cars/>
+          <Cars onAdd={onAdd}/>
         </Route>
         <Route path="/community">
           <CommunityPage/>

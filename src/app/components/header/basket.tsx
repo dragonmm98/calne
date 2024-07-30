@@ -63,7 +63,7 @@ export default function Basket(props: any) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping_cart.svg"} />
+          <img src={"/icons/racing.png"} />
         </Badge>
       </IconButton>
       <Menu
@@ -103,7 +103,7 @@ export default function Basket(props: any) {
       >
         <Stack className={"basket_frame"}>
           <Box className={"all_check_box"}>
-            {false ? <div>Cart is empty!</div> : <div>My Cart Products:</div>}
+            {false ? <div>Cart is empty!</div> : <div>Your choice::</div>}
           </Box>
 
           <Box className={"orders_main_wrapper"}>
@@ -120,10 +120,10 @@ export default function Basket(props: any) {
                     </div>
                     <img src={image_path} className={"product_img"} />
                     <span className={"product_name"}>{item.name}</span>
-                    <p className={"product_price"}>${item.price} x {item.quantity}</p>
+                    <p className={"product_price"}>${item.price}</p>
                     <Box sx={{ minWidth: 120 }}>
                       <div className="col-2">
-                        <button
+                        {/* <button
                             onClick={() => onRemove(item)}
                           className="remove"
                         >
@@ -134,7 +134,7 @@ export default function Basket(props: any) {
                           className="add"
                         >
                           +
-                        </button>
+                        </button> */}
                       </div>
                     </Box>
                   </Box>
@@ -144,13 +144,13 @@ export default function Basket(props: any) {
           </Box>
           {cartItems.length > 0 ? (
             <Box className={"to_order_box"}>
-              <span className={"price_text"}>Jami: ${totalPrice} ({itemsPrice} + {shippingPrice})</span>
+              <span className={"price_text"}>Total: ${totalPrice} ({itemsPrice} + {shippingPrice})</span>
               <Button
                 onClick={processOrderHandler}
                 startIcon={<ShoppingCartIcon />}
                 variant={"contained"}
               >
-                Buyurtma qilish
+                Do you want to buy?
               </Button>
             </Box>
           ) : (

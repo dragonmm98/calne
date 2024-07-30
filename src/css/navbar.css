@@ -9,14 +9,14 @@
    width: 100%;
    height: 400px;
    display: flex;
-   background: url("/public/home/main1.jpg");
+   background: url("/public/assets/header11.jpg");
    background-size: cover;
 }
 .format_others.home_navbar {
     width: 100%;
     height: 400px;
     display: flex;
-    background: url("/public/home/main2.jpg");
+    background: url("/public/assets/header11.jpg");
     background-size: cover;
  }
 .home_navbar .navbar_config {
@@ -46,7 +46,7 @@
 .home_navbar .hover-line:after {
     display: block;
     content: '';
-    border-bottom: solid 2px #d7b686;
+    border: solid 2px #d7b686;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
 } 
