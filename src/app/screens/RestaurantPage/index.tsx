@@ -5,6 +5,7 @@ import { AllRestaurant } from "./allRestaurant";
 import { ChosenDish } from "./chosenDish";
 import { OneRestaurant } from "./oneRestaurant";
 import "../../../css/restaurant.css";
+import ChatBot from "../../components/chatbot/chat";
 
 export function RestaurantPage(props:any){
      let restaurant = useRouteMatch();
@@ -19,6 +20,7 @@ export function RestaurantPage(props:any){
             </Route>
             <Route path={`${restaurant.path}`}>
                 <AllRestaurant/>
+                <ChatBot/>
             </Route>
         </Switch>
        </div> 

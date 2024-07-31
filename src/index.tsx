@@ -13,9 +13,6 @@ import theme from './app/MaterialTheme';
 
 import {SocketContext, socket} from "./app/context/socket";
 
-// const container = document.getElementById('root')!;
-// const root = createRoot(container);
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

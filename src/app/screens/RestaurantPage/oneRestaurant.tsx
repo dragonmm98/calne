@@ -25,6 +25,7 @@ import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 import MemberApiService from "../../apiService/memberApiService";
+import ChatBot from "../../components/chatbot/chat";
 
 //Redux Selector
 const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
@@ -275,7 +276,7 @@ export function OneRestaurant(props:any) {
                                         >
                                             <div className="dish_sale" 
                                             onClick={(event) => event.stopPropagation()}
-                                            >kmx`</div>
+                                            >{product.product_size}</div>
                                             <Button
                                             onClick={(event) => event.stopPropagation()}
                                             className="like_view_btn"
@@ -397,6 +398,7 @@ export function OneRestaurant(props:any) {
             />
 
                     </Stack>
+                    <ChatBot/>
              </Container>
         </div>
     )

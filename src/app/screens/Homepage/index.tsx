@@ -16,8 +16,7 @@ import {setbestRestaurants, setTopRestaurants} from "../../screens/Homepage/slic
 import {retrieveTopRestaurants} from "../../screens/Homepage/selector";
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiService/restaurantApiService";
-import { Chatbot } from "../../components/chatbot/chat";
-import Chat from "../../components/chatbot/nest";
+import ChatBot from "../../components/chatbot/chat";
 
 
 //Redux Slice
@@ -58,7 +57,7 @@ export function HomePage() {
         <BestDishes/>
         <Events/>
         <Recommendation/>
-        <Chatbot/>
+        <ChatBot/>
     </div>
     )
 }

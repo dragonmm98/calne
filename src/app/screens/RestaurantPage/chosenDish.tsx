@@ -25,6 +25,7 @@ import RestaurantApiService from "../../apiService/restaurantApiService";
 import { serverApi } from "../../../lib/config";
 import MemberApiService from "../../apiService/memberApiService";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
+import ChatBot from "../../components/chatbot/chat";
 
 //** REDUX SLICE**/
 const actionDispatch = (dispach: Dispatch) => ({
@@ -208,6 +209,7 @@ export function ChosenDish(props:any) {
                         onClick={() => {props.onAdd(chosenProduct)}}>Send Message</Button>
                      </div>
                 </Stack>
+                <ChatBot/>
             </Container>
         </div>
     )
