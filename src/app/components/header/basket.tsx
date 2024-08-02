@@ -63,7 +63,7 @@ export default function Basket(props: any) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/racing.png"} />
+          <img src={"/icons/racing.png"} style={{backgroundColor:"white"}} />
         </Badge>
       </IconButton>
       <Menu

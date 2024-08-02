@@ -394,22 +394,39 @@ export function OneRestaurant(props:any) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {comment.map((row) => (
+          {comment?.map((data: Comment) => (
             <TableRow
-              key={row._id}
+              key={data._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.members_data.mb_nick}
+              <TableCell component="th" scope="row"
+              style={{color: "black", lineHeight: "5px", fontSize: "20px", fontWeight: "bold"}}>
+                {data.members_data.mb_nick}
               </TableCell>
-              <TableCell align="right">Alex</TableCell>
-              <TableCell align="right">{row.comment_description}</TableCell>
+              <TableCell align="right">{data.comment_description}</TableCell>
+              {/* @ts-ignore */}
+              <TableCell align="right"
+              style={{color: "black", lineHeight: "10px", fontSize: "15px"}}>
+             {new Date(data.createdAt).toLocaleString('en-US', {
+               year: 'numeric',
+               month: '2-digit',
+               day: '2-digit',
+               hour: '2-digit',
+               minute: '2-digit',
+               hour12: false
+  })}
+</TableCell>
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
 
+                       <div className="button_comment">
+                        <Button variant="contained"
+                        >Write Comment</Button>
+                      </div>
 
 
                 </Container>

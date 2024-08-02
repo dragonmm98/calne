@@ -981,6 +981,7 @@ border-radius: 15px;
 }
 /* Comment CSS */
 
-.table_title  TableCell{
-
+.button_comment {
+    position: relative;
+    margin-top: 10px;
 }
