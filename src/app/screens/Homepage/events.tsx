@@ -43,40 +43,6 @@ useEffect(() => {
     .catch((err) => console.log(err))
 }, [])
 
-    const gevents =[
-        {
-            title:"Welcome to Black Beer",
-            desc: "New Taste, New style, New Dish",
-            author: "Jeff Bezos",
-            date: "2023.11.18",
-            location: "New York City",
-            img: "/restaurant/mamares.jpg",
-        },
-        {
-            title: "Big Sale in our Resto",
-            desc: "only weekends for pizza lovers",
-            author: "JackMA Resto",
-            location: "New York city 16th street",
-            img: "/restaurant/mamares.jpg",
-        },
-        {
-            title: "Feel real taste with us",
-            desc: "Use promocode and get 50% discount",
-            author: "Chicken Mansion",
-            date: "2023.11.26",
-            location: "New York 16th street",
-            img: "/restaurant/mamares.jpg"
-
-        },
-        {
-            title: "New Foods in Our city",
-            desc: "Be the part of our bright future",
-            author: "New York 16th street",
-            date: "2023.11.26",
-            location: "New York 16th street",
-            img: "/restaurant/mamares.jpg"   
-        },
-    ];
     return (
         <div className="events_frame">
             <Container sx={{overflow: "hidden"}}>

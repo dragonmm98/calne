@@ -23,3 +23,7 @@ export const retrieveChosenProduct = createSelector(
     selectRestaurantPage,
     (RestaurantPage) => RestaurantPage.chosenProduct
 );
+export const retrieveComment = createSelector(
+    selectRestaurantPage,
+    (RestaurantPage) => RestaurantPage.comment
+);

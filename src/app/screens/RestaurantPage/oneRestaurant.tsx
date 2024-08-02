@@ -13,9 +13,9 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { Restaurant } from "../../../types/user";
-import { retrieveChosenRestaurant, retrieveRandomRestaurants, retrieveTargetProducts, retrieveTargetRestaurants } from "./selector";
+import { retrieveChosenRestaurant, retrieveComment, retrieveRandomRestaurants, retrieveTargetProducts, retrieveTargetRestaurants } from "./selector";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setChosenRestaurants, setRandomRestaurants, setTargetProducts } from "./slice";
+import { setChosenRestaurants, setRandomRestaurants, setTargetProducts, setComment } from "./slice";
 import { ProductSearchObj } from "../../../types/others";
 import ProductApiService from "../../apiService/productApiService";
 import { Product } from "../../../types/product";
@@ -26,6 +26,15 @@ import { Definer } from "../../../lib/Definer";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 import MemberApiService from "../../apiService/memberApiService";
 import ChatBot from "../../components/chatbot/chat";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import CommunityApiService from "../../apiService/communityApiService";
+import {Comment, SearchCommentObj} from "../../../types/comment"
 
 //Redux Selector
 const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
@@ -37,6 +46,11 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
   const chosenRestaurantRetriever = createSelector(retrieveChosenRestaurant,
     (chosenRestaurant)=>({
         chosenRestaurant,
+    })
+  );
+  const commentRetriever = createSelector(retrieveComment,
+    (comment)=>({
+        comment,
     })
   );
   
@@ -53,6 +67,8 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
     dispach(setChosenRestaurants(data)),
     setTargetProducts: (data:Product[]) => 
     dispach(setTargetProducts(data)),
+    setComment: (data:Comment[])=>
+    dispach(setComment(data)),
   });
 
 
@@ -65,13 +81,19 @@ export function OneRestaurant(props:any) {
 
   const refs: any = useRef([]);
   const history = useHistory();
+  const [searchCommentObj, setSearchCommentObj] = useState<SearchCommentObj>({
+    comment_types: "product",
+    page:1,
+    limit: 5,
+})
 
 
-  const {setRandomRestaurants,setChosenRestaurant,setTargetProducts} = 
+  const {setRandomRestaurants,setChosenRestaurant, setComment, setTargetProducts} = 
   actionDispatch(useDispatch());
   const {randomRestaurants} = useSelector(randomRestaurantRetriever);
   const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
   const {targetProducts} = useSelector(targetProductsRetriever);
+  const {comment} = useSelector(commentRetriever);
 
   const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(dealer_id);
   const [targetProductSearchObj, setTargetProductSearchObj] = useState<ProductSearchObj>({
@@ -95,6 +117,11 @@ export function OneRestaurant(props:any) {
    }).then((data) => setRandomRestaurants(data))
    .catch((err) => console.log (err));
 
+   const commentService = new CommunityApiService();
+   commentService.getChosenComment(searchCommentObj).then((data) => 
+   setComment(data))
+   .catch((err) => console.log(err))
+
   restaurantService
   .getChosenRestaurant(chosenRestaurantId)
   .then((data) => setChosenRestaurants(data))
@@ -105,7 +132,12 @@ export function OneRestaurant(props:any) {
    .getTargetProducts(targetProductSearchObj)
    .then((data) => setTargetProducts(data))
    .catch((err) => console.log(err));
-  }, [targetProductSearchObj,productRebuild,chosenRestaurantId])
+  }, [targetProductSearchObj,productRebuild,chosenRestaurantId,searchCommentObj])
+
+  const handlePaginationChange = (event: any, value: number) => {
+    searchCommentObj.page = value;
+    setSearchCommentObj({...searchCommentObj});}
+
 
   //*****HANDLERS****/
   const chosenRestaurantHandler = (id:string) => {
@@ -150,6 +182,7 @@ export function OneRestaurant(props:any) {
       sweetErrorHandling(err).then();
     }
   }
+ 
 
     return (
         <div className="single_restaurant">
@@ -342,35 +375,43 @@ export function OneRestaurant(props:any) {
                     alignItems: "center",
                 }}
                 >
-                    <Box className={"category_title"}>Feedbacks</Box>
-                    <Stack 
-                    flexDirection={"row"}
-                    display={"flex"}
-                    justifyContent={"space-between"}
-                    width={"100%"}>
-                        {Array.from(Array(4).keys()).map((ele,index) => {
-                            return (
-                                <Box className={"review_box"} key={index}>
-                                    <Box display={"flex"} justifyContent={"center"}>
-                                        <img alt="" src="/community/xasbulla.webp"
-                                        className="review_img"/>
-                                    </Box>
-                                    <span className="review_name">Xasbulla</span>
-                                    <span className="review_prof">Foydalanuvchi</span>
-                                    <p className="review_desc">
-                                        I like this restaurant, ovqatlari juda mazzali Hammaga tavfsiya qilaman
-                                    </p>
-                                    <div className="review_stars">
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F9F9FA", stroke: "#A1A1A1", strokeWidth:1}}/>
-                                        <StarIcon style={{color: "#F9F9FA", stroke: "#A1A1A1",strokeWidth:1}}/>
-                                    </div>
-                                </Box>
-                            );
-                        })}
-                    </Stack>
+                    <Box className={"category_title"}>Comments</Box>
+                  {/* Comment Box */}
+         
+                
+                  <TableContainer component={Paper} 
+                  sx={{mt: "15px", borderRadius: "1%", borderTop: "4mm ridge rgba(211, 220, 50, .6)", width: "100%", height: "auto" }}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow className="table_title" 
+          >
+            <TableCell
+            style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Member name</TableCell>
+            <TableCell align="right"
+             style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Description</TableCell>
+            <TableCell align="right"
+            style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Time</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {comment.map((row) => (
+            <TableRow
+              key={row._id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.members_data.mb_nick}
+              </TableCell>
+              <TableCell align="right">Alex</TableCell>
+              <TableCell align="right">{row.comment_description}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+
+
                 </Container>
              </div>
 

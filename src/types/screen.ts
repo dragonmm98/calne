@@ -4,6 +4,7 @@ import { Order } from "./order";
 import { Product } from "./product";
 import { Member, Restaurant } from "./user";
 import { Event } from "./events";
+import { Comment } from "./comment";
 
 export interface AppRootState {
     homePage: HomePageState;
@@ -31,6 +32,7 @@ export interface RestaurantPageState {
     chosenRestaurant: Restaurant | null;
     targetProducts: Product[];
     chosenProduct: Product | null;
+    comment: Comment[];
 }
 
 

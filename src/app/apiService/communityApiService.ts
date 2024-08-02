@@ -4,6 +4,7 @@ import assert from "assert";
 import { Definer } from "../../lib/Definer";
 import { BoArticle, BoArticleInput, SearchArticleObj, SearchMemberArticlesObj } from "../../types/boArticle";
 import {Event} from "../../types/events"
+import { Comment, SearchCommentObj } from "../../types/comment";
 
 class CommunityApiService {
     private readonly path : string;
@@ -141,6 +142,27 @@ public async getChosenEvents (): Promise<Event[]> {
           
     } catch (err:any) {
         console.log(`ERROR::: getChosenEvents ${err.message}`);
+        throw err;
+    }
+}
+public async getChosenComment (data: SearchCommentObj): Promise<Comment[]> {
+    try{
+        let url = `/community/comments?&page=${data.page}&limit=${data.limit}&comment_types=${data.comment_types}`;
+      
+      
+        const result = await axios.get(this.path + url, {
+            withCredentials: true,
+          });
+
+          assert.ok(result?.data, Definer.general_err1);
+          assert.ok(result?.data?.state != "fail", result?.data?.message);
+          console.log("state::comments", result.data.state);
+
+          const comments: Comment[] = result.data.data;
+          return comments;
+          
+    } catch (err:any) {
+        console.log(`ERROR::: getChosenComments ${err.message}`);
         throw err;
     }
 } 
