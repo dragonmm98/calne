@@ -4,7 +4,7 @@ import assert from "assert";
 import { Definer } from "../../lib/Definer";
 import { BoArticle, BoArticleInput, SearchArticleObj, SearchMemberArticlesObj } from "../../types/boArticle";
 import {Event} from "../../types/events"
-import { Comment, SearchCommentObj } from "../../types/comment";
+import { Comment, CommentInput, SearchCommentObj } from "../../types/comment";
 
 class CommunityApiService {
     private readonly path : string;
@@ -76,6 +76,24 @@ public async createArticle (data: BoArticleInput): Promise<BoArticle> {
           
     } catch (err:any) {
         console.log(`ERROR::: createArticle ${err.message}`);
+        throw err;
+    }
+} 
+public async createComment (data: CommentInput): Promise<Comment> {
+    try{
+        const result = await axios.post(this.path + "/comment/create", data, {
+            withCredentials: true,
+          });
+
+          assert.ok(result?.data, Definer.general_err1);
+          assert.ok(result?.data?.state != "fail", result?.data?.message);
+          console.log("state::", result.data.state);
+
+          const comment: Comment = result.data.data;
+          return comment;
+          
+    } catch (err:any) {
+        console.log(`ERROR::: createComment ${err.message}`);
         throw err;
     }
 } 

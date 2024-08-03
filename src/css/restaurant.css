@@ -354,6 +354,8 @@
     width: 100%;
     height: 630px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #0d1518;
 }
 .restaurant_page .single_restaurant .category_title {
@@ -984,4 +986,27 @@ border-radius: 15px;
 .button_comment {
     position: relative;
     margin-top: 10px;
+}
+
+.leave-review-config {
+     width: 60%;
+    height: 500px;
+    margin-top: 2px;
+}
+.leave-review-config .category_title{
+    font-family: "Dancing script";
+    font-style:unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #e3c08d;
+   
+}
+.leave-review-config textarea {
+    width: 100%;
+    height: 90px;   
 }

@@ -15,3 +15,8 @@ export interface SearchCommentObj {
     limit: number;
     comment_types: string;
 }
+
+export interface CommentInput {
+    comment_types:string;
+    comment_description: string;
+}
