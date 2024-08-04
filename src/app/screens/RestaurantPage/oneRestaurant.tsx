@@ -8,7 +8,7 @@ import  ArrowForwardIosIcon  from "@mui/icons-material/ArrowBackIos";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import RemovedRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import  MonetizationOnIcon  from "@mui/icons-material/MonetizationOn";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 //*****REDUX *****/
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -85,7 +85,7 @@ export function OneRestaurant(props:any) {
   const [searchCommentObj, setSearchCommentObj] = useState<SearchCommentObj>({
     comment_types: "product",
     page:1,
-    limit: 5,
+    limit: 20,
 })
 const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
   comment_description: "",
@@ -201,7 +201,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
     const communityApiService = new CommunityApiService();
     await communityApiService.createComment(commentWriteData);
     await sweetTopSmallSuccessAlert('Comment submitted successfully') 
-
+    setproductRebuild(new Date())
   } catch (err) {
     console.log (`ERROR ::: handleWriteCommentButton ${err}`)
     sweetErrorHandling(err).then();
@@ -392,7 +392,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 
              <div className="review_for_restaurant">
                 <Container
-                sx={{mt: "100px"}}
+                sx={{mt: "1px"}}
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -404,7 +404,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
          
                 
                   <TableContainer component={Paper} 
-                  sx={{mt: "15px", borderRadius: "1%", borderTop: "4mm ridge rgba(211, 220, 50, .6)", width: "100%", height: "auto" }}>
+                  sx={{mt: "15px", borderRadius: "1%", borderTop: "4mm ridge rgba(211, 220, 50, .6)", width: "100%", maxHeight: "370px",  overflow: "auto" }}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow className="table_title" 

@@ -39,10 +39,6 @@ export const TuiEditor = (props: any) => {
         communityArticleData.bo_id = e.target.value;
         setCommunityArticleData({...communityArticleData});
     }
-    // const changeTitleHandler = (e:any) => {
-    //     communityArticleData.art_subject = e.target.value;
-    //     setCommunityArticleData({...communityArticleData});
-    // }
 
     const changeTitleHandler  = useCallback(
       (e:any) => {
