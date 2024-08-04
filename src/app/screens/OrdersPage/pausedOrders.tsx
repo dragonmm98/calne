@@ -97,21 +97,12 @@ export default function PausedOrders (props:any) {
 
                                <Box className={"total_price_box black_solid"}>
                                 <Box className={"boxTotal"}>
-                                    <p>mahsulot narxi </p>
-                                    <p>${order.order_total_amount - order.order_delivery_cost}</p>
-                                    <img src="/icons/plus.svg" alt="" style={{marginLeft: "20px"}}/>
-                                    <p>yetkazish xizmati </p>
-                                    <p>${order.order_delivery_cost} </p>
-                                    <img src="/icons/pause.svg" alt="" 
-                                    style={{ marginLeft: "20px"}}/>
-                                    <p>Jami narx </p>
-                                    <p>${order.order_total_amount}</p>
                                 </Box>
                            
                                   <Button className="red_button_box" variant="contained" 
                                   onClick={deleteOrderHandler}
                                   value={order._id}
-                                  >bekor qilish</Button>
+                                  >Cancel</Button>
                                 
                               
                                   <Button
@@ -120,7 +111,7 @@ export default function PausedOrders (props:any) {
                                    className="blue_button_box"
                                     variant="contained"
 
-                                   > To'lash</Button>
+                                   > Pay</Button>
                                  
 
                                </Box>

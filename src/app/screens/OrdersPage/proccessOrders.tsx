@@ -78,14 +78,9 @@ export default function ProcessOrders (props:any) {
 
                                <Box className={"total_price_box1 blue_solid"}>
                                 <Box className={"boxTotal"}>
-                                    <p>mahsulot narxi </p>
+                                    <p>Product Price </p>
                                     <p>${order.order_total_amount - order.order_delivery_cost}</p>
-                                    <img src="/icons/plus.svg" alt="" style={{marginLeft: "20px"}}/>
-                                    <p>yetkazish xizmati </p>
-                                    <p>${order.order_delivery_cost} </p>
-                                    <img src="/icons/pause.svg" alt="" 
-                                    style={{ marginLeft: "20px"}}/>
-                                    <p>Jami narx </p>
+                                    <p>Total Price </p>
                                     <p>${order.order_total_amount}</p>
                                 </Box>
                                 <p className="data_comp">
@@ -96,7 +91,7 @@ export default function ProcessOrders (props:any) {
                                 variant="contained"
                                 value={order._id}
                                 onClick={finishOrderHandler}
-                                  > Yakunlash
+                                  > Finish
 
                                 </Button>
                                </Box>

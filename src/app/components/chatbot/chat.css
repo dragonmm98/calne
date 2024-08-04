@@ -25,7 +25,7 @@
 #chatCon .chat-box .msg-area {
   position: relative;
   overflow: auto;
-  max-height: 370px;
+  height: 370px;
   padding: 15px;
 }
 
