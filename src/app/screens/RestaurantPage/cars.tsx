@@ -1,11 +1,11 @@
 import { Badge, Box, Button, Checkbox, Container, Stack } from "@mui/material";
 import "../../../css/cars.css";
 import React, { useEffect, useRef, useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
 import StarIcon from "@mui/icons-material/Star";
-import  ArrowBackIosNewIcon  from "@mui/icons-material/ArrowBackIosNew";
-import { Swiper, SwiperSlide } from "swiper/react";
-import  ArrowForwardIosIcon  from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import RemovedRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import  MonetizationOnIcon  from "@mui/icons-material/MonetizationOn";
@@ -14,10 +14,10 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { Restaurant } from "../../../types/user";
-import { retrieveChosenRestaurant, retrieveRandomRestaurants, retrieveTargetProducts, retrieveTargetRestaurants } from "./selector";
+import { retrieveChosenRestaurant, retrieveRandomRestaurants, retrieveTargetProducts } from "./selector";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setChosenRestaurants, setRandomRestaurants, setTargetProducts } from "./slice";
-import { CarSearchObj, ProductSearchObj } from "../../../types/others";
+import { CarSearchObj, ProductSearchObj, ProductSearchObjCars } from "../../../types/others";
 import ProductApiService from "../../apiService/productApiService";
 import { Product } from "../../../types/product";
 import { serverApi } from "../../../lib/config";
@@ -45,6 +45,7 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
         targetProducts,
     })
   );
+
   //Redux Slice
   const actionDispatch = (dispach: Dispatch) => ({
     setRandomRestaurants: (data:Restaurant[]) =>
@@ -67,22 +68,17 @@ export function Cars (props:any) {
   const history = useHistory();
 
 
-  const {setRandomRestaurants,setChosenRestaurant,setTargetProducts} = 
+  const {setTargetProducts,} = 
   actionDispatch(useDispatch());
-  const {randomRestaurants} = useSelector(randomRestaurantRetriever);
-  const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);
   const {targetProducts} = useSelector(targetProductsRetriever);
 
+
   const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(dealer_id);
-  const [targetProductSearchObj, setTargetProductSearchObj] = useState<ProductSearchObj>({
+  const [targetProductSearchObj, setTargetProductSearchObj] = useState<CarSearchObj>({
     page: 1,
     limit: 8,
     order: "createdAt",
-    product_size: "ORDINARY"
-  });
-
-  const [targetsizeSearchObj, setTargetsizeSearchObj] = useState<CarSearchObj>({
-    product_size: "ORDINARY"
+    product_size: ""
   });
 
 
@@ -91,40 +87,29 @@ export function Cars (props:any) {
   useEffect(() => {
     
 
-   const restaurantService = new RestaurantApiService ();
-   restaurantService.getRestaurants({
-    page: 1,
-    limit: 10,
-    order: "random"
-   }).then((data) => setRandomRestaurants(data))
-   .catch((err) => console.log (err));
 
-  restaurantService
-  .getChosenRestaurant(chosenRestaurantId)
-  .then((data) => setChosenRestaurants(data))
-  .catch((err) => console.log(err)); 
 
    const productService = new ProductApiService();
    productService
-   .getTargetProducts(targetProductSearchObj)
+   .getSizeProducts(targetProductSearchObj)
    .then((data) => setTargetProducts(data))
    .catch((err) => console.log(err));
 
-   productService.getSizeProducts(targetsizeSearchObj)
-   .then((data) => setTargetProducts(data))
-   .catch((err) => console.log(err))
-  }, [targetProductSearchObj,productRebuild,targetsizeSearchObj])
+  }, [targetProductSearchObj,productRebuild])
 
   //*****HANDLERS****/
   
     const searchCollectionHandler = (size:string) => {;
-        targetsizeSearchObj.product_size = size;
-        setTargetsizeSearchObj({...targetsizeSearchObj});
+        targetProductSearchObj.page = 1;
+        targetProductSearchObj.order="";
+        targetProductSearchObj.product_size = size;
+        setTargetProductSearchObj({...targetProductSearchObj});
     }
 
     
     const searchOrderHandler = (order:string) => {
         targetProductSearchObj.page = 1;
+        targetProductSearchObj.product_size="";
         targetProductSearchObj.order = order;
         setTargetProductSearchObj({...targetProductSearchObj});
 
@@ -151,6 +136,11 @@ export function Cars (props:any) {
       sweetErrorHandling(err).then();
     }
   }
+
+  const handlePaginationChange = (event: any , value: number) => {
+    targetProductSearchObj.page = value; 
+    setTargetProductSearchObj({...targetProductSearchObj});
+  };
 
     return (
         <div className="single_cars">
@@ -285,9 +275,29 @@ export function Cars (props:any) {
                                     </Box>
                                 );
                             })}
+                    
                         </Stack>
+                        
                     </Stack>
-                
+
+                        <Stack className="bottom_box"
+                        style={{ marginTop: "35px"}}>
+                            <Pagination
+                        count={
+                          targetProductSearchObj.page >= 3 ? targetProductSearchObj.page + 1 : 3
+                        }
+                        page={targetProductSearchObj.page}
+                        renderItem={(item) => (
+                            <PaginationItem 
+                            components={{
+                                previous: ArrowBackIcon,
+                                next:ArrowForwardIcon,
+                            }} {...item}
+                            color={"secondary"} />
+                        )} 
+                        onChange={handlePaginationChange}
+                        />
+                        </Stack>
                 </Stack>
             </Container>
 

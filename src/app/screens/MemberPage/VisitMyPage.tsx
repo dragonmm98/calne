@@ -162,7 +162,7 @@ export function VisitMyPage(props: any) {
                                      <MemberFollowers actions_enabled={true}
                                      setFollowRebuild={setFollowRebuild}
                                      followRebuild={followRebuild}
-                                     mb_id={props.verifiedMemberData?._id}/>
+                                     mb_id={verifiedMemberData?._id}/>
                                     </Box>
                                 </TabPanel>
 
@@ -172,7 +172,7 @@ export function VisitMyPage(props: any) {
                                         <MemberFollowing actions_enabled={true}
                                         setFollowRebuild={setFollowRebuild}
                                         followRebuild={followRebuild}
-                                        mb_id={props.verifiedMemberData?._id}/>
+                                        mb_id={verifiedMemberData?._id}/>
     
                                     </Box>
                                 </TabPanel>

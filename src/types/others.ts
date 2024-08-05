@@ -11,8 +11,17 @@ export interface ProductSearchObj {
     dealers_mb_id?: string,
     product_size?: string;
 }
+export interface ProductSearchObjCars {
+    page: number,
+    limit: number,
+    order: string,
+    dealers_mb_id?: string,
+}
 export interface CarSearchObj {
-    product_size: string;
+    page: number,
+    limit: number,
+    order: string,
+    product_size?: string | null;
 }
 
 export interface MemberLiken {

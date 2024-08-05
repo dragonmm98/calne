@@ -9,7 +9,7 @@ import { setBestBoArticles, setNewsBoArticles, setTrendBoArticles } from "./slic
 import { retrievebestBoArticles, retrievenewsBoArticles, retrievetrendBoArticles } from "./selector";
 import CommunityApiService from "../../apiService/communityApiService";
 import { serverApi } from "../../../lib/config";
-import TViewer from "../../components/TuiEditor/TViewer";
+
 
 
   //Redux Slice
@@ -48,7 +48,7 @@ export function Recommendation () {
      actionDispatch(useDispatch());
      const {bestBoArticles} = useSelector(bestBoArticlesRetriever);
      const {trendBoArticles} = useSelector(trendBoArticlesRetriever);
-     const {newsBoArticles} = useSelector(newsBoArticlesRetriever);
+    
      
      useEffect(() => {
        const communityService = new CommunityApiService();
@@ -155,17 +155,7 @@ export function Recommendation () {
                             })}
 
                       </Stack>
-                      <Stack className="article_container">
-                            <Box className="article_category">Famous People</Box>
-                            {newsBoArticles?.map((article: BoArticle) => {
-                                return (
-                                    <Box className="article_news">
-                                   <TViewer chosenSingleBoArticle={article} />
-                                </Box>
-                                )
-                            })}
-                            
-                        </Stack>
+                     
 
 
 

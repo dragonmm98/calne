@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import { Box, Checkbox, Stack } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import  FavoriteIcon  from "@mui/icons-material/Favorite";
 import { Typography } from "@mui/joy";
 import { BoArticle } from "../../../types/boArticle";
 import { serverApi } from "../../../lib/config";
@@ -60,6 +59,7 @@ const targetLikeHandler = async (e:any) => {
                                 width={"35px"}
                                 height={"35px"}
                                 style={{borderRadius: "50%", backgroundSize: "cover"}}
+                                alt=""
                                 />
                                 <span className="all_article_author_user">
                                     {article?.members_data?.mb_nick}</span>

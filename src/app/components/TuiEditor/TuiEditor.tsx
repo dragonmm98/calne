@@ -9,6 +9,7 @@ import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/swee
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import { useHistory } from "react-router-dom";
+import "../../../css/tuieditor.css"
 
 
 export const TuiEditor = (props: any) => {
@@ -117,7 +118,7 @@ export const TuiEditor = (props: any) => {
             </Stack>
             
             <Editor
-            initialValue="  "
+            initialValue=""
             placeholder="Type Here"
             previewStyle="vertical"
             height="640px"

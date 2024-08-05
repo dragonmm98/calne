@@ -1010,3 +1010,27 @@ border-radius: 15px;
     width: 100%;
     height: 90px;   
 }
+
+.all_restaurant .category_title {
+    font-family: "Dancing script";
+    font-style:unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #e3c08d;
+}
+.all_restaurant .leave-review-config textarea {
+    width: 100%;
+    height: 90px;   
+    align-items: center;
+}
+.all_restaurant .leave-review-config {
+    width: 96%;
+    margin-left: 20px;
+    height: 500px;
+    margin-top: 10px;
+}

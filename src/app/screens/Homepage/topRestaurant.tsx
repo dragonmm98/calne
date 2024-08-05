@@ -12,7 +12,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 //Redux
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import {retrieveTopRestaurants} from "../../screens/Homepage/selector";
+import {retrieveTopRestaurants} from "./selector";
 import { Restaurant } from "../../../types/user";
 //Others
 import { serverApi } from "../../../lib/config";

@@ -285,7 +285,7 @@ export function VisitOtherPage(props: any) {
                                         variant="contained"
                                         onClick={unsubscribeHandler}
                                         > 
-                                        Bekor Qilish
+                                        Unfollow
                                         </Button>
                                     )}
                                     />               
@@ -301,7 +301,7 @@ export function VisitOtherPage(props: any) {
                                         variant="contained"
                                         onClick={subscribeHandler}
                                         > 
-                                        Follow Qilish
+                                        Follow 
                                         </Button>
                                     )}
                                     />

@@ -35,7 +35,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CommunityApiService from "../../apiService/communityApiService";
 import {Comment, CommentInput, SearchCommentObj} from "../../../types/comment"
-import Textarea from "@mui/joy/Textarea";
+
 
 //Redux Selector
 const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
@@ -200,7 +200,8 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 
     const communityApiService = new CommunityApiService();
     await communityApiService.createComment(commentWriteData);
-    await sweetTopSmallSuccessAlert('Comment submitted successfully') 
+    await sweetTopSmallSuccessAlert('Comment submitted successfully')
+    commentWriteData.comment_description = '' 
     setproductRebuild(new Date())
   } catch (err) {
     console.log (`ERROR ::: handleWriteCommentButton ${err}`)
@@ -451,6 +452,8 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
                 <Stack className={'leave-review-config'}>
                 <Box className={"category_title"}> Write Comment</Box>
 									<textarea
+                  placeholder="Only Product based comments"
+                  value={commentWriteData.comment_description}
                   onChange={ChangeDescriptionHandler}
 									></textarea>
 									<Box className={'submit-btn'} component={'div'}>
