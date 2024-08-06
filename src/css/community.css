@@ -14,14 +14,16 @@
 .community_page .chat_frame {
     width: 30%;
     height: 1150px;
-
     display: flex;
     flex-direction: column;
-    background: #e3f2fd;
+    background: transparent;
     border: 1px solid #ffffff;
     border-radius: 34px;
-
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgb(209 218 137 / 15%) 0px -36px 30px 0px inset, rgb(151 207 82 / 10%) 0px -79px 40px 0px inset, rgb(123 198 148 / 6%) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgb(218 235 187 / 9%) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgb(239 205 205 / 9%) 0px 32px 16px;
+    box-shadow: 2px blueviolet;
 }
+
+
 
 .community_page .community_all_frame {
     width: 68%;
@@ -45,7 +47,8 @@
     font-weight: 600;
     font-size: 36px;
     line-height: 54px;
-    color: #000000;
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    color: #e8c4c4;
 }
 
 .community_page .chat_content {
@@ -273,4 +276,8 @@ line-height: 26px; /* 162.5% */
     align-items: center;
     margin-left: 30px;
     gap: 16px;
+}
+.css-rxbhh6 {
+    flex-direction: row;
+    margin: 10px 10px;
 }

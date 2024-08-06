@@ -16,7 +16,7 @@ const NewMessage = (data: any) => {
      return (
         <Box
             flexDirection={"row"}
-            style={{display: "flex", justifyContent:"flex-end"}}
+            style={{display: "flex", justifyContent:"flex-end", marginLeft: "10px"}}
             sx={{m: "10px 0px"}}
             >
             <div className="msg_right">{data.new_message.msg}</div>
@@ -68,6 +68,7 @@ export function CommunityChats() {
             //@ts-ignore
              <p 
              style={{
+                color: "white",
                 textAlign: "center",
                 fontSize: "large",
                 fontFamily: "sans-serif",

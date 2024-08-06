@@ -1,14 +1,12 @@
 import { Badge, Box, Button, Checkbox, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import StarIcon from "@mui/icons-material/Star";
 import  ArrowBackIosNewIcon  from "@mui/icons-material/ArrowBackIosNew";
 import { Swiper, SwiperSlide } from "swiper/react";
 import  ArrowForwardIosIcon  from "@mui/icons-material/ArrowBackIos";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import RemovedRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import  MonetizationOnIcon  from "@mui/icons-material/MonetizationOn";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 //*****REDUX *****/
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -93,7 +91,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 })
 
 
-  const {setRandomRestaurants,setChosenRestaurant, setComment, setTargetProducts} = 
+  const {setRandomRestaurants, setComment, setTargetProducts} = 
   actionDispatch(useDispatch());
   const {randomRestaurants} = useSelector(randomRestaurantRetriever);
   const {chosenRestaurant} = useSelector(chosenRestaurantRetriever);

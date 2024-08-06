@@ -14,35 +14,36 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { Restaurant } from "../../../types/user";
-import { retrieveChosenRestaurant, retrieveRandomRestaurants, retrieveTargetProducts } from "./selector";
+import {  retrieveComment, retrieveTargetProducts } from "./selector";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setChosenRestaurants, setRandomRestaurants, setTargetProducts } from "./slice";
-import { CarSearchObj, ProductSearchObj, ProductSearchObjCars } from "../../../types/others";
+import { setChosenRestaurants, setComment, setRandomRestaurants, setTargetProducts } from "./slice";
+import { CarSearchObj } from "../../../types/others";
 import ProductApiService from "../../apiService/productApiService";
 import { Product } from "../../../types/product";
 import { serverApi } from "../../../lib/config";
-import RestaurantApiService from "../../apiService/restaurantApiService";
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 import MemberApiService from "../../apiService/memberApiService";
-
+import {Comment, CommentInput, SearchCommentObj} from "../../../types/comment"
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import CommunityApiService from "../../apiService/communityApiService";
 //Redux Selector
-const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
-    (randomRestaurants)=>({
-        randomRestaurants,
-    })
-  );
-  
-  const chosenRestaurantRetriever = createSelector(retrieveChosenRestaurant,
-    (chosenRestaurant)=>({
-        chosenRestaurant,
-    })
-  );
   
   const targetProductsRetriever = createSelector(retrieveTargetProducts,
     (targetProducts)=>({
         targetProducts,
+    })
+  );
+  const commentRetriever = createSelector(retrieveComment,
+    (comment)=>({
+        comment,
     })
   );
 
@@ -54,6 +55,8 @@ const randomRestaurantRetriever = createSelector(retrieveRandomRestaurants,
     dispach(setChosenRestaurants(data)),
     setTargetProducts: (data:Product[]) => 
     dispach(setTargetProducts(data)),
+    setComment: (data:Comment[])=>
+    dispach(setComment(data)),
   });
 
 
@@ -66,12 +69,21 @@ export function Cars (props:any) {
 
   const refs: any = useRef([]);
   const history = useHistory();
+  const [searchCommentObj, setSearchCommentObj] = useState<SearchCommentObj>({
+    comment_types: "product",
+    page:1,
+    limit: 20,
+})
+const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
+  comment_description: "",
+  comment_types: "product"
+})
 
 
-  const {setTargetProducts,} = 
+  const {setTargetProducts,setComment} = 
   actionDispatch(useDispatch());
   const {targetProducts} = useSelector(targetProductsRetriever);
-
+  const {comment} = useSelector(commentRetriever);
 
   const [chosenRestaurantId, setChosenRestaurantId] = useState<string>(dealer_id);
   const [targetProductSearchObj, setTargetProductSearchObj] = useState<CarSearchObj>({
@@ -87,7 +99,10 @@ export function Cars (props:any) {
   useEffect(() => {
     
 
-
+    const commentService = new CommunityApiService();
+    commentService.getChosenComment(searchCommentObj).then((data) => 
+    setComment(data))
+    .catch((err) => console.log(err))
 
    const productService = new ProductApiService();
    productService
@@ -117,6 +132,29 @@ export function Cars (props:any) {
   const chosenDishHandler = (id:string) => {
     history.push(`/dealer/dish/${id}`)
   }
+
+ //comment mecanism 
+ const ChangeDescriptionHandler = (e:any) => {
+    commentWriteData.comment_description = e.target.value;
+    setCommentWriteData({...commentWriteData})
+   }
+  
+   const handleWriteCommentButton = async () => {
+    try {
+      assert.ok(commentWriteData.comment_description !== '',
+      Definer.input_err1)
+  
+      const communityApiService = new CommunityApiService();
+      await communityApiService.createComment(commentWriteData);
+      await sweetTopSmallSuccessAlert('Comment submitted successfully')
+      commentWriteData.comment_description = '' 
+      setproductRebuild(new Date())
+    } catch (err) {
+      console.log (`ERROR ::: handleWriteCommentButton ${err}`)
+      sweetErrorHandling(err).then();
+    }
+   };
+
     
   //like mechanism
   const targetLikeProduct = async (e:any): Promise<void> => {
@@ -301,45 +339,101 @@ export function Cars (props:any) {
                 </Stack>
             </Container>
 
-             <div className="review_for_restaurant">
+            <div className="review_for_restaurant">
                 <Container
-                sx={{mt: "100px"}}
+                sx={{mt: "15px"}}
                 style={{
                     display: "flex",
+                    flexWrap: "wrap",
                     flexDirection: "column",
                     alignItems: "center",
                 }}
                 >
-                    <Box className={"category_title"}>Feedbacks</Box>
-                    <Stack 
-                    flexDirection={"row"}
-                    display={"flex"}
-                    justifyContent={"space-between"}
-                    width={"100%"}>
-                        {Array.from(Array(4).keys()).map((ele,index) => {
-                            return (
-                                <Box className={"review_box"} key={index}>
-                                    <Box display={"flex"} justifyContent={"center"}>
-                                        <img alt="" src="/community/xasbulla.webp"
-                                        className="review_img"/>
-                                    </Box>
-                                    <span className="review_name">Xasbulla</span>
-                                    <span className="review_prof">Foydalanuvchi</span>
-                                    <p className="review_desc">
-                                        I like this restaurant, ovqatlari juda mazzali Hammaga tavfsiya qilaman
-                                    </p>
-                                    <div className="review_stars">
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F2BD57"}}/>
-                                        <StarIcon style={{color: "#F9F9FA", stroke: "#A1A1A1", strokeWidth:1}}/>
-                                        <StarIcon style={{color: "#F9F9FA", stroke: "#A1A1A1",strokeWidth:1}}/>
-                                    </div>
-                                </Box>
-                            );
-                        })}
-                    </Stack>
-                </Container>
+                    <Box className={"category_title"}>Comments</Box>
+                  {/* Comment Box */}
+         
+                
+                  <TableContainer component={Paper} 
+                  sx={{mt: "15px", borderRadius: "1%", borderTop: "4mm ridge rgba(211, 220, 50, .6)", width: "100%", maxHeight: "370px",  overflow: "auto" }}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow className="table_title" 
+          >
+            <TableCell
+            style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Member name</TableCell>
+            <TableCell align="right"
+             style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Description</TableCell>
+            <TableCell align="right"
+            style={{color: "black", lineHeight: "10px", fontSize: "30px"}}>Time</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {comment?.map((data: Comment) => (
+            <TableRow
+              key={data._id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row"
+              style={{color: "black", lineHeight: "5px", fontSize: "20px", fontWeight: "bold"}}>
+                {data.members_data.mb_nick}
+              </TableCell>
+              <TableCell align="right">{data.comment_description}</TableCell>
+              {/* @ts-ignore */}
+              <TableCell align="right"
+              style={{color: "black", lineHeight: "10px", fontSize: "15px"}}>
+             {new Date(data.createdAt).toLocaleString('en-US', {
+               year: 'numeric',
+               month: '2-digit',
+               day: '2-digit',
+               hour: '2-digit',
+               minute: '2-digit',
+               hour12: false
+  })}
+</TableCell>
+
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+              
+                </Container> 
+                <Stack className={'leave-review-config'}>
+                <Box className={"category_title"}> Write Comment</Box>
+									<textarea
+                  placeholder="Only Product based comments"
+                  value={commentWriteData.comment_description}
+                  onChange={ChangeDescriptionHandler}
+									></textarea>
+									<Box className={'submit-btn'} component={'div'}>
+										<Button
+											className={'submit-review'}
+											
+											
+										>
+											    <div className="button_comment">
+                        <Button variant="contained"
+                        onClick={handleWriteCommentButton}
+                        >Submit</Button>
+                      </div>
+											<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+												<g clipPath="url(#clip0_6975_3642)">
+													<path
+														d="M16.1571 0.5H6.37936C6.1337 0.5 5.93491 0.698792 5.93491 0.944458C5.93491 1.19012 6.1337 1.38892 6.37936 1.38892H15.0842L0.731781 15.7413C0.558156 15.915 0.558156 16.1962 0.731781 16.3698C0.818573 16.4566 0.932323 16.5 1.04603 16.5C1.15974 16.5 1.27345 16.4566 1.36028 16.3698L15.7127 2.01737V10.7222C15.7127 10.9679 15.9115 11.1667 16.1572 11.1667C16.4028 11.1667 16.6016 10.9679 16.6016 10.7222V0.944458C16.6016 0.698792 16.4028 0.5 16.1571 0.5Z"
+														fill="#181A20"
+													/>
+												</g>
+												<defs>
+													<clipPath id="clip0_6975_3642">
+														<rect width="16" height="16" fill="white" transform="translate(0.601562 0.5)" />
+													</clipPath>
+												</defs>
+											</svg>
+										</Button>
+									</Box>
+								</Stack>
+
+
              </div>
 
         </div>

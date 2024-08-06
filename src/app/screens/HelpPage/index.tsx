@@ -3,10 +3,12 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Container, 
 import React from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useHistory } from "react-router-dom";
 
 export function HelpPage() {
     //** INITIALZIATION **/
     const [value,setValue] = React.useState("1");
+    const history  = useHistory()
 
     const FAQ = [
      {
@@ -43,7 +45,9 @@ export function HelpPage() {
         setValue(newValue);
     };
 
-
+    const handleButton = () => {
+        history.push("/")
+    }
     return(
         <div className="help_page"> 
         <Container maxWidth={"lg"} sx={{mt: "50px", mb: "50px"}}>
@@ -136,7 +140,8 @@ export function HelpPage() {
                                         justifyContent={"flex-end"}
                                         sx={{mt: "30px"}}
                                         >
-                                            <Button type="submit" variant="contained">
+                                            <Button type="submit" variant="contained"
+                                            onClick={handleButton}>
                                                 Send
                                             </Button>
                                         </Box>

@@ -82,7 +82,7 @@ export function MemberFollowing (props: any) {
             {memberFollowings.map((following: Following) => {
                  const image_url = following?.follow_member_data?.mb_image 
                  ? `${serverApi}/${following.follow_member_data.mb_image}` 
-                 : "/icons/default_user.svg";
+                 : "/dealers/cardealer.jpg";
                 return (
                     <Box className={"follow_box"}>
                         <Avatar
@@ -115,7 +115,7 @@ export function MemberFollowing (props: any) {
                                 className={"follow_cancel_btn"}
                                 onClick={(e) => unsubscribeHandler(e, following?.follow_id)}
                                 >
-                                  Bekor Qilish
+                                  Unfollow
                                 </Button>
                             )}
                     </Box>
