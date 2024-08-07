@@ -4,15 +4,19 @@ import { Badge, Box, Button, Container, IconButton, ListItemIcon, Menu, MenuItem
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Basket from "./basket";
+import "../../../css/responsive.css"
+
 
 export function NavbarHome (props:any) {
   
     
     const [value, setValue] = useState(true);
 
+ 
+
 
     return (
-    <div className="format home_navbar">
+    <div className="format home_navbar" >
         <Container>
             <Stack flexDirection={'row'} className="navbar_config" justifyContent={"space-between"}>
             <Box>
@@ -122,7 +126,7 @@ export function NavbarHome (props:any) {
                     <Box className="timeline_serv"></Box>
                     <Box sx={{mt:'90px'}}>
                         {!props.verifiedMemberData ? (
-                    <Button variant="contained" style={{width: '210px', height: '60px', background: 'transparent', color:'#FFFF', border: "1px inset"}} 
+                    <Button variant="contained" style={{width: '210px', height: '60px', background: '#0E0E0E', color:'#FFFF', border: "1px inset"}} 
                     onClick={props.handleSignUpOpen}>Register</Button>
                         ) : null}
                

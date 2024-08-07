@@ -189,7 +189,7 @@ export function ChosenDish(props:any) {
                             </div>
                             <div style={{display: "flex", alignItems:"center"}}>
                                 <RemovedRedEyeIcon style={{width: "32px", height: "24px"}} sx={{mr: "10px"}}/>
-                                <span className="eye_txt">{chosenProduct?.product_views} ta</span>
+                                <span className="eye_txt">{chosenProduct?.product_views} views</span>
                                 
                             </div>
                         </div>
@@ -206,7 +206,7 @@ export function ChosenDish(props:any) {
                      </div>
                      <div className="button_box">
                         <Button variant="contained"
-                        onClick={() => {props.onAdd(chosenProduct)}}>Send Message</Button>
+                        onClick={() => {props.onAdd(chosenProduct)}}>Send to buy</Button>
                      </div>
                 </Stack>
                 <ChatBot/>

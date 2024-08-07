@@ -132,24 +132,25 @@ export default function AuthenticationModal(props: any) {
               <h2>SignUp Form</h2>
               <TextField
                 onChange={handleUsername}
-                sx={{ marginTop: "7px" }}
+                sx={{ marginTop: "7px", background: "#AD9FAC" }}
                 id="outlined-basic"
                 label="username"
-                variant="outlined"
+                variant="filled"
               />
               <TextField
                 onChange={handlePhone}
-                sx={{ my: "17px" }}
+                sx={{ my: "17px", background: "#AD9FAC" }}
                 id="outlined-basic"
                 label="phone number"
-                variant="outlined"
+                variant="filled"
               />
               <TextField
+              sx={{ background: "#AD9FAC" }}
                 onChange={handlePassword}
                 onKeyDown={passwordKeyDownHandler}
                 id="outlined-basic"
                 label="password"
-                variant="outlined"
+                variant="filled"
               />
               <Fab
                 onClick={handleSignUpRequest}
@@ -197,15 +198,16 @@ export default function AuthenticationModal(props: any) {
                 onChange={handleUsername}
                 id="outlined-basic"
                 label="username"
-                variant="outlined"
-                sx={{ my: "10px" }}
+                variant="filled"
+                sx={{ my: "10px",  background: "#AD9FAC" }}
               />
               <TextField
+              sx={{ background: "#AD9FAC" }}
                 onChange={handlePassword}
                 onKeyDown={passwordKeyDownHandler}
                 id="outlined-basic"
                 label="password"
-                variant="outlined"
+                variant="filled"
               />
               <Fab
                 onClick={handleLoginRequest}

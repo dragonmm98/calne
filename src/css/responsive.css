@@ -1,0 +1,155 @@
+
+  @media (max-width: 1144px) {
+    .home_navbar .navbar_links {
+      display: none;
+    }
+  }
+  
+
+  @media (max-width: 1200px) {
+    .home_navbar .navbar_config {
+        width: 780px;
+        display: flex;
+        align-items: center;
+        margin-left: 26px;
+    }
+}
+@media (max-width: 1400px) {
+.home_navbar .define_restaurant {
+    width: 484px;
+    height: 143px;
+    margin-left: 60px;
+    margin-top: 40px;
+    position: relative;
+    color: #ffffff;
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 45px;
+}
+}
+ @media (max-width: 1400px) { 
+.home_navbar .head_information {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    width: 1290px;
+    height: 477px;
+}
+ }
+ @media(max-width: 1400px) {
+ .css-0 {
+    margin-left: 80px;
+}
+ }
+
+ @media (max-width: 1400px) {
+    .css-dcqh17-MuiStack-root {
+        flex-wrap: wrap;
+    }
+ }
+
+ @media (max-width: 390px) {
+  .home_navbar .navbar_links {
+    display: none;
+  }
+}
+@media (max-width: 390px) {
+  .home_navbar .navbar_config {
+    width: 40px;
+    height: 40px;
+    margin-left: 120px;
+
+  }
+}
+@media (max-width: 390px) {
+  .css-0 {
+      margin-left: 10px;
+  }
+}
+@media (max-width: 390px) {
+  .home_navbar .define_restaurant {
+      width: 284px;
+      height: 83px;
+      margin-left: 20px;
+      margin-top: 40px;
+      position: relative;
+      color: #ffffff;
+      font-family: 'Poppins';
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 100;
+      line-height: 15px;
+  }
+}
+@media (max-width: 390px) {
+  .css-z7ff2d {
+   display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .homepage .category_title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 12px;
+    color: #e3c08d;
+  }
+}
+@media (max-width: 390px) {
+  .css-8je8zh-MuiTouchRipple-root  {
+   display: none;
+  }
+}
+@media (max-width: 390px) {
+  .homepage .top_restaurant_frame {
+    width: 380px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 390px) {
+  .homepage .best_dishes_frame {
+    width: 380px;
+    height: 200px;
+  }
+}
+@media (max-width: 390px) {
+  .homepage .events_frame {
+    width: 380px;
+    height: 200px;
+  }
+}
+@media (max-width: 390px) {
+  .homepage .top_article_frame {
+  display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .footer_config {
+    width: 380px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 390px) {
+  .footer_config .main_footer_container {
+    width: 380px;
+    height: 400px;
+  }
+}
+@media (max-width: 390px) {
+  .footer_config .info {
+    width: 180px;
+    height: 100px;
+  }
+}
+@media (max-width: 390px) {
+  .main_footer_container .main_text {
+  display: none;
+  }
+}

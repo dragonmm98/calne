@@ -34,6 +34,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CommunityApiService from "../../apiService/communityApiService";
+import ChatBot from "../../components/chatbot/chat";
 //Redux Selector
   
   const targetProductsRetriever = createSelector(retrieveTargetProducts,
@@ -432,8 +433,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 										</Button>
 									</Box>
 								</Stack>
-
-
+                <ChatBot/>
              </div>
 
         </div>

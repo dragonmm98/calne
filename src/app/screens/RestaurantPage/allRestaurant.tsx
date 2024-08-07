@@ -37,6 +37,7 @@ import { CommentInput, SearchCommentObj,Comment } from "../../../types/comment";
 import CommunityApiService from "../../apiService/communityApiService";
 
 
+
 //Redux Selector
 const targetRestaurantRetriever = createSelector(retrieveTargetRestaurants,
   (targetRestaurants)=>({
@@ -161,7 +162,7 @@ export function AllRestaurant() {
     sweetErrorHandling(err).then();
   }
  };
-
+ 
     return (
         <div className="all_restaurant">
             <Container>
