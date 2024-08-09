@@ -99,27 +99,17 @@
     color: #e3c08d;
   }
 }
-@media (max-width: 390px) {
+@media (max-width: 440px) {
   .css-8je8zh-MuiTouchRipple-root  {
    display: none;
   }
 }
-@media (max-width: 390px) {
-  .homepage .top_restaurant_frame {
-    width: 380px;
-    height: 200px;
-  }
-}
 
-@media (max-width: 390px) {
-  .homepage .best_dishes_frame {
-    width: 380px;
-    height: 200px;
-  }
-}
-@media (max-width: 390px) {
+
+
+@media (max-width: 30px) {
   .homepage .events_frame {
-    width: 380px;
+    width: 430px;
     height: 200px;
   }
 }
@@ -131,25 +121,158 @@
 
 @media (max-width: 390px) {
   .footer_config {
-    width: 380px;
+    width: 430px;
     height: 400px;
   }
 }
 
 @media (max-width: 390px) {
   .footer_config .main_footer_container {
-    width: 380px;
+    width: 430px;
     height: 400px;
   }
 }
 @media (max-width: 390px) {
   .footer_config .info {
-    width: 180px;
+    width: 430px;
     height: 100px;
   }
 }
 @media (max-width: 390px) {
   .main_footer_container .main_text {
   display: none;
+  }
+}
+
+
+@media (max-width: 440px) {
+  .home_navbar .navbar_links {
+    display: none;
+  }
+}
+@media (max-width: 440px) {
+  .home_navbar .navbar_config {
+    width: 40px;
+    height: 40px;
+    margin-left: 120px;
+
+  }
+}
+@media (max-width: 440px) {
+  .css-0 {
+      margin-left: 10px;
+  }
+}
+@media (max-width: 440px) {
+  .home_navbar .define_restaurant {
+      width: 284px;
+      height: 83px;
+      margin-left: 20px;
+      margin-top: 40px;
+      position: relative;
+      color: #ffffff;
+      font-family: 'Poppins';
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 100;
+      line-height: 15px;
+  }
+}
+@media (max-width: 440px) {
+  .css-z7ff2d {
+   display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .homepage .category_title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 12px;
+    color: #e3c08d;
+  }
+}
+@media (max-width: 440px) {
+  .css-8je8zh-MuiTouchRipple-root  {
+   display: none;
+  }
+}
+
+
+
+@media (max-width: 440px) {
+  .footer_config {
+    width: 430px;
+    height: auto;
+  }
+}
+
+@media (max-width: 440px) {
+  .footer_config .main_footer_container {
+    width: 430px;
+    height: 400px;
+    margin-left: 90px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 440px) {
+  .footer_config .info {
+    width: 430px;
+    height: 100px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 440px) {
+  .main_footer_container .main_text {
+  display: none;
+  }
+}
+@media (max-width: 440px) {
+  .css-4wkwb7-MuiStack-root {
+  width: 430px;
+  height: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  }
+}
+
+@media (max-width: 440px) {
+  .css-4wkwb7-MuiStack-root {
+    padding-left: 84px;
+  }
+}
+
+@media (max-width: 440px) {
+  .css-1l7gzo8-MuiStack-root  {
+    justify-content: center;
+  }
+}
+@media (max-width: 440px) {
+  .css-klqxzq-MuiContainer-root  {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 440px) {
+  .footer_config .copyrights  {
+    position: absolute;
+    top: 150px;
+    left: -50px;
+}
+}
+
+
+@media (max-width: 440px) {
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+   display: none;
+  }
+}
+
+
+@media (max-width: 440px) {
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+   display: none;
   }
 }

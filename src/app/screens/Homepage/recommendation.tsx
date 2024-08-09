@@ -9,6 +9,7 @@ import { setBestBoArticles, setNewsBoArticles, setTrendBoArticles } from "./slic
 import { retrievebestBoArticles, retrievenewsBoArticles, retrievetrendBoArticles } from "./selector";
 import CommunityApiService from "../../apiService/communityApiService";
 import { serverApi } from "../../../lib/config";
+import { useMediaQuery } from "react-responsive";
 
 
 
@@ -79,8 +80,11 @@ export function Recommendation () {
        .then((data) => setNewsBoArticles(data))
        .catch((err) => console.log(err))
      }, [])
+     const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+     const isMobile = useMediaQuery({maxWidth: 1104});
     return (
         <div className="top_article_frame">
+          {isDesktopOrLaptop && 
             <Container
             maxWidth="lg"
             sx={{mb:"50px", mt:"60px"}}
@@ -163,6 +167,7 @@ export function Recommendation () {
                     </Stack>
 
             </Container>
+}
         </div>
     )
 }

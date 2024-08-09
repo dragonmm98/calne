@@ -35,6 +35,7 @@ import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/swee
 import { useHistory } from "react-router-dom";
 import { CommentInput, SearchCommentObj,Comment } from "../../../types/comment";
 import CommunityApiService from "../../apiService/communityApiService";
+import { useMediaQuery } from "react-responsive";
 
 
 
@@ -82,6 +83,8 @@ export function AllRestaurant() {
   const history = useHistory();
   const refs: any = useRef([]);
   const [productRebuild, setproductRebuild] = useState<Date>(new Date());
+  const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+  const isMobile = useMediaQuery({maxWidth: 1104});
 
   useEffect(() => {
    const restaurantService = new RestaurantApiService();
@@ -165,6 +168,7 @@ export function AllRestaurant() {
  
     return (
         <div className="all_restaurant">
+          {isDesktopOrLaptop && 
             <Container>
                 <Stack flexDirection={"column"} alignItems="center">
                     
@@ -417,7 +421,8 @@ export function AllRestaurant() {
 
 
              </div>
-            </Container>
+            </Container>}
+            {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
         </div>
     )
 }

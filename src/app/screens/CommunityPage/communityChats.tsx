@@ -9,6 +9,7 @@ import { sweetErrorHandling, sweetFailureProvider } from "../../../lib/sweetAler
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import { RippleBadge } from "../../MaterialTheme/styled";
+import { useMediaQuery } from "react-responsive";
 
 const NewMessage = (data: any) => {
     console.log(data.new_message);
@@ -46,6 +47,8 @@ export function CommunityChats() {
     const [onlineUsers, setOnlineUsers] = useState<number>(0);
     const textInput:any = useRef(null);
     const [message, setMessage] = useState<string>("");
+    const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1304})
+    const isMobile = useMediaQuery({maxWidth: 1304});
 
     useEffect(() => {
         socket.connect(); 
@@ -138,12 +141,14 @@ const getKeyHandler = (e: any) => {
 
     return (
         <Stack className="chat_frame">
+            {isDesktopOrLaptop && 
          <Box className={"chat_top"}>
             <div>Live Chat</div> 
             <RippleBadge 
             style={{margin: "-30px 0 0 20px"}}
             badgeContent={onlineUsers}/>
-            </Box>
+            </Box> }
+        {isDesktopOrLaptop && 
          <Box className={"chat_content"}>
             <Box className={"chat_main"}>
                 <Box
@@ -157,7 +162,8 @@ const getKeyHandler = (e: any) => {
                 {messagesList}
             
                 </Box>
-                </Box>
+                </Box>}
+                {isDesktopOrLaptop && 
                   <Box className={"chat_bott"}>
                     <input
                     ref={textInput}
@@ -173,7 +179,7 @@ const getKeyHandler = (e: any) => {
                     onKeyDown={getKeyHandler}>
                         <SendIcon style={{color: "#fff"}}/>
                     </button>
-                  </Box>
+                  </Box>}
              </Stack>
     );
 }     

@@ -18,6 +18,7 @@ import { createSelector } from "reselect";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetBoArticles } from "./slice";
 import { retrieveTargetBoArticles } from "./selector";
+import { useMediaQuery } from "react-responsive";
 
   //Redux Slice
   const actionDispatch = (dispach: Dispatch) => ({
@@ -78,9 +79,13 @@ export function CommunityPage(props: any){
         searchArticleObj.page = value;
         setSearchArticleObj({...searchArticleObj});
     };
+    const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1304})
+    const isMobile = useMediaQuery({maxWidth: 1304});
+   
 
     return(
         <div className="community_page">
+          {isDesktopOrLaptop && 
         <div className="community_frame">
             <Container sx={{mt: "50px", mb: "50px"}}>
                 <Stack flexDirection={"row"} justifyContent={"space-between"}>
@@ -150,7 +155,9 @@ export function CommunityPage(props: any){
                     </Stack>
                 </Stack>
             </Container>
-        </div>
+        </div>}
+        {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
+
         </div>
         
     );

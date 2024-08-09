@@ -11,6 +11,7 @@ import {retrieveEvents} from "../../screens/Homepage/selector"
 import CommunityApiService from "../../apiService/communityApiService";
 import {Event} from "../../../types/events"
 import { serverApi } from "../../../lib/config";
+import { useMediaQuery } from "react-responsive";
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -43,8 +44,11 @@ useEffect(() => {
     .catch((err) => console.log(err))
 }, [])
 
+const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+const isMobile = useMediaQuery({maxWidth: 1104});
     return (
         <div className="events_frame">
+            {isDesktopOrLaptop && 
             <Container sx={{overflow: "hidden"}}>
                 <Stack className="events_main">
                     <Box className="events_text">
@@ -131,6 +135,7 @@ useEffect(() => {
                     </Swiper>
                 </Stack>
             </Container>
+}
         </div>
     )
 }

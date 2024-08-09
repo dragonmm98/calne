@@ -17,6 +17,7 @@ import assert from "assert";
 import MemberApiService from "../../apiService/memberApiService";
 import { Definer } from "../../../lib/Definer";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
+import { useMediaQuery } from "react-responsive";
 
 //Redux Selector
 const bestRestaurantRetriever = createSelector(retrievebestRestaurants,
@@ -67,6 +68,8 @@ export function BestRestaurants () {
       sweetErrorHandling(err).then();
     }
   }
+  const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+  const isMobile = useMediaQuery({maxWidth: 1104});
     return (
         <div className="best_restaurant_frame">
             <img 

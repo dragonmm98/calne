@@ -35,6 +35,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CommunityApiService from "../../apiService/communityApiService";
 import ChatBot from "../../components/chatbot/chat";
+import { useMediaQuery } from "react-responsive";
 //Redux Selector
   
   const targetProductsRetriever = createSelector(retrieveTargetProducts,
@@ -60,7 +61,7 @@ import ChatBot from "../../components/chatbot/chat";
     dispach(setComment(data)),
   });
 
-
+  
 
 
 export function Cars (props:any) {
@@ -181,8 +182,12 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
     setTargetProductSearchObj({...targetProductSearchObj});
   };
 
+  const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+  const isMobile = useMediaQuery({maxWidth: 1104});
+
     return (
         <div className="single_cars">
+         {isDesktopOrLaptop && 
             <Container>
                 <Stack flexDirection={"column"} alignItems="center">
                     <Stack className="avatar_big_box">
@@ -338,9 +343,10 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
                         />
                         </Stack>
                 </Stack>
-            </Container>
+            </Container>}
 
             <div className="review_for_restaurant">
+            {isDesktopOrLaptop && 
                 <Container
                 sx={{mt: "15px"}}
                 style={{
@@ -398,7 +404,8 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
       </Table>
     </TableContainer>
               
-                </Container> 
+                </Container> }
+                {isDesktopOrLaptop && 
                 <Stack className={'leave-review-config'}>
                 <Box className={"category_title"}> Write Comment</Box>
 									<textarea
@@ -432,10 +439,11 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 											</svg>
 										</Button>
 									</Box>
-								</Stack>
+								</Stack>}
                 <ChatBot/>
              </div>
-
+        {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
+           
         </div>
     )
 }

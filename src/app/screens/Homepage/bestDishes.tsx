@@ -13,6 +13,7 @@ import { retrievetrendProducts } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useMediaQuery } from "react-responsive";
 
 //Redux Selector
 const trendProductRetriever = createSelector(retrievetrendProducts,
@@ -44,10 +45,12 @@ const chosenDishHandler = (id:string) => {
   }
 
   const goCarHandler = () => history.push("/allcars")
-    
+  const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1305})
+  const isMobile = useMediaQuery({maxWidth: 1305});
 
     return (
         <div className="best_dishes_frame">
+            {isDesktopOrLaptop && 
             <Container>
                 <Stack flexDirection={"column"} alignItems="center" sx={{marginTop: "72px"}}>
                 <Box className="category_title">Top Cars</Box>
@@ -99,6 +102,7 @@ const chosenDishHandler = (id:string) => {
                 </Stack>
                 
             </Container>
+}
         </div>
     )
 }

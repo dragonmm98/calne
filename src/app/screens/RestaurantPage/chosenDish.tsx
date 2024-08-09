@@ -26,6 +26,7 @@ import { serverApi } from "../../../lib/config";
 import MemberApiService from "../../apiService/memberApiService";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 import ChatBot from "../../components/chatbot/chat";
+import { useMediaQuery } from "react-responsive";
 
 //** REDUX SLICE**/
 const actionDispatch = (dispach: Dispatch) => ({
@@ -47,8 +48,7 @@ const chosenProductRetriever = createSelector(
     })
 );
 
-// const chosen_list = Array.from(Array(3).keys());
-// const restaurant_list = Array.from(Array(8).keys());
+
 
 export function ChosenDish(props:any) {
   //****INITIALIZATIONS ****/
@@ -104,10 +104,12 @@ export function ChosenDish(props:any) {
     }
   
   
- 
+    const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+    const isMobile = useMediaQuery({maxWidth: 1104});
 
     return (
         <div className="chosen_dish_page">
+          {isDesktopOrLaptop && 
             <Container className="dish_container">
                 
                 <Stack className="chosen_dish_slider">
@@ -210,7 +212,9 @@ export function ChosenDish(props:any) {
                      </div>
                 </Stack>
                 <ChatBot/>
-            </Container>
+            </Container>}
+        {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
+
         </div>
     )
 }

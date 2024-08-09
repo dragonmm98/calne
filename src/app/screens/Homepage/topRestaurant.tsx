@@ -22,6 +22,7 @@ import { Definer } from "../../../lib/Definer";
 import MemberApiService from "../../apiService/memberApiService";
 import { MemberLiken } from "../../../types/others";
 import { useHistory } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 //Redux Selector
 const topRestaurantRetriever = createSelector(retrieveTopRestaurants,
@@ -70,9 +71,12 @@ export function TopRestaurants () {
       sweetErrorHandling(err).then();
     }
   }
+  const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+  const isMobile = useMediaQuery({maxWidth: 1104});
 
     return (
         <div className="top_restaurant_frame">
+           {isDesktopOrLaptop && 
             <Container>
                 <Stack 
                 flexDirection={"column"} 
@@ -197,6 +201,9 @@ export function TopRestaurants () {
                      </Stack>
                 </Stack>
             </Container>
+}
+{isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
+
         </div>
     )
 }

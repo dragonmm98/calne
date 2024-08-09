@@ -33,6 +33,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CommunityApiService from "../../apiService/communityApiService";
 import {Comment, CommentInput, SearchCommentObj} from "../../../types/comment"
+import { useMediaQuery } from "react-responsive";
 
 
 //Redux Selector
@@ -207,8 +208,11 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
   }
  };
 
+ const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+ const isMobile = useMediaQuery({maxWidth: 1104});
     return (
         <div className="single_restaurant">
+            {isDesktopOrLaptop && 
             <Container>
                 <Stack flexDirection={"column"} alignItems="center">
                     <Stack className="avatar_big_box">
@@ -387,8 +391,10 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
                     </Stack>
                 
                 </Stack>
-            </Container>
-
+            </Container>}
+        {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
+          
+        {isDesktopOrLaptop && 
              <div className="review_for_restaurant">
                 <Container
                 sx={{mt: "1px"}}
@@ -483,8 +489,9 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 								</Stack>
 
 
-             </div>
-
+             </div>}
+             
+             {isDesktopOrLaptop && 
              <Container className="member_reviews">
                
 
@@ -510,7 +517,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
 
                     </Stack>
                     <ChatBot/>
-             </Container>
+             </Container> }
         </div>
     )
 }

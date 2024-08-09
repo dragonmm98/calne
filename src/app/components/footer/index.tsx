@@ -68,7 +68,7 @@ export function Footer() {
                 </Stack>
                 <Box className="linear"></Box>
                 <Box className="copyrights">
-                    Copyright Papays 2024, All rights reserved
+                    Copyright Calne 2024, All rights reserved
                 </Box>
             </Stack>
         </Container>

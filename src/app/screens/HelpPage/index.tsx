@@ -4,11 +4,14 @@ import React from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useHistory } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 export function HelpPage() {
     //** INITIALZIATION **/
     const [value,setValue] = React.useState("1");
     const history  = useHistory()
+    const isDesktopOrLaptop = useMediaQuery({minDeviceWidth:1104})
+    const isMobile = useMediaQuery({maxWidth: 1104});
 
     const FAQ = [
      {
@@ -48,8 +51,12 @@ export function HelpPage() {
     const handleButton = () => {
         history.push("/")
     }
+    
+    
     return(
+        
         <div className="help_page"> 
+        {isDesktopOrLaptop && 
         <Container maxWidth={"lg"} sx={{mt: "50px", mb: "50px"}}>
             <TabContext value={value}>
                 <Box  className="help_menu">
@@ -152,7 +159,10 @@ export function HelpPage() {
                 </Stack>
             </TabContext>
 
-        </Container>
+        </Container>}
+        {isMobile && <div style={{ backgroundColor: "white"}}>Mobile Page is under development</div>}
         </div>
+
     )
 }
+
