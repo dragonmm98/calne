@@ -7,5 +7,5 @@ npm i yarn -g
 yarn
 yarn run build 
 
-pm2 start "yarn run start:prod" --name=Calne-React
+pm2 start "yarn run start:prod"
 
