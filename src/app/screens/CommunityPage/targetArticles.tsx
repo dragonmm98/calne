@@ -4,7 +4,6 @@ import { Box, Checkbox, Link, Stack } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import  FavoriteIcon  from "@mui/icons-material/Favorite";
 import { BoArticle } from "../../../types/boArticle";
 import { serverApi } from "../../../lib/config";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";

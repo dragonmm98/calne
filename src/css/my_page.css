@@ -47,6 +47,10 @@ border-bottom: 1px solid rgba(228,228,228,0.83);
     display: flex;
     flex-direction: column;
 }
+.member_page .css-13xfq8m-MuiTabPanel-root {
+    overflow: hidden;
+    max-height: 1200px;
+}
 
 .member_page .order_info_box {
     
