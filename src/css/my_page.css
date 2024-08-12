@@ -214,13 +214,17 @@ line-height: normal;
     -webkit-text-fill-color: transparent;
     transition: all 265ms ease-in;
   }
-  
+
+.member_page .css-k008qs {
+    display: block;
+}
 
 .member_page .my_page_menu .menu_box {
     position: relative;
     width: 372.58px;
     height: 50px;
     display: flex;
+    margin-top: 10px;
     align-items: center;
     justify-content: center;
     border-radius: 20px; 

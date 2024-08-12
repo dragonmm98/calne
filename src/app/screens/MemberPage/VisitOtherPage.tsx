@@ -155,7 +155,7 @@ export function VisitOtherPage(props: any) {
       
     return (
          <div className="my_page">
-            <Container maxWidth="lg" sx={{mt: "50px", mb: "50px"}}>
+            <Container maxWidth="lg" style={{marginLeft: "auto", marginRight:"auto"}}>
                <Stack className="my_page_frame">
                 <TabContext value={value}>
                     <Stack className="my_page_left">
@@ -272,8 +272,8 @@ export function VisitOtherPage(props: any) {
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
                                 >
-                                   {chosenMember?.me_followed 
-                                   && chosenMember.me_followed[0]?.my_following ? (  
+                                   {props.action_enabled && chosenMember?.me_followed 
+                                   && chosenMember.me_followed[0]?.my_following ?(  
                                    <Tab
                                     style={{flexDirection: "column"}}
                                     value={"4"}

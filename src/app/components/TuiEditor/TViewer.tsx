@@ -33,5 +33,3 @@ const TViewer = (props: any) => {
     );
 }
 export default TViewer;
-
-// props.chosenSingleBoArticle?.art_content

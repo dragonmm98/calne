@@ -115,7 +115,7 @@ export function VisitMyPage(props: any) {
     
     return (
          <div className="my_page">
-            <Container maxWidth="lg" sx={{mt: "50px", mb: "50px"}}>
+            <Container maxWidth="lg" style={{marginLeft: "auto", marginRight:"auto"}}>
                <Stack className="my_page_frame">
                 <TabContext value={value}>
                     <Stack className="my_page_left">
