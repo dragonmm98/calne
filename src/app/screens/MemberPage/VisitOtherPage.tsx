@@ -272,7 +272,7 @@ export function VisitOtherPage(props: any) {
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
                                 >
-                                   {props.action_enabled && chosenMember?.me_followed 
+                                   {chosenMember?.me_followed 
                                    && chosenMember.me_followed[0]?.my_following ?(  
                                    <Tab
                                     style={{flexDirection: "column"}}
