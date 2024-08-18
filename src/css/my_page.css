@@ -2,7 +2,7 @@
    position: relative;
    width: 100%;
    height: auto;
-   background: #0b0e11;
+   background: #1D252F;
 }
 .member_page .css-1anj48u-MuiContainer-root{
     margin-top: 0px;
@@ -173,10 +173,10 @@ line-height: normal;
   
   .social-icons i {
     color: #fff;
+    display: flex;
     align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 0.95em;
-    left: 0.96em;
     transition: all 265ms ease-out;
   }
   
@@ -184,6 +184,7 @@ line-height: normal;
     display: inline-block;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   
   .social-icons a:before {

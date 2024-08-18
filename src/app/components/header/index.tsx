@@ -129,10 +129,10 @@ export function NavbarHome (props:any) {
                     <Box className="timeline_serv"></Box>
                     <Box sx={{mt:'90px'}}>
                         {!props.verifiedMemberData ? (
-                    <Button variant="contained" style={{width: '210px', height: '60px', background: '#0E0E0E', color:'#FFFF', border: "1px inset"}} 
-                    onClick={props.handleSignUpOpen}>Register</Button>
+                    <button className="glow-on-hover" type="button"
+                    onClick={props.handleSignUpOpen}>Register</button>
                         ) : null}
-               
+                      
                     </Box>
                 </Stack>
 

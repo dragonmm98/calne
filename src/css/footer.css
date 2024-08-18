@@ -4,7 +4,9 @@
     flex-direction: column;
     width: 100%;
     height: 509px;
-    background: url("/public/others/footer1.jpg"), content-box;
+    background: url("/public/others/footercar.jpg"), content-box;
+    background-size: cover;
+    
 }
 .footer_config .main_footer_container {
     position: relative;

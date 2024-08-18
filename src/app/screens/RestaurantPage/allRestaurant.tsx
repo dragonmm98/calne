@@ -119,7 +119,7 @@ export function AllRestaurant() {
         like_ref_id: id, 
         group_type: "member"});
         console.log(like_result)
-      assert.ok(like_result, Definer.general_err1);
+      assert.ok(like_result, Definer.auth_err1);
   
 
     

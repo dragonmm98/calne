@@ -94,7 +94,7 @@ export function ChosenDish(props:any) {
           like_ref_id: e.target.id, 
           group_type: "product"});
           console.log(like_result)
-        assert.ok(like_result, Definer.general_err1);
+        assert.ok(like_result, Definer.auth_err1);
        await sweetTopSmallSuccessAlert("success", 700, false);
        setproductRebuild(new Date());
       } catch (err:any) {
@@ -187,7 +187,7 @@ export function ChosenDish(props:any) {
                                 checked={chosenProduct?.me_liked 
                                   && chosenProduct?.me_liked[0]?.my_favorite ? true : false}
                                 />
-                                <span>{chosenProduct?.product_likes} ta</span>
+                                <span>{chosenProduct?.product_likes} likes</span>
                             </div>
                             <div style={{display: "flex", alignItems:"center"}}>
                                 <RemovedRedEyeIcon style={{width: "32px", height: "24px"}} sx={{mr: "10px"}}/>

@@ -168,7 +168,7 @@ const [commentWriteData,setCommentWriteData] = useState<CommentInput> ({
         like_ref_id: e.target.id, 
         group_type: "product"});
         console.log(like_result)
-      assert.ok(like_result, Definer.general_err1);
+      assert.ok(like_result, Definer.auth_err1);
      await sweetTopSmallSuccessAlert("success", 700, false);
      setproductRebuild(new Date());
     } catch (err:any) {

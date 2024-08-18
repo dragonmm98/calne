@@ -77,7 +77,7 @@ public async memberLikeTarget(data:any): Promise<MemberLiken> {
        result = await axios.post(this.path + url, data, {
         withCredentials:true,
        });
-       assert.ok(result?.data, Definer.general_err1);
+       assert.ok(result?.data, Definer.auth_err1);
        assert.ok(result?.data?.state != "fail", 
       result?.data?.message);
       
