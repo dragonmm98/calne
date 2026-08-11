@@ -1,46 +1,137 @@
-# Getting Started with Create React App
+# Calne
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Calne is a full-featured car marketplace frontend where customers can discover vehicles, explore dealers, manage a shopping cart, place orders, and connect with other car enthusiasts.
+
+![Calne hero](public/assets/hero-img.png)
+
+## Features
+
+- Browse featured vehicles and dealers
+- Search and filter the car catalog
+- View dealer and vehicle details
+- Sign up, sign in, and manage a member profile
+- Add vehicles to a persistent shopping cart
+- Create orders and track their status
+- Publish and read community posts
+- Follow other members and view followers
+- Real-time communication through Socket.IO
+- Responsive interface for desktop and mobile devices
+
+## Tech Stack
+
+- React 18 and TypeScript
+- Redux Toolkit and React Redux
+- React Router v5
+- Material UI, Joy UI, Emotion, and styled-components
+- Axios for API communication
+- Socket.IO Client for real-time features
+- Toast UI Editor for community content
+- SweetAlert2 for notifications
+- Create React App
+
+## Prerequisites
+
+Before starting, install:
+
+- [Node.js](https://nodejs.org/) 16 or newer
+- npm or Yarn
+- A running Calne backend API
+
+## Getting Started
+
+1. Clone the repository and switch to the development branch:
+
+   ```bash
+   git clone -b develop https://github.com/dragonmm98/calne.git
+   cd calne
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the project root:
+
+   ```env
+   REACT_APP_API_URL=http://localhost:3001
+   ```
+
+   Replace the example URL with the address of your Calne backend. The frontend uses this value for both HTTP API calls and its Socket.IO connection.
+
+4. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command | Description |
+| --- | --- |
+| `npm start` | Runs the app in development mode |
+| `npm test` | Starts the test runner in watch mode |
+| `npm run build` | Creates an optimized production build in `build/` |
+| `npm run start:prod` | Serves the production build locally |
 
-### `npm start`
+> `start:prod` requires the `serve` package to be available. Install it globally with `npm install --global serve`, or add it to the project dependencies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Application Routes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Route | Description |
+| --- | --- |
+| `/` | Home page and featured content |
+| `/dealer` | Dealer listings and dealer details |
+| `/allcars` | Complete vehicle catalog |
+| `/community` | Community articles and discussions |
+| `/orders` | Member order management |
+| `/member-page` | Member profile and settings |
+| `/help` | Help page |
+| `/login` | Login page |
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+calne/
+├── public/                  # Static images, icons, and metadata
+├── src/
+│   ├── app/
+│   │   ├── apiService/     # Backend API clients
+│   │   ├── components/     # Shared UI components
+│   │   ├── context/        # Socket.IO context
+│   │   ├── screens/        # Route-level pages and Redux slices
+│   │   ├── App.tsx         # Routing and application shell
+│   │   └── store.ts        # Redux store configuration
+│   ├── css/                # Global and page-specific styles
+│   ├── lib/                # Configuration and shared utilities
+│   ├── types/              # TypeScript domain models
+│   └── index.tsx           # Application entry point
+├── deploy.sh               # Production deployment script
+├── package.json
+└── tsconfig.json
+```
 
-### `npm run build`
+## Production Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create an optimized build with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The generated files are written to the `build/` directory and can be served by any static hosting provider. Because the app uses `BrowserRouter`, configure the host to redirect unknown routes to `index.html`.
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m "Add your feature"`.
+4. Push the branch: `git push origin feature/your-feature`.
+5. Open a pull request against the `develop` branch.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+No license is currently included in this repository. Contact the repository owner before reusing or distributing the project.
